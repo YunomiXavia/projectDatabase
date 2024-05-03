@@ -67,7 +67,7 @@ CREATE TABLE project_assignment (
     prefer_skills NVARCHAR(255), -- Allow for more descriptive skills listing
     PRIMARY KEY (employee_id, project_id), 
     FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
-    FOREIGN KEY (project_id) REFERENCES Project(project_id) ,\
+    FOREIGN KEY (project_id) REFERENCES Project(project_id),
 ); 
 
 CREATE TABLE team_task (
