@@ -1,5 +1,5 @@
 -- Thứ tự tạo bảng: Các Bảng Chính -> các Bảng Liên Kết 
-use src
+use pm
 -- Bảng Chính
 CREATE TABLE Employee (
     employee_id INT PRIMARY KEY IDENTITY(1,1), -- Auto-incrementing ID
@@ -18,7 +18,7 @@ CREATE TABLE Project (
     name NVARCHAR(30) NOT NULL, 
     goal NVARCHAR(50) NOT NULL,
     number_of_employees INT, -- More flexibility than restricting beforehand
-    prefer_skills NVARCHAR(255), -- Allow for more descriptive skills listing
+    prefer_team NVARCHAR(255), -- Allow for more descriptive skills listing
     project_priority VARCHAR(10) CHECK (project_priority IN ('Low', 'Medium', 'High')), -- Enforce valid priorities
     project_status NVARCHAR(20) CHECK (project_status IN ('Pending', 'In Progress', 'Completed')),  -- Predefined statuses
     start_date DATETIME NOT NULL,
@@ -105,3 +105,6 @@ CREATE TABLE employee_skills (
     FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
     FOREIGN KEY (skill_id) REFERENCES Skills(skill_id),
 ); 
+
+
+    
