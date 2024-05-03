@@ -55,5 +55,3 @@ trang 3: Giao diện và quy trình edit giống như phần tạo dự án. (v�
 
 trang 4: khi bấm vào Detail sẽ hiện thị toàn bộ thông tin chi tiết của dự án đó. Bao gồm mọi thông tin của dự án và team tham gia dự án đó.
 
-
-
