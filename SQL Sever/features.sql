@@ -1,8 +1,7 @@
 use pm;
 
--- DELETE FROM Project;
+-- DELETE FROM Team WHERE team_id = 4;
 
 
 
-
-select * from team_member
+SELECT * FROM employee_skills

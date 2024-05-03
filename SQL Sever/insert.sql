@@ -56,7 +56,25 @@ VALUES
     ('Business Analysis', 'Analyzing business processes and identifying opportunities for improvement'),
     ('Embedded Systems', 'Designing and implementing systems with embedded hardware and software'),
     ('Cloud Computing', 'Using remote servers hosted on the internet to store, manage, and process data'),
-    ('Data Engineering', 'Designing and managing large-scale data processing systems');
+    ('Data Engineering', 'Designing and managing large-scale data processing systems'),
+    ('Python', 'A high-level programming language known for its simplicity and readability.'),
+    ('Data Analysis', 'The process of inspecting, cleaning, transforming, and modeling data to discover useful information, inform conclusions, and support decision-making.'),
+    ('JavaScript', 'A programming language that enables interactive web pages and dynamic content.'),
+    ('Database Management', 'The process of administering, controlling, and managing databases to ensure their security, integrity, and performance.'),
+    ('Java', 'A popular, object-oriented programming language used for developing a wide range of applications.'),
+    ('C++', 'A versatile programming language known for its efficiency and performance, commonly used in system and game development.'),
+    ('C#', 'A modern programming language developed by Microsoft, often used for building Windows applications and games.'),
+    ('Ruby', 'A dynamic, reflective, object-oriented programming language known for its simplicity and productivity.'),
+    ('PHP', 'A server-side scripting language used for web development and creating dynamic web pages.'),
+    ('Swift', 'A powerful and intuitive programming language used for developing iOS, macOS, watchOS, and tvOS apps.'),
+    ('Back-end Development', 'The development of server-side logic and databases for web applications.'),
+    ('Front-end Development', 'The development of client-side interfaces and user experiences for web applications.'),
+    ('.NET', 'A framework developed by Microsoft for building various types of applications, including web, desktop, and mobile applications.'),
+    ('Web API', 'A framework for building HTTP services that can be consumed by a broad range of clients, including browsers, mobile devices, and IoT devices.'),
+    ('Web MVC', 'A design pattern and framework for building web applications that separates the application into three main components: Model, View, and Controller.'),
+    ('DevOps', 'A set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.'),
+    ('Kotlin', 'A statically typed programming language developed by JetBrains and officially supported by Google as an Android development language.');
+
 
 INSERT INTO Role (role_name, role_description)
 VALUES 
@@ -99,6 +117,7 @@ VALUES
     ((SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python')),
     ((SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT skill_id FROM Skills WHERE skill_name = 'Data Analysis')),
     ((SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python'));
+    
 
 
 -- Insert teams based on prefer_team values from the Project table
