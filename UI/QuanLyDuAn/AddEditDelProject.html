@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management Dashboard</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="min-h-screen bg-zinc-100 dark:bg-zinc-800 p-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Project Management Dashboard</h1>
+
+        <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4 mb-6">
+            <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Add New Project</h2>
+            <form class="mt-4 space-y-3">
+                <input type="text" placeholder="Project Name" class="w-full p-2 border rounded">
+                <input type="text" placeholder="Project Goal" class="w-full p-2 border rounded">
+                <input type="number" placeholder="Number of Employees" class="w-full p-2 border rounded">
+                <input type="text" placeholder="Preferred Team" class="w-full p-2 border rounded">
+                <input type="text" placeholder="Project Priority" class="w-full p-2 border rounded">
+                <input type="text" placeholder="Project Status" class="w-full p-2 border rounded">
+                <input type="date" placeholder="Start Date" class="w-full p-2 border rounded">
+                <input type="date" placeholder="End Date" class="w-full p-2 border rounded">
+                <input type="number" placeholder="Project Manager ID" class="w-full p-2 border rounded">
+                <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Project</button>
+            </form>
+        </div>
+
+        <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4 mb-6">
+            <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Projects List</h2>
+            <div class="mt-4">
+                <table class="w-full text-left">
+                    <thead class="bg-zinc-200 dark:bg-zinc-600 text-zinc-900 dark:text-white">
+                        <tr>
+                            <th class="p-2">ID</th>
+                            <th class="p-2">Name</th>
+                            <th class="p-2">Goal</th>
+                            <th class="p-2">Priority</th>
+                            <th class="p-2">Status</th>
+                            <th class="p-2">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-zinc-500">
+                        <tr>
+                            <td class="p-2">1</td>
+                            <td class="p-2">Website Redesign</td>
+                            <td class="p-2">Increase UX quality</td>
+                            <td class="p-2">High</td>
+                            <td class="p-2">Active</td>
+                            <td class="p-2">
+                                <button onclick="editProject(1)"
+                                    class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Edit</button>
+                                <button onclick="deleteProject(1)"
+                                    class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4">
+            <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Edit/Delete Project</h2>
+            <form class="mt-4 space-y-3">
+                <input type="text" placeholder="Project Name" class="w-full p-2 border rounded" value="Website Redesign">
+                <input type="text" placeholder="Project Goal" class="w-full p-2 border rounded" value="Increase UX quality">
+                <input type="number" placeholder="Number of Employees" class="w-full p-2 border rounded" value="6">
+                <input type="text" placeholder="Preferred Team" class="w-full p-2 border rounded" value="Team 4">
+                <input type="text" placeholder="Project Priority" class="w-full p-2 border rounded"value="High">
+                <input type="text" placeholder="Project Status" class="w-full p-2 border rounded" value="Active">
+                <input type="date" placeholder="Start Date" class="w-full p-2 border rounded">
+                <input type="date" placeholder="End Date" class="w-full p-2 border rounded">
+                <input type="number" placeholder="Project Manager ID" class="w-full p-2 border rounded" value="003">
+
+                <div class="flex space-x-2">
+                    <button type="button"
+                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update Project</button>
+                    <button type="button"
+                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thêm các tệp JavaScript cần thiết -->
+    <script>
+        function editProject(id) {
+            // Placeholder for edit functionality
+            alert('Edit project with ID: ' + id);
+        }
+
+        function deleteProject(id) {
+            // Placeholder for delete functionality
+            alert('Delete project with ID: ' + id);
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+    Lệnh SQL thêm dự án: Khi bấm vào nút "Add Project".
+    -- INSERT query để thêm dự án mới vào cơ sở dữ liệu
+        INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id) 
+        VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+
+    Lệnh SQL cập nhật dự án: Khi bấm vào nút "Update Project".
+    -- UPDATE query để cập nhật thông tin dự án
+        UPDATE Project
+        SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới], prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới', start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
+        WHERE project_id = [ID của dự án cần cập nhật];
+    
+    Lệnh SQL xóa dự án: Khi bấm vào nút "Delete Project".
+    -- DELETE query để xóa dự án khỏi cơ sở dữ liệu
+        DELETE FROM Project
+        WHERE project_id = [ID của dự án cần xóa];
+ -->

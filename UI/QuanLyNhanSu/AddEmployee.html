@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Employee</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="min-h-screen bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white dark:bg-zinc-700 shadow-lg rounded-lg p-6">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-white mb-4">Add New Employee</h2>
+        <form id="employeeForm" class="space-y-4">
+            <div>
+                <label for="firstName" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="lastName" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Email</label>
+                <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="phoneNumber" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Phone Number</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="address" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Address</label>
+                <input type="text" id="address" name="address" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="birthDate" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Date of Birth</label>
+                <input type="date" id="birthDate" name="birthDate" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="hireDate" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Hire Date</label>
+                <input type="date" id="hireDate" name="hireDate" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Employee</button>
+        </form>
+    </div>
+
+    <!-- Thêm các tệp JavaScript cần thiết -->
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+            console.log('Employee Data:', data);
+            // Here you would typically handle the form submission, e.g., send data to a server
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+    Lệnh SQL thêm nhân viên mới: Khi bấm nút "Add Employee":
+        INSERT INTO employees (first_name, last_name, email, phone_number, address, birth_date, hire_date)
+        VALUES ('Họ', 'Tên', 'Email', 'Số điện thoại', 'Địa chỉ', 'Ngày sinh', 'Ngày tuyển dụng');
+ -->
