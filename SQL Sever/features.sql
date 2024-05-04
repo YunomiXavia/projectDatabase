@@ -16,7 +16,6 @@ use pm;
 
 
 -- Create procedure to list all employees with a selected skill id
-GO
 
 
 -- EXEC DisplayTeamsByProjectPreference @ProjectID = 91; -- Replace 1 with the desired project ID
@@ -31,8 +30,24 @@ GO
 -- WHERE t.team_name LIKE '%Web Development%, %Backend Development%';
 
 -- Delete all tables in the pm database
+-- select * from team_member
 
-SELECT * from team_member
--- select * from employee_skills
+-- select * from Team
+-- select * from SKills
+
+-- SELECT * from team_skill_tag
+
+SELECT 
+    e.first_name, e.last_name, e.email, 
+    COALESCE(p.name, 'Not Join') AS project_name, 
+    COALESCE(t.team_name, 'Not Join') AS team_name, 
+    COALESCE(s.skill_name, 'Not Join') AS skill_name 
+FROM Employee e 
+LEFT JOIN Project p ON pa.project_id = p.project_id 
+LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+LEFT JOIN Team t ON tm.team_id = t.team_id 
+LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+
 
 

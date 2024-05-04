@@ -61,13 +61,13 @@ CREATE TABLE Role (
 ); 
 
 
-CREATE TABLE project_assignment (
-    employee_id INT NOT NULL, 
-    project_id INT NOT NULL,
-    PRIMARY KEY (employee_id, project_id), 
-    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
-    FOREIGN KEY (project_id) REFERENCES Project(project_id),
-); 
+-- CREATE TABLE project_assignment (
+--     employee_id INT NOT NULL, 
+--     project_id INT NOT NULL,
+--     PRIMARY KEY (employee_id, project_id), 
+--     FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
+--     FOREIGN KEY (project_id) REFERENCES Project(project_id),
+-- ); 
 
 
 CREATE TABLE team_task (
@@ -80,6 +80,7 @@ CREATE TABLE team_task (
     FOREIGN KEY (assigned_employee_id) REFERENCES Employee(employee_id),
 ); 
 
+
 CREATE TABLE team_skill_tag(
     team_id INT NOT NULL,
     skill_id INT NOT NULL, 
@@ -87,6 +88,7 @@ CREATE TABLE team_skill_tag(
     FOREIGN KEY (skill_id) REFERENCES Skills(skill_id),
     FOREIGN KEY (team_id) REFERENCES Team(team_id) 
 ); 
+
 
 CREATE TABLE project_prefer_skills(
     project_id INT NOT NULL,
