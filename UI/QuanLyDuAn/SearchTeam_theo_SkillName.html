@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Search</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Team Search</h1>
+
+        <!-- Form tìm kiếm -->
+        <form action="" method="GET" class="mb-4">
+            <div class="flex items-center">
+                <label for="skill" class="mr-2">Skill:</label>
+                <input type="text" name="skill" id="skill" class="border rounded py-2 px-3" placeholder="Enter skill name">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 ml-2 rounded hover:bg-blue-600">Search</button>
+            </div>
+        </form>
+
+        <!-- Kết quả tìm kiếm -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="py-3 px-6 text-left">Team ID</th>
+                        <th class="py-3 px-6 text-left">Team Name</th>
+                        <th class="py-3 px-6 text-left">Team Skill</th>
+                        <th class="py-3 px-6 text-left">Team Lead</th>
+                        <th class="py-3 px-6 text-left">Number of Members</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Dữ liệu từ câu truy vấn sẽ được thêm vào đây -->
+                    <tr>
+                        <td class="py-3 px-6">1</td>
+                        <td class="py-3 px-6">Development Team</td>
+                        <td class="py-3 px-6">JavaScript</td>
+                        <td class="py-3 px-6">John Doe</td>
+                        <td class="py-3 px-6">5</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">2</td>
+                        <td class="py-3 px-6">Design Team</td>
+                        <td class="py-3 px-6">UI/UX Design</td>
+                        <td class="py-3 px-6">Jane Smith</td>
+                        <td class="py-3 px-6">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- 
+    Tìm kiếm nhóm theo tên kỹ năng: Khi người dùng nhập tên kỹ năng vào ô tìm kiếm và bấm vào nút "Search":
+    SELECT 
+        t.team_id, 
+        t.team_name, 
+        s.skill_name AS team_skill, 
+        CONCAT(e.first_name, ' ', e.last_name) AS team_lead,
+        COUNT(tm.member_id) AS number_of_members
+    FROM 
+        Team t 
+    LEFT JOIN 
+        Skills s ON t.team_skill_id = s.skill_id 
+    LEFT JOIN 
+        Employee e ON t.team_lead_id = e.employee_id 
+    LEFT JOIN 
+        team_member tm ON t.team_id = tm.team_id 
+    LEFT JOIN 
+        team_skill_tag tst ON t.team_id = tst.team_id
+    WHERE 
+        s.skill_name = 'Tên kỹ năng cần tìm'
+    GROUP BY 
+        t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
+ -->

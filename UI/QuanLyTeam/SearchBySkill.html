@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Search by Skill</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Employee Search by Skill</h1>
+
+        <!-- Form tìm kiếm nhân viên theo kỹ năng -->
+        <div class="mb-8 max-w-md mx-auto">
+            <form id="searchForm">
+                <div class="mb-4">
+                    <label for="skillName" class="block text-sm font-medium text-gray-700">Skill Name</label>
+                    <input type="text" id="skillName" name="skillName" required
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Search Employees
+                </button>
+            </form>
+        </div>
+
+        <!-- Kết quả tìm kiếm -->
+        <div id="searchResults" class="max-w-md mx-auto">
+            <!-- Kết quả sẽ được hiển thị ở đây -->
+        </div>
+    </div>
+
+    <script>
+        // Xử lý khi submit form tìm kiếm
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const skillName = document.getElementById('skillName').value;
+
+            // Gửi yêu cầu AJAX để lấy dữ liệu từ máy chủ
+            // Trong ví dụ này, chúng ta sẽ sử dụng kết quả mẫu như sau:
+            const sampleData = [
+                { first_name: 'John', last_name: 'Doe', email: 'john@example.com', project_name: 'Project A', team_name: 'Team 1', skill_name: 'HTML' },
+                { first_name: 'Jane', last_name: 'Doe', email: 'jane@example.com', project_name: 'Project B', team_name: 'Team 2', skill_name: 'CSS' }
+            ];
+
+            // Hiển thị kết quả trên trang
+            displaySearchResults(sampleData);
+        });
+
+        // Hàm để hiển thị kết quả tìm kiếm
+        function displaySearchResults(results) {
+            const searchResultsDiv = document.getElementById('searchResults');
+            searchResultsDiv.innerHTML = '';
+
+            if (results.length === 0) {
+                searchResultsDiv.innerHTML = '<p class="text-gray-700">No employees found.</p>';
+                return;
+            }
+
+            const resultList = document.createElement('ul');
+            resultList.classList.add('divide-y', 'divide-gray-300', 'rounded-md', 'bg-white', 'shadow');
+
+            results.forEach(employee => {
+                const listItem = document.createElement('li');
+                listItem.classList.add('p-4');
+
+                const employeeDetails = `
+                    <p class="text-gray-900 font-medium">${employee.first_name} ${employee.last_name}</p>
+                    <p class="text-gray-700">${employee.email}</p>
+                    <p class="text-gray-700">Project: ${employee.project_name}</p>
+                    <p class="text-gray-700">Team: ${employee.team_name}</p>
+                `;
+
+                listItem.innerHTML = employeeDetails;
+                resultList.appendChild(listItem);
+            });
+
+            searchResultsDiv.appendChild(resultList);
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+    Lọc theo tên kĩ năng khi bấm Search Employees
+        SELECT 
+            e.first_name, e.last_name, e.email, 
+            COALESCE(p.name, 'Not Join') AS project_name, 
+            COALESCE(t.team_name, 'Not Join') AS team_name, 
+            COALESCE(s.skill_name, 'Not Join') AS skill_name 
+        FROM Employee e 
+        LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
+        LEFT JOIN Project p ON pa.project_id = p.project_id 
+        LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+        LEFT JOIN Team t ON tm.team_id = t.team_id 
+        LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+        LEFT JOIN Skills s ON es.skill_id = s.skill_id
+        WHERE s.skill_name = 'Web Development';
+ -->

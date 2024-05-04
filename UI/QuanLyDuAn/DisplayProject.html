@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Information</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Project Information</h1>
+
+        <!-- Bảng hiển thị dữ liệu từ câu truy vấn SQL -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="py-3 px-6 text-left">Project ID</th>
+                        <th class="py-3 px-6 text-left">Project Name</th>
+                        <th class="py-3 px-6 text-left">Goal</th>
+                        <th class="py-3 px-6 text-left">Number of Employees</th>
+                        <th class="py-3 px-6 text-left">Project Priority</th>
+                        <th class="py-3 px-6 text-left">Project Status</th>
+                        <th class="py-3 px-6 text-left">Start Date</th>
+                        <th class="py-3 px-6 text-left">End Date</th>
+                        <th class="py-3 px-6 text-left">Project Manager</th>
+                        <th class="py-3 px-6 text-left">Number of Teams</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Dữ liệu dự án sẽ được thêm vào đây -->
+                    <tr>
+                        <td class="py-3 px-6">1</td>
+                        <td class="py-3 px-6">Project 1</td>
+                        <td class="py-3 px-6">Develop an App</td>
+                        <td class="py-3 px-6">10</td>
+                        <td class="py-3 px-6">High</td>
+                        <td class="py-3 px-6">In Progress</td>
+                        <td class="py-3 px-6">2024-01-01</td>
+                        <td class="py-3 px-6">2024-12-31</td>
+                        <td class="py-3 px-6">John Doe</td>
+                        <td class="py-3 px-6">3</td>
+                    </tr>
+                    <!-- Các dòng tiếp theo tương tự -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Add Team to Project</h1>
+
+        <!-- Form thêm nhóm vào dự án -->
+        <form class="max-w-md bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="teamId">
+                    Team ID
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="teamId" type="text" placeholder="Team ID">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="projectId">
+                    Project ID
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="projectId" type="text" placeholder="Project ID">
+            </div>
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    Add Team to Project
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-- 
+    Câu truy vấn hiển thị thông tin project:   
+    SELECT 
+        p.project_id, 
+        p.name AS project_name,
+        p.goal AS project_goal,
+        p.number_of_employees AS number_of_employees,
+        p.project_priority AS project_priority,
+        p.project_status AS project_status,
+        p.start_date AS start_date,
+        p.end_date AS end_date,
+        CONCAT(e.first_name, ' ', e.last_name) AS project_manager,
+        COUNT(DISTINCT tp.team_id) AS number_of_teams
+    FROM 
+        Project p
+    LEFT JOIN 
+        Employee e ON p.project_manager_id = e.employee_id
+    LEFT JOIN 
+        team_project tp ON p.project_id = tp.project_id
+    GROUP BY 
+        p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+ -->
+
+
+ <!-- 
+    Câu truy vấn thêm nhóm vào dự án:
+    INSERT INTO team_project (team_id, project_id)
+    VALUES ([ID_nhóm], [ID_dự_án]);
+
+  -->

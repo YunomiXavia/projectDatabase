@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Information</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Team Information</h1>
+
+        <!-- Bảng hiển thị dữ liệu từ câu truy vấn SQL -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="py-3 px-6 text-left">Team ID</th>
+                        <th class="py-3 px-6 text-left">Team Name</th>
+                        <th class="py-3 px-6 text-left">Team Skill</th>
+                        <th class="py-3 px-6 text-left">Team Lead</th>
+                        <th class="py-3 px-6 text-left">Number of Members</th>
+                        <th class="py-3 px-6 text-left">Actions</th> <!-- Thêm cột hành động -->
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Bản ghi minh hoạ sẽ được thêm vào đây -->
+                    <tr>
+                        <td class="py-3 px-6">1</td>
+                        <td class="py-3 px-6">Development Team</td>
+                        <td class="py-3 px-6">JavaScript</td>
+                        <td class="py-3 px-6">John Doe</td>
+                        <td class="py-3 px-6">5</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(1)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded mr-2">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(1)">Details</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">2</td>
+                        <td class="py-3 px-6">Design Team</td>
+                        <td class="py-3 px-6">UI/UX</td>
+                        <td class="py-3 px-6">Jane Smith</td>
+                        <td class="py-3 px-6">3</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(2)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(2)">Details</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">3</td>
+                        <td class="py-3 px-6">Testing Team</td>
+                        <td class="py-3 px-6">Quality Assurance</td>
+                        <td class="py-3 px-6">Mike Johnson</td>
+                        <td class="py-3 px-6">4</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(3)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(3)">Details</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">4</td>
+                        <td class="py-3 px-6">Marketing Team</td>
+                        <td class="py-3 px-6">Digital Marketing</td>
+                        <td class="py-3 px-6">Emily Davis</td>
+                        <td class="py-3 px-6">6</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(4)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(4)">Details</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">5</td>
+                        <td class="py-3 px-6">Support Team</td>
+                        <td class="py-3 px-6">Customer Support</td>
+                        <td class="py-3 px-6">Sarah Johnson</td>
+                        <td class="py-3 px-6">7</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(5)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(5)">Details</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">6</td>
+                        <td class="py-3 px-6">Sales Team</td>
+                        <td class="py-3 px-6">Sales Strategy</td>
+                        <td class="py-3 px-6">Michael Brown</td>
+                        <td class="py-3 px-6">5</td>
+                        <td class="py-3 px-6">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2" onclick="showEditForm(6)">Edit</button>
+                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded" onclick="showDetails(6)">Details</button>
+                        </td>
+                    </tr>
+                    <!-- Các dòng tiếp theo tương tự -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Form sửa thông tin -->
+        <div id="editForm" class="hidden mt-4">
+            <h2 class="text-lg font-semibold mb-2">Edit Team Information</h2>
+            <form>
+                <!-- Các trường thông tin cần sửa -->
+                <div class="mb-4">
+                    <label for="teamName" class="block text-sm font-medium text-gray-700">Team Name</label>
+                    <input type="text" id="teamName" name="teamName" class="mt-1 block w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <label for="teamSkill" class="block text-sm font-medium text-gray-700">Team Skill</label>
+                    <input type="text" id="teamSkill" name="teamSkill" class="mt-1 block w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <label for="teamLead" class="block text-sm font-medium text-gray-700">Team Lead</label>
+                    <input type="text" id="teamLead" name="teamLead" class="mt-1 block w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <label for="numMembers" class="block text-sm font-medium text-gray-700">Number of Members</label>
+                    <input type="number" id="numMembers" name="numMembers" class="mt-1 block w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save</button>
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded ml-2" onclick="hideEditForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Chi tiết thành viên trong nhóm -->
+        <div id="detailsModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <!-- Mặt nền tối -->
+                <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+                    <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+                </div>
+                <!-- Khoảng trống dành cho mã thông báo -->
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <!-- Mô-đun -->
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-auto shadow-xl transform transition-all sm:my-12 sm:align-middle">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">
+                                    Team Members
+                                </h3>
+                                <div class="mt-2">
+                                    <!-- Dữ liệu thành viên trong nhóm sẽ được thêm vào đây -->
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Skill</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <!-- Dữ liệu minh hoạ thành viên trong nhóm sẽ được thêm vào đây -->
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">1</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">JavaScript</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Developer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">2</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Jane Smith</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">HTML/CSS</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Designer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">3</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Mark Johnson</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Java</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Developer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">4</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Emily Davis</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Python</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Developer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">5</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Sarah Wilson</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">C#</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Developer</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <!-- Các dòng tiếp theo tương tự -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <h3 class="text-lg font-medium leading-6 text-gray-900 mt-6">
+                                    Projects
+                                </h3>
+                                <div class="mt-2">
+                                    <!-- Dữ liệu dự án sẽ được thêm vào đây -->
+                                    <table class="min-w-full divide-y divide-gray-200">
+                                        <thead class="bg-gray-50">
+                                            <tr>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Goal</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Manager</th>
+                                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="bg-white divide-y divide-gray-200">
+                                            <!-- Dữ liệu minh hoạ các dự án sẽ được thêm vào đây -->
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">1</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Project 1</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Develop an App</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">2</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Project B</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">Develop an App</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">John Smith</td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded mr-2">Edit</button>
+                                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded">Delete</button>
+                                                </td>
+                                            </tr>
+                                            
+                                            <!-- Các dòng tiếp theo tương tự -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button onclick="hideDetails()" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gray-800 text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 sm:ml-3 sm:w-auto sm:text-sm">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function showEditForm(teamId) {
+                // Hiển thị form sửa thông tin
+                document.getElementById('editForm').classList.remove('hidden');
+            }
+
+            function showDetails(teamId) {
+                // Hiển thị modal chi tiết thành viên trong nhóm
+                document.getElementById('detailsModal').classList.remove('hidden');
+            }
+
+            function hideDetails() {
+                // Ẩn modal chi tiết thành viên trong nhóm
+                document.getElementById('detailsModal').classList.add('hidden');
+            }
+
+            function hideEditForm() {
+                document.getElementById('editForm').classList.add('hidden');
+            }
+        </script>
+    </div>
+</body>
+
+</html>
+
+
+<!-- 
+    Hiển thị thông tin của team khi hiện trang này:
+        SELECT 
+            t.team_id, 
+            t.team_name, 
+            s.skill_name AS team_skill, 
+            CONCAT(e.first_name, ' ', e.last_name) AS team_lead,
+            COUNT(tm.member_id) AS number_of_members
+        FROM 
+            Team t 
+        LEFT JOIN 
+            Skills s ON t.team_skill_id = s.skill_id 
+        LEFT JOIN 
+            Employee e ON t.team_lead_id = e.employee_id 
+        LEFT JOIN 
+            team_member tm ON t.team_id = tm.team_id 
+        GROUP BY 
+            t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
+-->
+
+
+<!-- 
+    Hiển thị thông tin chi tiết của team khi nhấn vào nút "Details":
+        SELECT 
+            tm.member_id, 
+            CONCAT(e.first_name, ' ', e.last_name) AS member_name,
+            es.skill_id,
+            s.skill_name AS skill,
+            r.role_name AS role
+        FROM 
+            team_member tm
+        JOIN 
+            Employee e ON tm.member_id = e.employee_id
+        LEFT JOIN 
+            employee_skills es ON e.employee_id = es.employee_id
+        LEFT JOIN 
+            Skills s ON es.skill_id = s.skill_id
+        LEFT JOIN 
+            Role r ON tm.role_id = r.role_id
+        WHERE 
+            tm.team_id = [ID_nhóm];
+ -->
+
+<!-- 
+    Câu truy vấn hiển thị thông tin các Project đang tham gia khi bấm Details:
+        SELECT 
+            p.project_id, 
+            p.name AS project_name,
+            p.goal AS project_goal,
+            p.number_of_employees AS number_of_employees,
+            p.project_priority AS project_priority,
+            p.project_status AS project_status,
+            p.start_date AS start_date,
+            p.end_date AS end_date,
+            CONCAT(e.first_name, ' ', e.last_name) AS project_manager
+        FROM 
+            team_project tp
+        JOIN 
+            Project p ON tp.project_id = p.project_id
+        LEFT JOIN 
+            Employee e ON p.project_manager_id = e.employee_id
+        WHERE 
+            tp.team_id = [ID_nhóm];
+ -->
+
+ <!-- 
+    Câu truy vấn SQL để cập nhật thông tin của team khi bấm vào nút "Edit" sau đó cập nhật thông tin và ân nút "Save":  
+        UPDATE Team
+        SET 
+            team_name = 'Tên nhóm mới',
+            team_skill_id = 'ID kỹ năng mới',
+            team_lead_id = 'ID trưởng nhóm mới'
+        WHERE 
+            team_id = [ID_nhóm];
+  -->
+
+  <!-- 
+    Câu truy vấn cập nhật( chỉnh sửa) Role của thành viên trong nhóm khi bấm Details -> Edit:
+        UPDATE team_member
+        SET role_id = (SELECT role_id FROM Role WHERE role_name = 'Tên_vai_trò_mới')
+        WHERE member_id = [ID_thành_viên] AND team_id = [ID_nhóm];
+
+   -->
+
+  <!-- 
+    Xoá một thành viên khỏi team khi bấm Details sau đó bấm vào nút "Delete":
+        DELETE FROM team_member
+        WHERE 
+            team_id = [ID_nhóm] AND member_id = [ID_thành_viên];
+   -->
+
+  <!-- 
+    Xoá một team khi bấm vào nút "Delete":
+
+   -->

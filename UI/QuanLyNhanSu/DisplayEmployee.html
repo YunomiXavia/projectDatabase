@@ -265,3 +265,63 @@
 </body>
 
 </html>
+
+
+<!-- 
+    Hiển thị thông tin cơ bản của nhân viên hiển thị luôn:
+        -- SELECT query để lấy thông tin cơ bản của nhân viên từ cơ sở dữ liệu
+                SELECT 
+                    e.first_name, e.last_name, e.email, 
+                    COALESCE(p.name, 'Not Join') AS project_name, 
+                    COALESCE(t.team_name, 'Not Join') AS team_name, 
+                    COALESCE(s.skill_name, 'Not Join') AS skill_name 
+                FROM Employee e 
+                LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
+                LEFT JOIN Project p ON pa.project_id = p.project_id 
+                LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+                LEFT JOIN Team t ON tm.team_id = t.team_id 
+                LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+                LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+ -->
+
+
+ <!-- 
+    Khi bấm vào detail: hiển thị toàn bộ thông tin của nhân viên
+        -- SELECT query để lấy thông tin chi tiết của nhân viên từ cơ sở dữ liệu
+                SELECT 
+                    e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.address, e.birth_date, e.hire_date,  
+                    COALESCE(p.name, 'Not Join') AS project_name, 
+                    COALESCE(t.team_name, 'Not Join') AS team_name, 
+                    COALESCE(s.skill_name, 'Not Join') AS skill_name 
+                FROM Employee e 
+                LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
+                LEFT JOIN Project p ON pa.project_id = p.project_id 
+                LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+                LEFT JOIN Team t ON tm.team_id = t.team_id 
+                LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+                LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+  -->
+
+  <!-- 
+    khi bấm vào Skills: hiển thị danh sách kỹ năng của nhân viên đó
+        SELECT skill_name FROM Skills 
+        INNER JOIN employee_skills ON Skills.skill_id = employee_skills.skill_id 
+        WHERE employee_skills.employee_id = [ID của nhân viên];
+   -->
+
+
+   <!-- 
+        Khi bấm vào nut edit và hiện ra form để chỉnh sửa thông tin nhân viên có hiển thị thông tin cũ của nhân viên đó
+        Sau đó có thể chỉnh sửa các thông tin cần thiết và bấm vào nút Update Employee để cập nhật thông tin
+            -- UPDATE query để cập nhật thông tin nhân viên
+                UPDATE Employee
+                SET first_name = 'Họ mới', last_name = 'Tên mới', email = 'Email mới', phone_number = 'Số điện thoại mới', address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới', hire_date = 'Ngày tuyển dụng mới'
+                WHERE employee_id = [ID của nhân viên];
+    -->
+
+    <!-- 
+        Khi xoá một nhân viên: bấm vào nút Delete Employee
+            -- DELETE query để xóa nhân viên khỏi cơ sở dữ liệu
+                DELETE FROM Employee
+                WHERE employee_id = [ID của nhân viên];
+     -->

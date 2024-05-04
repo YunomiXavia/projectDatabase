@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Team Management</h1>
+
+        <!-- Form thêm nhóm mới -->
+        <div class="mb-8 max-w-md mx-auto">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Add New Team</h2>
+            <form id="teamForm">
+                <div class="mb-4">
+                    <label for="teamName" class="block text-sm font-medium text-gray-700">Team Name</label>
+                    <input type="text" id="teamName" name="teamName" required
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Add Team
+                </button>
+            </form>
+        </div>
+
+        <!-- Form thêm thành viên vào nhóm -->
+        <div class="mb-8 max-w-md mx-auto">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Add Member to Team</h2>
+            <form id="memberForm">
+                <div class="mb-4">
+                    <label for="roleId" class="block text-sm font-medium text-gray-700">Role ID</label>
+                    <input type="number" id="roleId" name="roleId" required
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <label for="memberId" class="block text-sm font-medium text-gray-700">Member ID</label>
+                    <input type="number" id="memberId" name="memberId" required
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <div class="mb-4">
+                    <label for="teamId" class="block text-sm font-medium text-gray-700">Team ID</label>
+                    <input type="number" id="teamId" name="teamId" required
+                           class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Add Member to Team
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Xử lý khi submit form thêm nhóm mới
+        document.getElementById('teamForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const teamName = document.getElementById('teamName').value;
+            // Placeholder cho việc gửi yêu cầu AJAX để thêm nhóm mới vào cơ sở dữ liệu
+            console.log('Adding new team:', teamName);
+            // Thông báo thành công
+            alert('New team added successfully!');
+            // Sau khi thêm, bạn có thể làm mới trang hoặc thực hiện các thao tác khác
+        });
+
+        // Xử lý khi submit form thêm thành viên vào nhóm
+        document.getElementById('memberForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const roleId = document.getElementById('roleId').value;
+            const memberId = document.getElementById('memberId').value;
+            const teamId = document.getElementById('teamId').value;
+            // Placeholder cho việc gửi yêu cầu AJAX để thêm thành viên vào nhóm
+            console.log('Adding member to team - Role ID:', roleId, 'Member ID:', memberId, 'Team ID:', teamId);
+            // Thông báo thành công
+            alert('Member added to team successfully!');
+            // Sau khi thêm, bạn có thể làm mới trang hoặc thực hiện các thao tác khác
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+    Tạo team mới khi bấm vào Add team:
+        INSERT INTO Team (team_name) 
+        VALUES ('Tên nhóm');
+ -->
+
+ <!-- 
+    Thêm thành viên vào team:
+        INSERT INTO team_member (role_id, member_id, team_id) 
+        VALUES ([ID của vai trò], [ID của thành viên], [ID của nhóm]);
+  -->
