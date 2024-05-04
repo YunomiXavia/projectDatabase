@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Employee Information</h1>
+        <div class="overflow-x-auto mb-8">
+            <table class="table-auto min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2">First Name</th>
+                        <th class="px-4 py-2">Last Name</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Project Name</th>
+                        <th class="px-4 py-2">Team Name</th>
+                        <th class="px-4 py-2">Skill Name</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Bản ghi giả định -->
+                    <tr>
+                        <td class="border px-4 py-2">John</td>
+                        <td class="border px-4 py-2">Doe</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                        <td class="border px-4 py-2">Project X</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                        <td class="border px-4 py-2">
+                            <button onclick="showDetails(1)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Details</button>
+                            <button onclick="showSkills(1)" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Skills</button>
+                            <button onclick="editEmployee(1)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">Edit</button>
+                            <button onclick="deleteEmployee(1)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">John</td>
+                        <td class="border px-4 py-2">Doe</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                        <td class="border px-4 py-2">Project X</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                        <td class="border px-4 py-2">
+                            <button onclick="showDetails(1)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Details</button>
+                            <button onclick="showSkills(1)" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Skills</button>
+                            <button onclick="editEmployee(1)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">Edit</button>
+                            <button onclick="deleteEmployee(1)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">John</td>
+                        <td class="border px-4 py-2">Doe</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                        <td class="border px-4 py-2">Project X</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                        <td class="border px-4 py-2">
+                            <button onclick="showDetails(1)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Details</button>
+                            <button onclick="showSkills(1)" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Skills</button>
+                            <button onclick="editEmployee(1)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">Edit</button>
+                            <button onclick="deleteEmployee(1)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">John</td>
+                        <td class="border px-4 py-2">Doe</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                        <td class="border px-4 py-2">Project X</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                        <td class="border px-4 py-2">
+                            <button onclick="showDetails(1)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Details</button>
+                            <button onclick="showSkills(1)" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Skills</button>
+                            <button onclick="editEmployee(1)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">Edit</button>
+                            <button onclick="deleteEmployee(1)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">John</td>
+                        <td class="border px-4 py-2">Doe</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                        <td class="border px-4 py-2">Project X</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                        <td class="border px-4 py-2">
+                            <button onclick="showDetails(1)" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">Details</button>
+                            <button onclick="showSkills(1)" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600">Skills</button>
+                            <button onclick="editEmployee(1)" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600">Edit</button>
+                            <button onclick="deleteEmployee(1)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Kết thúc bản ghi giả định -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Form hiển thị thông tin chi tiết -->
+        <div id="detailForm" class="hidden mb-4">
+            <table class="table-auto min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2">Information</th>
+                        <th class="px-4 py-2">Details</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <tr>
+                        <td class="border px-4 py-2">First Name:</td>
+                        <td class="border px-4 py-2">John</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Last Name:</td>
+                        <td class="border px-4 py-2">Doe</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Email:</td>
+                        <td class="border px-4 py-2">john.doe@example.com</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">address:</td>
+                        <td class="border px-4 py-2">US</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Email:</td>
+                        <td class="border px-4 py-2">John@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Phone Number:</td>
+                        <td class="border px-4 py-2">04324374</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Birth Date:</td>
+                        <td class="border px-4 py-2">13/11/2000</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Hire date:</td>
+                        <td class="border px-4 py-2">17/04/2023</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Project Name:</td>
+                        <td class="border px-4 py-2">Project X</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Team Name:</td>
+                        <td class="border px-4 py-2">Team Alpha</td>
+                    </tr>
+                    <tr>
+                        <td class="border px-4 py-2">Skill Name:</td>
+                        <td class="border px-4 py-2">Java Programming</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Form hiển thị kỹ năng -->
+        <div id="skillForm" class="hidden mb-4">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Employee Skills</h2>
+            <ul id="skillsList" class="list-disc list-inside">
+                <!-- Placeholder, dữ liệu kỹ năng sẽ được thêm vào đây -->
+            </ul>
+        </div>
+        <!-- Form hiển thị và cập nhật thông tin nhân viên -->
+        <div id="editForm" class="hidden mb-4">
+            <h2 class="text-lg font-semibold text-gray-800 mb-2">Employee Edit</h2>
+            <form>
+                <!-- Các trường thông tin chi tiết -->
+                <div class="mb-4">
+                    <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" class="border rounded px-3 py-2 w-full" value="John">
+                </div>
+                <div class="mb-4">
+                    <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" class="border rounded px-3 py-2 w-full" value="Doe">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" class="border rounded px-3 py-2 w-full" value="john.doe@example.com">
+                </div>
+                <div class="mb-4">
+                    <label for="projectName" class="block text-gray-700 text-sm font-bold mb-2">Project Name:</label>
+                    <input type="text" id="projectName" name="projectName" class="border rounded px-3 py-2 w-full" value="Project X" disabled>
+                </div>
+                <div class="mb-4">
+                    <label for="teamName" class="block text-gray-700 text-sm font-bold mb-2">Team Name:</label>
+                    <input type="text" id="teamName" name="teamName" class="border rounded px-3 py-2 w-full" value="Team Alpha" disabled>
+                </div>
+                <div class="mb-4">
+                    <label for="skillName" class="block text-gray-700 text-sm font-bold mb-2">Skill Name:</label>
+                    <input type="text" id="skillName" name="skillName" class="border rounded px-3 py-2 w-full" value="Java Programming">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" class="border rounded px-3 py-2 w-full" value="john.doe@example.com">
+                </div>
+                <div class="mb-4">
+                    <label for="phone_number" class="block text-gray-700 text-sm font-bold mb-2">Phone Number:</label>
+                    <input type="text" id="phone_number" name="phone_number" class="border rounded px-3 py-2 w-full" value="">
+                </div>
+                <div class="mb-4">
+                    <label for="address" class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+                    <input type="text" id="address" name="address" class="border rounded px-3 py-2 w-full" value="">
+                </div>
+                <div class="mb-4">
+                    <label for="birth_date" class="block text-gray-700 text-sm font-bold mb-2">Birth Date:</label>
+                    <input type="date" id="birth_date" name="birth_date" class="border rounded px-3 py-2 w-full" value="">
+                </div>
+                <div class="mb-4">
+                    <label for="hire_date" class="block text-gray-700 text-sm font-bold mb-2">Hire Date:</label>
+                    <input type="date" id="hire_date" name="hire_date" class="border rounded px-3 py-2 w-full" value="">
+                </div>
+            </form>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Update Employee</button>
+        </div>
+    </div>
+
+    <script>
+        // Hàm hiển thị chi tiết nhân viên
+        function showDetails(employeeId) {
+            // Placeholder cho việc gửi yêu cầu AJAX để lấy dữ liệu từ server
+            // Sau khi nhận dữ liệu, điền thông tin vào form và hiển thị
+            console.log('Showing details for employee with ID:', employeeId);
+            document.getElementById('detailForm').classList.remove('hidden');
+        }
+
+        // Hàm hiển thị kỹ năng của nhân viên
+        function showSkills(employeeId) {
+            // Placeholder cho việc gửi yêu cầu AJAX để lấy dữ liệu từ server
+            // Sau khi nhận dữ liệu, hiển thị danh sách kỹ năng
+            console.log('Showing skills for employee with ID:', employeeId);
+            const skillsList = document.getElementById('skillsList');
+            skillsList.innerHTML = '';
+            // Giả định danh sách kỹ năng
+            const skills = ['Java Programming', 'Database Management', 'Project Management'];
+            skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsList.appendChild(li);
+            });
+            document.getElementById('skillForm').classList.remove('hidden');
+        }
+
+        // Hàm hiển thị và cập nhật thông tin nhân viên
+        function editEmployee(employeeId) {
+            // Placeholder cho việc gửi yêu cầu AJAX để lấy dữ liệu từ server
+            // Sau khi nhận dữ liệu, điền thông tin vào form và hiển thị
+            console.log('Editing employee with ID:', employeeId);
+            document.getElementById('editForm').classList.remove('hidden');
+        }
+
+        // Hàm xóa nhân viên
+        function deleteEmployee(employeeId) {
+            // Placeholder cho việc gửi yêu cầu AJAX để xóa nhân viên từ cơ sở dữ liệu
+            // Sau khi xóa thành công, làm mới trang hoặc cập nhật danh sách nhân viên
+            console.log('Deleting employee with ID:', employeeId);
+            // Hiển thị cảnh báo hoặc xác nhận trước khi xóa
+            alert('Are you sure you want to delete this employee?');
+        }
+    </script>
+</body>
+
+</html>

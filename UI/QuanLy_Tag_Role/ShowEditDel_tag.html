@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Management</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="min-h-screen bg-zinc-100 dark:bg-zinc-800 p-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Skills Management</h1>
+
+        <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4 mb-6">
+            <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-200">List of Skills</h2>
+            <ul id="skillsList" class="mt-2">
+
+            </ul>
+        </div>
+
+        <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4">
+            <h2 class="text-xl font-semibold text-zinc-800 dark:text-zinc-200">Skill Details</h2>
+            <div id="skillDetails" class="mt-2">
+
+            </div>
+            <div class="mt-4">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                    onclick="editSkill()">Edit</button>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    onclick="deleteSkill()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thêm các tệp JavaScript cần thiết -->
+    <script>
+        const skills = [
+            { skill_id: 1, skill_name: 'HTML', skill_description: 'Markup language for creating web pages' },
+            { skill_id: 2, skill_name: 'CSS', skill_description: 'Style sheet language for styling web pages' },
+            { skill_id: 3, skill_name: 'JavaScript', skill_description: 'Programming language for web development' }
+        ];
+
+        function displaySkills() {
+            const skillsList = document.getElementById('skillsList');
+            skillsList.innerHTML = '';
+            skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = `${skill.skill_name} - ${skill.skill_description}`;
+                li.classList.add('py-2', 'border-b', 'border-zinc-300', 'dark:border-zinc-600');
+                li.onclick = () => showDetails(skill.skill_id);
+                skillsList.appendChild(li);
+            });
+        }
+
+        function showDetails(skillId) {
+            const skill = skills.find(s => s.skill_id === skillId);
+            const skillDetails = document.getElementById('skillDetails');
+            skillDetails.innerHTML = `
+                <form id="skillForm">
+                    <label class="block text-sm font-medium text-zinc-600 dark:text-zinc-200">Name:</label>
+                    <input type="text" value="${skill.skill_name}" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-500 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" id="skillName">
+                    
+                    <label class="block text-sm font-medium text-zinc-600 dark:text-zinc-200 mt-4">Description:</label>
+                    <textarea class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-500 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" id="skillDescription">${skill.skill_description}</textarea>
+                </form>`;
+        }
+
+        function editSkill() {
+            const skillName = document.getElementById('skillName').value;
+            const skillDescription = document.getElementById('skillDescription').value;
+            alert(`Edit: ${skillName} - ${skillDescription}`);
+        }
+
+        function deleteSkill() {
+            alert('Delete functionality not implemented.');
+        }
+
+        displaySkills();
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    Lệnh hiển thị danh sách tag:
+        SELECT skill_id, skill_name, skill_description FROM Skills;
+
+    Lệnh Update tag:
+        UPDATE Skills
+        SET skill_name = 'Tên kỹ năng mới', skill_description = 'Mô tả kỹ năng mới'
+        WHERE skill_id = id;
+        
+    Lệnh Delete tag:
+        DELETE FROM Skills
+        WHERE skill_id = id;
+ -->
