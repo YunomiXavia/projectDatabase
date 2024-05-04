@@ -24,7 +24,7 @@ trang 1: có feature điền tên team và thêm thành viên vào team:
 
 Cơ bản thì lọc theo kĩ năng nhé. Ở trên có 1 input cho phép cậu tra các tag skills 
 VD: sau khi tra đc tag skill JS thì bảng phía dưới sẽ hiện thông tin cơ bản của nhân viên đó. Bao gồm cả kĩ năng của nhân viên. 
-(VD Thiết kế: cột chứa tag kĩ năng của nhân viên nhìn như hình màu xám ở dưới)  
+
 
 2) 1 Bảng thông tin ở dưới thiết kế giống hệt bảng ở trang 2 của nhân viên. 
 > **Feature**: hiện thị thông tin
