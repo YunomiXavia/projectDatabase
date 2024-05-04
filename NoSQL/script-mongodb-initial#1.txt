@@ -19,7 +19,7 @@ db.createCollection("Employee", {
           bsonType: "string",
           maxLength: 50
         },
-        phone: {
+        phone_number: {
           bsonType: "string",
           unique: true,
           maxLength: 10
@@ -46,13 +46,6 @@ db.createCollection("Employee", {
           items: {
             bsonType: "objectId",
             ref: "Skills"
-          }
-        },
-        team_role: {
-          bsonType: "array",
-          items: {
-            bsonType: "objectId",
-            ref: "Role"
           }
         },
         team_task: {
