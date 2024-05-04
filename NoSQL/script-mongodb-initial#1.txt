@@ -91,10 +91,6 @@ db.createCollection("Project", {
         number_of_employees: {
           bsonType: "int"
         },
-        prefer_skills: {
-          bsonType: "string",
-          maxLength: 30
-        },
         priority: {
           bsonType: "string",
           enum: ["High", "Medium", "Low"]
@@ -132,17 +128,17 @@ db.createCollection("Task", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["task_name", "status","start_date", "due_date"],
+      required: ["task_name", "start_date", "due_date"],
       properties: {
         _id: {
           bsonType: "objectId"
         },
-        task_name: {
+        name: {
           bsonType: "string",
           required: true,
           maxLength: 30
         },
-        task_description: {
+        description: {
           bsonType: "string",
           required: true,
           maxLength: 100
@@ -194,7 +190,7 @@ db.createCollection("Team", {
         _id: {
           bsonType: "objectId"
         },
-        team_name: {
+        name: {
           bsonType: "string",
           required: true,
           maxLength: 30
