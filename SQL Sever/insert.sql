@@ -21,14 +21,14 @@ VALUES
     ('Sophia', 'Jones', 'sophia.jones@example.com', '555-234-5678', '654 Cedar St, City, Country', '1987-12-07', '2018-03-15'),
     ('Ethan', 'Rodriguez', 'ethan.rodriguez@example.com', '555-111-2222', '123 Walnut St, City, Country', '1993-05-20', '2023-07-15');
 
-INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id)
+INSERT INTO Project (name, goal, number_of_employees, project_priority, project_status, start_date, end_date, project_manager_id)
 VALUES  
-    ('Project A', 'Caffee Shop Website', 0, '["Web Development", "Tester", "Marketing"]', 'High', 'In Progress', '2023-01-01', NULL, 1),
-    ('Project F', 'Integration of AI into Existing Systems', 0, '["Artificial Intelligence", "Machine Learning", "Software Engineering"]', 'High', 'In Progress', '2023-06-15', NULL, 5),
-    ('Project C', 'Mobile Application Development', 0, '["Mobile Development", "QA", "Backend Development"]', 'High', 'In Progress', '2023-02-28', NULL, 3),
-    ('Project B', 'E-commerce Platform Development', 0, '["Web Development", "Database Administration", "UI/UX Design"]', 'Medium', 'Pending', '2023-04-15', NULL, 2),
-    ('Project D', 'Data Analysis Platform Development', 0, '["Data Science", "Database Administration", "Business Analysis"]', 'Medium', 'Pending', '2023-03-10', NULL, 4),
-    ('Project E', 'Internet of Things (IoT) Solution Development', 0, '["Embedded Systems", "Cloud Computing", "Data Engineering"]', 'High', 'In Progress', '2023-05-01', NULL, 6);
+    ('Project A', 'Caffee Shop Website', 0, 'High', 'In Progress', '2023-01-01', NULL, 1),
+    ('Project F', 'Integration of AI into Existing Systems', 0, 'High', 'In Progress', '2023-06-15', NULL, 5),
+    ('Project C', 'Mobile Application Development', 0, 'High', 'In Progress', '2023-02-28', NULL, 3),
+    ('Project B', 'E-commerce Platform Development', 0, 'Medium', 'Pending', '2023-04-15', NULL, 2),
+    ('Project D', 'Data Analysis Platform Development', 0, 'Medium', 'Pending', '2023-03-10', NULL, 4),
+    ('Project E', 'Internet of Things (IoT) Solution Development', 0, 'High', 'In Progress', '2023-05-01', NULL, 6);
 select * from Project
 
 INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
@@ -72,7 +72,7 @@ VALUES
     ('.NET', 'A framework developed by Microsoft for building various types of applications, including web, desktop, and mobile applications.'),
     ('Web API', 'A framework for building HTTP services that can be consumed by a broad range of clients, including browsers, mobile devices, and IoT devices.'),
     ('Web MVC', 'A design pattern and framework for building web applications that separates the application into three main components: Model, View, and Controller.'),
-    ('DevOps', 'A set of practices that combines software development (Dev) and IT operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.'),
+    ('DevOps', 'Combines software development and IT operations to streamline the systems development life cycle and enable continuous delivery with high software quality.'),
     ('Kotlin', 'A statically typed programming language developed by JetBrains and officially supported by Google as an Android development language.'),
     ('Embedded Systems Engineer', 'Responsible for designing and developing embedded systems, including hardware and firmware components.'),
     ('Marketing Strategist', 'Develops marketing strategies and plans to promote products or services, analyzes market trends, and implements marketing campaigns.'),
@@ -97,7 +97,12 @@ VALUES
     ('Data Analyst', 'Analyzes data to identify trends, patterns, and insights that can inform business decisions and strategies.'),
     ('UI Designer', 'Designs the user interface for digital products, including layout, navigation, and visual elements.'),
     ('Project Manager', 'Oversees projects from initiation to completion, managing resources, timelines, and budgets to ensure successful delivery.'),
-    ('DevOps Engineer', 'Combines software development and IT operations to improve collaboration, automate processes, and deploy software more reliably and efficiently.')
+    ('DevOps Engineer', 'Combines software development and IT operations to improve collaboration, automate processes, and deploy software more reliably and efficiently.'),
+    ('Write Document', 'Ability to effectively write and maintain technical documentation for projects.'),
+    ('CI/CD', 'Understanding and implementation of continuous integration and continuous deployment pipelines.'),
+    ('Git', 'Proficiency in using Git version control system for source code management.'),
+    ('Bash', 'Proficiency in using Bash scripting language for automation and system administration tasks.');
+
 
 
 INSERT INTO Role (role_name, role_description)
@@ -120,15 +125,19 @@ VALUES
     ('System Administrator', 'Responsible for managing and maintaining computer systems and networks.'),
     ('Data Engineer', 'Responsible for designing and implementing data pipelines and systems.'),
     ('Business Analyst', 'Responsible for analyzing business processes and requirements to facilitate decision-making.'),
-    ('Technical Support Specialist', 'Responsible for providing technical assistance and support to end-users and customers.');
-    select * from Role
+    ('Technical Support Specialist', 'Responsible for providing technical assistance and support to end-users and customers.'),
+    ('Front-end Developer', 'Responsible for implementing user-facing features and functionality on the client side of web applications.'),
+    ('Back-end Developer', 'Responsible for implementing server-side logic and integration of the front-end components.'),
+    ('DevOps Engineer', 'Responsible for automating and streamlining the software development process, from build to deployment and monitoring.'),
+    ('Data Analyst', 'Responsible for collecting, processing, and analyzing data to provide insights and support decision-making processes.');
+
+select * from Role
 
 
--- Insert more teams based on available skills and employees
-INSERT INTO Team (team_name, team_skill_id, team_lead_id, prefer_skills)
+INSERT INTO Team (team_name, team_skill_id, team_lead_id)
 VALUES 
-    ('Web Development Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Web Development'), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson')),
-    ('Testing Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Testing'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis')),
+    ('Web Development Team', (SELECT skill_id FROM Skills WHERE skill_name = ''), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson')),
+    ('Testing Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Tester'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis')),
     ('Marketing Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Marketing'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson')),
     ('Backend Development Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Backend Development'), (SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown')),
     ('Data Science Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Data Science'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson')),
@@ -150,9 +159,23 @@ VALUES
     ((SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python'));
     
 
+-- --? Web Developer Team
+-- INSERT INTO team_member (role_id, member_id, team_id)
+-- VALUES 
+--     ((SELECT role_id FROM Role WHERE role_name = 'Front-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'Back-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'Database Administrator'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'DevOps Engineer'), (SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team'));
 
-  
+
+-- --? Business Analyst Team
+-- INSERT INTO team_member (role_id, member_id, team_id)
+-- VALUES
+--     ((SELECT role_id FROM Role WHERE role_name = 'Business Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Smith'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'Data Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
+--     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team'));
 
 
+select * from Employee
 
-select * from Team
