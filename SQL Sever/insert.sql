@@ -37,7 +37,15 @@ VALUES
     ('Implement user authentication', 'Implement user authentication feature', 'Medium', 'In Progress', '2023-01-20'),
     ('Test mobile app', 'Conduct thorough testing on different devices', 'High', 'Pending', '2023-03-01'),
     ('Optimize database queries', 'Improve the efficiency of database queries', 'Medium', 'Pending', '2023-02-15'),
-    ('Analyze customer data', 'Extract insights from customer data', 'Low', 'Completed', '2023-01-25');
+    ('Analyze customer data', 'Extract insights from customer data', 'Low', 'Completed', '2023-01-25'),
+    ('Update product images', 'Replace outdated product images with new ones', 'Medium', 'Pending', '2023-02-05'),
+    ('Write API documentation', 'Document the endpoints and usage of the API', 'High', 'In Progress', '2023-02-28'),
+    ('Deploy website to production', 'Deploy the latest version of the website to the production server', 'High', 'Pending', '2023-03-10'),
+    ('Conduct user feedback session', 'Organize and conduct a session to gather feedback from users', 'Medium', 'In Progress', '2023-02-15'),
+    ('Update website layout', 'Revise the layout of the website to improve user experience', 'High', 'Pending', '2023-02-20'),
+    ('Create weekly progress report', 'Compile and send out a report detailing project progress', 'Low', 'Pending', '2023-02-10'),
+    ('Fix bugs reported by QA team', 'Address and resolve bugs identified during QA testing', 'High', 'In Progress', '2023-02-28'),
+    ('Plan marketing campaign', 'Develop a strategy for marketing the product or service', 'High', 'Pending', '2023-03-15');
 
 INSERT INTO Skills (skill_name, skill_description)
 VALUES 
@@ -176,6 +184,27 @@ VALUES
 --     ((SELECT role_id FROM Role WHERE role_name = 'Data Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
 --     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team'));
 
+INSERT INTO team_task (team_id, task_id, assigned_employee_id)
+VALUES 
+    (1,1,1),
+    (1,3,2),
+    (1,12,4),
+    (1,2,5);
+
+
+
+Insert into team_skill_tag(team_id, skill_id) 
+values
+    (1, 1),
+    (1, 2),
+    (1, 9),
+    (1, 30),
+    (1, 58),
+    (1, 31),
+    (8, 53),
+    (8, 52),
+    (8, 58);
+    
 
 select * from Employee
 
