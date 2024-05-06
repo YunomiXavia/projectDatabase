@@ -29,7 +29,27 @@ View Project
 Edit Project
 Delete Project
 
-
+- ? Set Project to project_status 
+```sql
+    UPDATE Project
+    SET project_status = 'Completed' -- ('Pending', 'In Progress', 'Completed')
+    WHERE project_id = 1;
+    select * from Project;
+```
+- ? Set Project to project_priority
+```sql
+    UPDATE Project
+    SET project_priority = 'Low' -- ('Low', 'Medium', 'High')
+    WHERE project_id = 1;
+    select * from Project;
+```
+- ? Update start_data and Update end_date
+```sql
+    UPDATE Project
+    SET start_data = '2022-10-01', end_date = '2022-12-01'
+    WHERE project_id = 1;
+    select * from Project;
+```
 
 
 ### SQL Specical Features (Procedure, Trigger)
@@ -197,4 +217,87 @@ Delete Project
         SET number_of_employees = @team_emp
         WHERE project_id IN (SELECT project_id FROM team_project WHERE team_id = @team_id); 
     END;
+```
+
+- ? Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag 
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_skill 
+    ON Skills
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_skill_id INT;
+
+        SELECT @deleted_skill_id = skill_id FROM deleted;
+
+        -- Delete from team_skill_tag
+        DELETE FROM team_skill_tag
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM employee_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM project_prefer_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from Team (assuming cascading delete is not set up)
+        UPDATE Team SET team_skill_id = NULL WHERE team_skill_id = @deleted_skill_id;
+        DELETE FROM Skills WHERE skill_id = @deleted_skill_id;
+
+
+    END;
+    GO
+```
+
+- ? Delete an employee and its dependency like member_id from team_member, assigned_employee_id from team_task, team_lead_id from team
+```sql
+    CREATE OR ALTER TRIGGER handle_employee_departure
+    ON Employee
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_employee_id INT;
+
+        SELECT @deleted_employee_id = employee_id FROM deleted;
+
+        DELETE FROM Team 
+        WHERE team_lead_id = @deleted_employee_id;
+
+        -- Remove employee from team_member
+        DELETE FROM team_member 
+        WHERE member_id = @deleted_employee_id;
+
+        -- Clear assignments in team_task
+        UPDATE team_task 
+        SET assigned_employee_id = NULL
+        WHERE assigned_employee_id = @deleted_employee_id; 
+        DELETE FROM Employee WHERE employee_id = @deleted_employee_id; 
+    END;
+```
+
+- ? Delete a Task and its dependency like task_id from team_task 
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_task 
+    ON Task
+    AFTER DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_task_id INT;
+
+        SELECT @deleted_task_id = task_id FROM deleted;
+
+        -- Delete dependencies from team_task
+        DELETE FROM team_task
+        WHERE task_id = @deleted_task_id; 
+    END;
+```
+- ? Change Team status to Deactive instead of Delete (since Team hold many contraint and valuable infomation)
+```sql
+    update Team
+    set team_status = 'Deactive' -- status: Active/Deactive
+    where team_id = 1
+
+    select * from Team
 ```
