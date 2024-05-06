@@ -36,67 +36,165 @@ Delete Project
 #### special feature requirement 
 + View Employee through Skill Tag
 + View Team through Skill Tag
++ ....
 
 
-
-#### procedure
-#### trigger
-
-- ? Features: View Employee through Skill Tag
+#### Procedures
+- ? Team Features: View Employee through Skill Tag
 ```sql
-    CREATE OR ALTER PROCEDURE ListEmployeesBySkillID
-        @SkillID INT
-    AS
-    BEGIN
-        SELECT e.first_name, e.last_name, e.email, e.phone_number, e.hire_date
+        /*
+            Procedure: ListEmployeesBySkillID
+
+            Description:
+            This stored procedure retrieves a list of employees who have a specific skill ID.
+
+            Parameters:
+            - @SkillID: The ID of the skill to filter the employees by.
+
+            Returns:
+            The result set includes the first name, last name, email, phone number, and hire date of the employees who have the specified skill ID.
+        */
+
+        CREATE OR ALTER PROCEDURE ListEmployeesBySkillID
+            @SkillID INT
+        AS
+        BEGIN
+            SELECT e.first_name, e.last_name, e.email, e.phone_number, e.hire_date
+            FROM Employee e
+            INNER JOIN employee_skills es ON e.employee_id = es.employee_id
+            INNER JOIN Skills s ON es.skill_id = s.skill_id
+            WHERE s.skill_id = @SkillID;
+        END;
+        Go
+        -- select * from employee_skills
+        EXEC ListEmployeesBySkillID 20;
+```
+
+
+- ? Project Procedure: Skill needed for a Project
+```sql
+    SELECT s.skill_name, s.skill_description
+    FROM Skills s
+    JOIN project_prefer_skills pps ON s.skill_id = pps.skill_id
+    WHERE pps.project_id = 1; -- Assuming Project A is project_id 1
+```
+
+- ? Project Procedure: Team in a Project
+```sql
+    SELECT t.team_id, t.team_name
+    FROM Team t
+    JOIN team_project tp ON t.team_id = tp.team_id
+    WHERE tp.project_id = 1;  -- Assuming you want teams for Project 3
+```
+
+- ? Team Procedure: Employees on a Team with Specific Skill
+```sql
+    -- This query selects the first name, last name, and email of employees who have the skill with skill_id 1 and are part of the 'Web Development Team'.
+        SELECT e.first_name, e.last_name, e.email
         FROM Employee e
-        INNER JOIN employee_skills es ON e.employee_id = es.employee_id
-        INNER JOIN Skills s ON es.skill_id = s.skill_id
-        WHERE s.skill_id = @SkillID;
-    END;
-    Go
-    -- select * from employee_skills
-    EXEC ListEmployeesBySkillID 20;
-```
-- ? Features: View Team through Skill Tag
-```sql
-    CREATE OR ALTER PROCEDURE ListTeamsBySkillID
-        @SkillID INT
-    AS
-    BEGIN
-        SELECT t.team_name, t.team_skills, t.number_of_employee, t.project_name
-        FROM Team t
-        INNER JOIN team_skills ts ON t.team_id = ts.team_id
-        INNER JOIN Skills s ON ts.skill_id = s.skill_id
-        WHERE s.skill_id = @SkillID;
-    END;
-    Go
-    -- select * from team_skills
-    EXEC ListTeamsBySkillID 20;
+        JOIN employee_skills es ON e.employee_id = es.employee_id
+        JOIN team_skill_tag tst ON es.skill_id = tst.skill_id
+        JOIN Team t ON tst.team_id = t.team_id
+        WHERE t.team_name = 'Web Development Team' AND tst.skill_id = 1; -- Assuming skill_id 7 is 'Mobile Development'
 ```
 
-- ? Features: View Team fit Project prefer_team
+- ? Team Procedure: Display Teams by Skill ID 
 ```sql
-    CREATE PROCEDURE DisplayTeamsByProjectPreference
-        @ProjectID INT
+    -- This stored procedure is used to display teams based on a specific skill ID.
+        -- It takes a parameter called @skill_id_param, which represents the skill ID to filter the teams by.
+        CREATE PROCEDURE display_teams_by_skill_id 
+            @skill_id_param INT
+        AS
+        BEGIN
+            -- The SELECT statement retrieves the team ID, team name, skill name, and skill description
+            -- from the Team, team_skill_tag, and Skills tables.
+            SELECT DISTINCT t.team_id, t.team_name, s.skill_name, s.skill_description
+            FROM Team t
+            JOIN team_skill_tag tst ON t.team_id = tst.team_id
+            JOIN Skills s ON tst.skill_id = s.skill_id
+            WHERE s.skill_id = @skill_id_param; 
+            -- The WHERE clause filters the result set based on the provided skill ID parameter.
+            -- Only teams with the specified skill ID will be returned.
+        END;
+```
+
+- ? Display Employees by Team Skill Tag
+```sql
+    /*
+        Procedure: display_employees_by_team_skill
+        Description: This procedure displays the employees who have skills matching a specified team's ID.
+        Parameters:
+            - @team_id: The ID of the desired team.
+        Returns: None
+        */
+
+        CREATE OR ALTER PROCEDURE display_employees_by_team_skill 
+            @team_id INT -- Parameter to specify the desired team's ID
+        AS
+        BEGIN
+            SELECT e.first_name, e.last_name, e.email, s.skill_name -- Select relevant employee and skill data
+            FROM Employee e
+            JOIN employee_skills es ON e.employee_id = es.employee_id -- Join with employee skills
+            JOIN team_skill_tag tst ON es.skill_id = tst.skill_id -- Join with team skill associations
+            JOIN Skills s ON es.skill_id = s.skill_id -- Join with the skills table  
+            JOIN Team t ON tst.team_id = t.team_id -- Join with the teams table
+            WHERE t.team_id = @team_id; -- Filter for employees matching the team's skills 
+        END;
+        GO
+
+        EXEC display_employees_by_team_skill @team_id = 3; -- Execute the procedure with team_id = 1
+        SELECT * from Team; -- Display the list of teams
+```
+
+- ? Display Employees by Skill Tag and Which Team they in
+```sql
+    -- This stored procedure displays employees who have a specific skill.
+
+    -- Creating or altering the stored procedure 'display_employees_by_skill'
+    CREATE OR ALTER PROCEDURE display_employees_by_skill 
+        @skill_id INT -- The ID of the skill to filter employees by
     AS
     BEGIN
-        DECLARE @TeamList NVARCHAR(MAX)
-        DECLARE @DynamicSQL NVARCHAR(MAX)
-
-        -- Get the prefer_team list for the specified project
-        SELECT @TeamList = prefer_team
-        FROM Project
-        WHERE project_id = @ProjectID;
-
-        -- Construct the dynamic SQL to select teams based on prefer_team list
-        SET @DynamicSQL = '
-        SELECT t.team_name
-        FROM Team t
-        WHERE t.team_name IN (' + @TeamList + ')';
-
-        -- Execute the dynamic SQL
-        EXEC sp_executesql @DynamicSQL;
+        -- Selecting the necessary employee details and team name
+        SELECT 
+            e.first_name, e.last_name, e.email, e.phone_number, e.hire_date, t.team_name
+        FROM Employee e
+        JOIN employee_skills es ON e.employee_id = es.employee_id
+        JOIN team_member tm ON e.employee_id = tm.member_id 
+        JOIN Team t ON tm.team_id = t.team_id 
+        WHERE es.skill_id = @skill_id; -- Filtering employees by the specified skill ID
     END;
     GO
+
+    -- Executing the stored procedure with a specific skill ID
+    EXEC display_employees_by_skill @skill_id = 17; -- Assuming skill_id 7 represents 'Mobile Development'
+```
+
+
+#### Triggers
+- ? We Cannot perform an aggregate function on an expression containing an aggregate or a subquery. 
+- ? Trigger: Update Project 'number_of_employees' by counting the sum of each team total employees relevant to that project (note: not using team_member)
+```sql
+    -- trigger on insert and update
+    CREATE OR ALTER TRIGGER update_teams_project_count_trigger 
+    ON team_member
+    AFTER INSERT, DELETE
+    AS
+    BEGIN
+        DECLARE @team_id INT;
+        DECLARE @team_emp INT;
+        SELECT @team_emp = Count(member_id) from team_member WHERE team_id = @team_id;
+
+        -- Handle employee insertions
+        SELECT @team_id = team_id FROM inserted;
+        UPDATE Project 
+        SET number_of_employees = @team_emp
+        WHERE project_id IN (SELECT project_id FROM team_project WHERE team_id = @team_id); 
+
+        -- Handle employee deletions
+        SELECT @team_id = team_id FROM deleted;
+        UPDATE Project 
+        SET number_of_employees = @team_emp
+        WHERE project_id IN (SELECT project_id FROM team_project WHERE team_id = @team_id); 
+    END;
 ```

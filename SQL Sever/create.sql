@@ -120,7 +120,6 @@ CREATE TABLE employee_skills (
 ); 
 
 
-
 --? Archive 
 -- CREATE TABLE project_assignment (
 --     employee_id INT NOT NULL, 

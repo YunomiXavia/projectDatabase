@@ -164,8 +164,11 @@ VALUES
     ((SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT skill_id FROM Skills WHERE skill_name = 'Database Management')),
     ((SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python')),
     ((SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT skill_id FROM Skills WHERE skill_name = 'Data Analysis')),
-    ((SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python'));
-    
+    ((SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT skill_id FROM Skills WHERE skill_name = 'Python')),
+    (1, 1),  -- Employee 1 has 'Web Development' skill
+    (2, 9);  -- Employee 2 has 'Backend Development' skill
+
+
 
 -- --? Web Developer Team
 -- INSERT INTO team_member (role_id, member_id, team_id)
@@ -206,5 +209,26 @@ values
     (8, 58);
     
 
-select * from Employee
+INSERT INTO team_project (team_id, project_id)
+VALUES 
+    (1, 1), 
+    (2, 1), 
+    (4, 1), 
+    (9, 6), 
+    (7, 6), 
+    (10, 6); 
 
+INSERT INTO project_prefer_skills (project_id, skill_id)
+VALUES 
+    --Project B: Integration of AI into Existing Systems 
+    (2, 1),  -- Project 2 prefers 'Web Development'
+    (2, 9),  -- Project 2 prefers 'Backend Development'
+    (2, 20), -- Project 2 prefers 'Database Management' 
+    (2, 4),  -- Project 2 prefers 'Machine Learning'  
+    --Project C: Mobile Application Development
+    (3, 5),  
+    (3, 2),  
+    (3, 8),  
+    (3, 26), 
+    (3, 30);   
+select * from project_prefer_skills
