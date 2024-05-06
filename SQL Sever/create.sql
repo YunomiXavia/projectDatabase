@@ -48,9 +48,10 @@ CREATE TABLE Team (
     team_id INT PRIMARY KEY IDENTITY(1,1), 
     team_name NVARCHAR(30) UNIQUE NOT NULL, 
 	team_skill_id INT,  -- Could be NULL initially
-	team_lead_id INT,  -- Could be NULL initially
+	team_lead_id INT,  -- Could be NULL initially   
+    team_status VARCHAR(10) CHECK (team_status IN ('Active', 'Inactive')),
     FOREIGN KEY (team_lead_id) REFERENCES Employee(employee_id),
-    FOREIGN KEY (team_skill_id) REFERENCES Skills(skill_id)
+    FOREIGN KEY (team_skill_id) REFERENCES Skills(skill_id),
 ); 
 
 
