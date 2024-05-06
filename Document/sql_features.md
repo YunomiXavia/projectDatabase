@@ -281,11 +281,10 @@ Delete Project
 ```sql
     CREATE OR ALTER TRIGGER cascade_delete_task 
     ON Task
-    AFTER DELETE
+    INSTEAD OF DELETE
     AS
     BEGIN
         DECLARE @deleted_task_id INT;
-
         SELECT @deleted_task_id = task_id FROM deleted;
 
         -- Delete dependencies from team_task
@@ -300,4 +299,25 @@ Delete Project
     where team_id = 1
 
     select * from Team
+```
+
+- ? Delete a Role and its dependency like role_id from team_member
+```sql
+    CREATE OR ALTER TRIGGER delete_role_actions
+    ON Role
+    INSTEAD OF DELETE 
+    AS
+    BEGIN
+        DECLARE @deleted_role_id INT;
+
+        SELECT @deleted_role_id = role_id FROM deleted;
+
+        -- 1. Remove associated role assignments (team_member or similar)
+        DELETE FROM team_member 
+        WHERE role_id = @deleted_role_id;  
+
+        DELETE FROM Role 
+        WHERE role_id = @deleted_role_id;  
+    END;
+    GO
 ```
