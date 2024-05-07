@@ -65,11 +65,9 @@ CREATE TABLE Role (
 CREATE TABLE team_task (
     team_id INT NOT NULL, 
     task_id INT NOT NULL,
-    assigned_employee_id INT NULL, -- Allow for unassigned tasks initially
     PRIMARY KEY (team_id, task_id), -- Composite key 
     FOREIGN KEY (team_id) REFERENCES Team(team_id),
     FOREIGN KEY (task_id) REFERENCES Task(task_id),
-    FOREIGN KEY (assigned_employee_id) REFERENCES Employee(employee_id),
 ); 
 
 

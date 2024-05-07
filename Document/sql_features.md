@@ -3,140 +3,303 @@
 ## SQL Basic Features (CRUD - Create, Read, Update, Delete)
 ### Tag, Role
 **Manage Tag, Role**
-Insert Tag và Role (in UI it mean Create Employee)
-    + add tag skills:
-        INSERT INTO Skills (skill_name, skill_description) 
-        VALUES ('Tên kỹ năng', 'Mô tả kỹ năng');
-    + add tag role:
-        INSERT INTO Role (role_name, role_description)
-        VALUES ('Tên_role_mới', 'Mô_tả_role_mới');
+- Insert Skill and Role Tag
++ add Skills Tag:
+```sql
+    INSERT INTO Skills (skill_name, skill_description) 
+    VALUES ('Tên kỹ năng', 'Mô tả kỹ năng');
+```
++ add Role Tag:
+```sql
+    INSERT INTO Role (role_name, role_description)
+    VALUES ('Tên_role_mới', 'Mô_tả_role_mới');
+```
 
 
-View Tag và Role
-    + tag skills:
-        SELECT skill_id, skill_name, skill_description FROM Skills;
-    + role:
-        SELECT *
-        FROM Role;
+- View Skills and Role Tag
++ View Skills Tag:
+```sql
+    SELECT skill_id, skill_name, skill_description FROM Skills;
+```
++ View Role Tag:
+```sql
+    SELECT role_id, role_name, role_description FROM Role;
+```
 
 
-Edit Tag và Role
-    + tag skills:
-        UPDATE Skills
-        SET skill_name = 'Tên kỹ năng mới', skill_description = 'Mô tả kỹ năng mới'
-        WHERE skill_id = id;
-    + role:
-        UPDATE Role
-        SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
-        WHERE role_id = id_cần_sửa;
+- Edit Skills and Role Tag
++ Edit Skills Tag:
+```sql
+    UPDATE Skills
+    SET skill_name = 'Tên kỹ năng mới', skill_description = 'Mô tả kỹ năng mới'
+    WHERE skill_id = id;
+```
++ Edit Role Tag:
+```sql
+    UPDATE Role
+    SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
+    WHERE role_id = id_cần_sửa;
+```
 
 
-Delete Tag và Role
-    + tag skills:
-        (chưa xem xét)
-    + role:
-        (chưa xem xét)
+- Delete Skills and Role Tag
++ Delete Skills Tag: Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag 
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_skill 
+    ON Skills
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_skill_id INT;
+
+        SELECT @deleted_skill_id = skill_id FROM deleted;
+
+        -- Delete from team_skill_tag
+        DELETE FROM team_skill_tag
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM employee_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM project_prefer_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from Team (assuming cascading delete is not set up)
+        UPDATE Team SET team_skill_id = NULL WHERE team_skill_id = @deleted_skill_id;
+        DELETE FROM Skills WHERE skill_id = @deleted_skill_id;
+
+
+    END;
+    GO
+```
+    
++ Delete Role Tag: Delete a Role and its dependency like role_id from team_member
+```sql
+    CREATE OR ALTER TRIGGER delete_role_actions
+    ON Role
+    INSTEAD OF DELETE 
+    AS
+    BEGIN
+        DECLARE @deleted_role_id INT;
+
+        SELECT @deleted_role_id = role_id FROM deleted;
+
+        -- 1. Remove associated role assignments (team_member or similar)
+        DELETE FROM team_member 
+        WHERE role_id = @deleted_role_id;  
+
+        DELETE FROM Role 
+        WHERE role_id = @deleted_role_id;  
+    END;
+    GO
+```
 
 ### Employees
 **Manage Employee**
-Insert Employee
-        INSERT INTO employees (first_name, last_name, email, phone_number, address, birth_date, hire_date)
-        VALUES ('Họ', 'Tên', 'Email', 'Số điện thoại', 'Địa chỉ', 'Ngày sinh', 'Ngày tuyển dụng');
+- Insert Employee
+```sql
+    INSERT INTO employees (first_name, last_name, email, phone_number, address, birth_date, hire_date)
+    VALUES ('Họ', 'Tên', 'Email', 'Số điện thoại', 'Địa chỉ', 'Ngày sinh', 'Ngày tuyển dụng');
+```
 
-View Employee
-        SELECT 
-            e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.address, e.birth_date, e.hire_date,  
-            COALESCE(p.name, 'Not Join') AS project_name, 
-            COALESCE(t.team_name, 'Not Join') AS team_name, 
-            COALESCE(s.skill_name, 'Not Join') AS skill_name 
-        FROM Employee e 
-        LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
-        LEFT JOIN Project p ON pa.project_id = p.project_id 
-        LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
-        LEFT JOIN Team t ON tm.team_id = t.team_id 
-        LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
-        LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+- View Employee
+```sql
+    SELECT 
+        e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.address, e.birth_date, e.hire_date,  
+        COALESCE(p.name, 'Not Join') AS project_name, 
+        COALESCE(t.team_name, 'Not Join') AS team_name, 
+        COALESCE(s.skill_name, 'Not Join') AS skill_name 
+    FROM Employee e 
+    LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
+    LEFT JOIN Project p ON pa.project_id = p.project_id 
+    LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+    LEFT JOIN Team t ON tm.team_id = t.team_id 
+    LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+    LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+```
 
-Edit Employee
-        UPDATE Employee
-        SET first_name = 'Họ mới', last_name = 'Tên mới', email = 'Email mới', phone_number = 'Số điện thoại mới', address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới', hire_date = 'Ngày tuyển dụng mới'
-        WHERE employee_id = [ID của nhân viên];
+- Edit Employee
+```sql
+    UPDATE Employee
+    SET first_name = 'Họ mới', last_name = 'Tên mới', email = 'Email mới', phone_number = 'Số điện thoại mới', address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới', hire_date = 'Ngày tuyển dụng mới'
+    WHERE employee_id = [ID của nhân viên];
+```
+- Delete Employee
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_employee
+    ON Employee
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_employee_id INT;
 
-Delete Employee
-        (chưa có)
+        SELECT @deleted_employee_id = employee_id FROM deleted;
+
+        -- 1. Delete assignments from team_member 
+        DELETE FROM team_member 
+        WHERE member_id = @deleted_employee_id; 
+
+        -- 2. Delete assigned tasks from team_task
+        DELETE FROM team_task
+        WHERE assigned_employee_id = @deleted_employee_id; 
+
+        -- 3. Update team_lead_id to NULL in Team table
+        UPDATE Team 
+        SET team_lead_id = NULL
+        WHERE team_lead_id = @deleted_employee_id;
+
+        -- 4. Update project_manager_id to NULL in Project table
+        UPDATE Project 
+        SET project_manager_id = NULL 
+        WHERE project_manager_id = @deleted_employee_id;
+
+        -- 5. Delete records from employee_skills 
+        DELETE FROM employee_skills 
+        WHERE employee_id = @deleted_employee_id;
+
+        -- 6. Finally, delete the employee
+        DELETE FROM Employee
+        WHERE employee_id = @deleted_employee_id;
+    END;
+```
 
 ### Team
 **Manage Team**
-Insert Team
+
+- Insert Team
+```sql
     INSERT INTO Team (team_name, team_skill_id, team_lead_id, team_status)
     VALUES ('Tên nhóm mới', id_kỹ_năng, id_nhân_viên_trưởng_nhóm, 'Trạng thái nhóm');
+```
 
-View Team
-        SELECT 
-            t.team_id, 
-            t.team_name, 
-            s.skill_name AS team_skill, 
-            CONCAT(e.first_name, ' ', e.last_name) AS team_lead,
-            COUNT(tm.member_id) AS number_of_members
-        FROM 
-            Team t 
-        LEFT JOIN 
-            Skills s ON t.team_skill_id = s.skill_id 
-        LEFT JOIN 
-            Employee e ON t.team_lead_id = e.employee_id 
-        LEFT JOIN 
-            team_member tm ON t.team_id = tm.team_id 
-        GROUP BY 
-            t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
+- View Team
+```sql
+    SELECT 
+        t.team_id, 
+        t.team_name, 
+        s.skill_name AS team_skill, 
+        CONCAT(e.first_name, ' ', e.last_name) AS team_lead,
+        COUNT(tm.member_id) AS number_of_members
+    FROM 
+        Team t 
+    LEFT JOIN 
+        Skills s ON t.team_skill_id = s.skill_id 
+    LEFT JOIN 
+        Employee e ON t.team_lead_id = e.employee_id 
+    LEFT JOIN 
+        team_member tm ON t.team_id = tm.team_id 
+    GROUP BY 
+        t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
+```
 
-Edit Team
-        UPDATE Team
-        SET 
-            team_name = 'Tên nhóm mới',
-            team_skill_id = 'ID kỹ năng mới',
-            team_lead_id = 'ID trưởng nhóm mới'
-        WHERE 
-            team_id = [ID_nhóm];
+- Edit Team
+```sql
+    UPDATE Team
+    SET 
+        team_name = 'Tên nhóm mới',
+        team_skill_id = 'ID kỹ năng mới',
+        team_lead_id = 'ID trưởng nhóm mới'
+    WHERE 
+        team_id = [ID_nhóm];
+```
 
-Delete Team
-        (chưa có)
+- Delete Team
+- ? Change Team status to Deactive instead of Delete (since Team hold many contraint and valuable infomation)
+```sql
+    update Team
+    set team_status = 'Deactive' -- status: Active/Deactive
+    where team_id = 1
+
+    select * from Team
+```
+
+### Task
+- Create
++ Add Task to Team (project_manager create overview task and assign to team)
+```sql
+CREATE OR ALTER PROCEDURE create_task_for_team
+    @task_id INT,
+    @team_id INT,
+    @task_name VARCHAR(MAX), -- Adjust the size as needed 
+    @task_description VARCHAR(MAX), 
+    @task_priority VARCHAR(10), -- Or appropriate datatype
+    @task_status VARCHAR(10),  -- Or appropriate datatype
+    @task_due_date DATE -- Or DATETIME 
+AS
+BEGIN
+    INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
+    VALUES (@task_name, @task_description, @task_priority, @task_status, @task_due_date);
+
+    SET @task_id = SCOPE_IDENTITY();
+
+    INSERT INTO team_task (team_id, task_id)
+    VALUES (@team_id, @task_id);
+END;
+-- usage example
+EXEC create_task_for_team 
+    @team_id = 2, 
+    @task_name = 'Design User Interface',
+    @task_description = 'Create wireframes and high-fidelity mockups',
+    @task_priority = 'High',
+    @task_status = 'Pending',
+    @task_due_date = '2023-12-25';  
+```
+
+- Read 
++ Add 
+
+- Update
+
+- Delete: Delete a Task and its dependency like task_id from team_task 
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_task 
+    ON Task
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_task_id INT;
+        SELECT @deleted_task_id = task_id FROM deleted;
+
+        -- Delete dependencies from team_task
+        DELETE FROM team_task
+        WHERE task_id = @deleted_task_id; 
+    END;
+```
 
 ### Project
 **Manage Project**
-Insert Project
-        INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id) 
-        VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+- Insert Project
+```sql
+    INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id) 
+    VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+```
 
-View Project
-        SELECT 
-            p.project_id, 
-            p.name AS project_name,
-            p.goal AS project_goal,
-            p.number_of_employees AS number_of_employees,
-            p.project_priority AS project_priority,
-            p.project_status AS project_status,
-            p.start_date AS start_date,
-            p.end_date AS end_date,
-            CONCAT(e.first_name, ' ', e.last_name) AS project_manager,
-            COUNT(DISTINCT tp.team_id) AS number_of_teams
-        FROM 
-            Project p
-        LEFT JOIN 
-            Employee e ON p.project_manager_id = e.employee_id
-        LEFT JOIN 
-            team_project tp ON p.project_id = tp.project_id
-        GROUP BY 
-            p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+- View Project
+```sql      
+    SELECT 
+        p.*
+        CONCAT(e.first_name, ' ', e.last_name) AS project_manager,
+        COUNT(DISTINCT tp.team_id) AS number_of_teams
+    FROM 
+        Project p
+    LEFT JOIN 
+        Employee e ON p.project_manager_id = e.employee_id
+    LEFT JOIN 
+        team_project tp ON p.project_id = tp.project_id
+    GROUP BY 
+        p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+```
 
-Edit Project
-        UPDATE Project
-        SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới], prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới', start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
-        WHERE project_id = [ID của dự án cần cập nhật];
+- Edit Project
+```sql
+    UPDATE Project
+    SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới], prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới', start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
+    WHERE project_id = [ID của dự án cần cập nhật];
+```
 
-Delete Project
-        (chưa có)
-
-- ? Set Project to project_status 
+- Deactivate Project: Change Project status to Deactive instead of Delete (since Project hold many contraint and valuable infomation)
 ```sql
     UPDATE Project
     SET project_status = 'Completed' -- ('Pending', 'In Progress', 'Completed')
@@ -160,41 +323,35 @@ Delete Project
 
 
 ### SQL Specical Features (Procedure, Trigger)
-#### special feature requirement 
-+ View Employee through Skill Tag
-+ View Team through Skill Tag
-+ ....
-
-
 #### Procedures
 - ? Team Features: View Employee through Skill Tag
 ```sql
-        /*
-            Procedure: ListEmployeesBySkillID
+    /*
+        Procedure: ListEmployeesBySkillID
 
-            Description:
-            This stored procedure retrieves a list of employees who have a specific skill ID.
+        Description:
+        This stored procedure retrieves a list of employees who have a specific skill ID.
 
-            Parameters:
-            - @SkillID: The ID of the skill to filter the employees by.
+        Parameters:
+        - @SkillID: The ID of the skill to filter the employees by.
 
-            Returns:
-            The result set includes the first name, last name, email, phone number, and hire date of the employees who have the specified skill ID.
-        */
+        Returns:
+        The result set includes the first name, last name, email, phone number, and hire date of the employees who have the specified skill ID.
+    */
 
-        CREATE OR ALTER PROCEDURE ListEmployeesBySkillID
-            @SkillID INT
-        AS
-        BEGIN
-            SELECT e.first_name, e.last_name, e.email, e.phone_number, e.hire_date
-            FROM Employee e
-            INNER JOIN employee_skills es ON e.employee_id = es.employee_id
-            INNER JOIN Skills s ON es.skill_id = s.skill_id
-            WHERE s.skill_id = @SkillID;
-        END;
-        Go
-        -- select * from employee_skills
-        EXEC ListEmployeesBySkillID 20;
+    CREATE OR ALTER PROCEDURE ListEmployeesBySkillID
+        @SkillID INT
+    AS
+    BEGIN
+        SELECT e.first_name, e.last_name, e.email, e.phone_number, e.hire_date
+        FROM Employee e
+        INNER JOIN employee_skills es ON e.employee_id = es.employee_id
+        INNER JOIN Skills s ON es.skill_id = s.skill_id
+        WHERE s.skill_id = @SkillID;
+    END;
+    Go
+    -- select * from employee_skills
+    EXEC ListEmployeesBySkillID 20;
 ```
 
 
@@ -300,131 +457,13 @@ Delete Project
 
 #### Triggers
 - ? We Cannot perform an aggregate function on an expression containing an aggregate or a subquery. 
-- ? Trigger: Update Project 'number_of_employees' by counting the sum of each team total employees relevant to that project (note: not using team_member)
+- ? Trigger: Update Project 'number_of_employees' - On Progress
 ```sql
-    -- trigger on insert and update
-    CREATE OR ALTER TRIGGER update_teams_project_count_trigger 
-    ON team_member
-    AFTER INSERT, DELETE
-    AS
-    BEGIN
-        DECLARE @team_id INT;
-        DECLARE @team_emp INT;
-        SELECT @team_emp = Count(member_id) from team_member WHERE team_id = @team_id;
 
-        -- Handle employee insertions
-        SELECT @team_id = team_id FROM inserted;
-        UPDATE Project 
-        SET number_of_employees = @team_emp
-        WHERE project_id IN (SELECT project_id FROM team_project WHERE team_id = @team_id); 
-
-        -- Handle employee deletions
-        SELECT @team_id = team_id FROM deleted;
-        UPDATE Project 
-        SET number_of_employees = @team_emp
-        WHERE project_id IN (SELECT project_id FROM team_project WHERE team_id = @team_id); 
-    END;
 ```
 
-- ? Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag 
-```sql
-    CREATE OR ALTER TRIGGER cascade_delete_skill 
-    ON Skills
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_skill_id INT;
-
-        SELECT @deleted_skill_id = skill_id FROM deleted;
-
-        -- Delete from team_skill_tag
-        DELETE FROM team_skill_tag
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from employee_skills
-        DELETE FROM employee_skills
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from employee_skills
-        DELETE FROM project_prefer_skills
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from Team (assuming cascading delete is not set up)
-        UPDATE Team SET team_skill_id = NULL WHERE team_skill_id = @deleted_skill_id;
-        DELETE FROM Skills WHERE skill_id = @deleted_skill_id;
 
 
-    END;
-    GO
-```
 
-- ? Delete an employee and its dependency like member_id from team_member, assigned_employee_id from team_task, team_lead_id from team
-```sql
-    CREATE OR ALTER TRIGGER handle_employee_departure
-    ON Employee
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_employee_id INT;
 
-        SELECT @deleted_employee_id = employee_id FROM deleted;
 
-        DELETE FROM Team 
-        WHERE team_lead_id = @deleted_employee_id;
-
-        -- Remove employee from team_member
-        DELETE FROM team_member 
-        WHERE member_id = @deleted_employee_id;
-
-        -- Clear assignments in team_task
-        UPDATE team_task 
-        SET assigned_employee_id = NULL
-        WHERE assigned_employee_id = @deleted_employee_id; 
-        DELETE FROM Employee WHERE employee_id = @deleted_employee_id; 
-    END;
-```
-
-- ? Delete a Task and its dependency like task_id from team_task 
-```sql
-    CREATE OR ALTER TRIGGER cascade_delete_task 
-    ON Task
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_task_id INT;
-        SELECT @deleted_task_id = task_id FROM deleted;
-
-        -- Delete dependencies from team_task
-        DELETE FROM team_task
-        WHERE task_id = @deleted_task_id; 
-    END;
-```
-- ? Change Team status to Deactive instead of Delete (since Team hold many contraint and valuable infomation)
-```sql
-    update Team
-    set team_status = 'Deactive' -- status: Active/Deactive
-    where team_id = 1
-
-    select * from Team
-```
-
-- ? Delete a Role and its dependency like role_id from team_member
-```sql
-    CREATE OR ALTER TRIGGER delete_role_actions
-    ON Role
-    INSTEAD OF DELETE 
-    AS
-    BEGIN
-        DECLARE @deleted_role_id INT;
-
-        SELECT @deleted_role_id = role_id FROM deleted;
-
-        -- 1. Remove associated role assignments (team_member or similar)
-        DELETE FROM team_member 
-        WHERE role_id = @deleted_role_id;  
-
-        DELETE FROM Role 
-        WHERE role_id = @deleted_role_id;  
-    END;
-    GO
-```

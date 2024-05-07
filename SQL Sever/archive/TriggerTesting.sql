@@ -56,29 +56,43 @@ select * from team_skill_tag  WHERE skill_id = 111
 
 
 -- ! Delete Employee Trigger Testing Code (don't delete) 
--- CREATE OR ALTER TRIGGER handle_employee_departure
--- ON Employee
--- INSTEAD OF DELETE
--- AS
--- BEGIN
---     DECLARE @deleted_employee_id INT;
+Go
+CREATE OR ALTER TRIGGER cascade_delete_employee
+ON Employee
+INSTEAD OF DELETE
+AS
+BEGIN
+    DECLARE @deleted_employee_id INT;
 
---     SELECT @deleted_employee_id = employee_id FROM deleted;
+    SELECT @deleted_employee_id = employee_id FROM deleted;
 
---     DELETE FROM Team 
---     WHERE team_lead_id = @deleted_employee_id;
+    -- 1. Delete assignments from team_member 
+    DELETE FROM team_member 
+    WHERE member_id = @deleted_employee_id; 
 
---     -- Remove employee from team_member
---     DELETE FROM team_member 
---     WHERE member_id = @deleted_employee_id;
+    -- 2. Delete assigned tasks from team_task
+    DELETE FROM team_task
+    WHERE assigned_employee_id = @deleted_employee_id; 
 
---     -- Clear assignments in team_task
---     UPDATE team_task 
---     SET assigned_employee_id = NULL
---     WHERE assigned_employee_id = @deleted_employee_id; 
---     DELETE FROM Employee WHERE employee_id = @deleted_employee_id; 
--- END;
--- Go
+    -- 3. Update team_lead_id to NULL in Team table
+    UPDATE Team 
+    SET team_lead_id = NULL
+    WHERE team_lead_id = @deleted_employee_id;
+
+    -- 4. Update project_manager_id to NULL in Project table
+    UPDATE Project 
+    SET project_manager_id = NULL 
+    WHERE project_manager_id = @deleted_employee_id;
+
+    -- 5. Delete records from employee_skills 
+    DELETE FROM employee_skills 
+    WHERE employee_id = @deleted_employee_id;
+
+    -- 6. Finally, delete the employee
+    DELETE FROM Employee
+    WHERE employee_id = @deleted_employee_id;
+END;
+
 
 --? Insert Testing Value
 SET IDENTITY_INSERT Employee ON; -- this allow to modify id value 
@@ -93,7 +107,10 @@ SET IDENTITY_INSERT Employee ON; -- this allow to modify id value
 --     (1,2, 111);
 -- INSERT INTO team_member (role_id, member_id, team_id)
 -- VALUES
---     (2, 111, 1)
+-- INSERT INTO team_task(team_id, task_id, assigned_employee_id)
+-- VALUES
+--     (2, 1, 111)
+
 SET IDENTITY_INSERT Employee OFF;
 
 DELETE FROM Employee WHERE employee_id = 111
@@ -101,4 +118,5 @@ select * from Employee WHERE employee_id = 111
 select * from Team WHERE team_lead_id = 111
 select * from team_member WHERE member_id = 111
 select * from team_task WHERE assigned_employee_id = 111
+select * from employee_skills WHERE employee_id = 111
 -- ! End
