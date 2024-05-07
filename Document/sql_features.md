@@ -4,30 +4,137 @@
 ### Tag, Role
 **Manage Tag, Role**
 Insert Tag và Role (in UI it mean Create Employee)
+    + add tag skills:
+        INSERT INTO Skills (skill_name, skill_description) 
+        VALUES ('Tên kỹ năng', 'Mô tả kỹ năng');
+    + add tag role:
+        INSERT INTO Role (role_name, role_description)
+        VALUES ('Tên_role_mới', 'Mô_tả_role_mới');
+
+
 View Tag và Role
+    + tag skills:
+        SELECT skill_id, skill_name, skill_description FROM Skills;
+    + role:
+        SELECT *
+        FROM Role;
+
+
 Edit Tag và Role
+    + tag skills:
+        UPDATE Skills
+        SET skill_name = 'Tên kỹ năng mới', skill_description = 'Mô tả kỹ năng mới'
+        WHERE skill_id = id;
+    + role:
+        UPDATE Role
+        SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
+        WHERE role_id = id_cần_sửa;
+
+
 Delete Tag và Role
+    + tag skills:
+        (chưa xem xét)
+    + role:
+        (chưa xem xét)
 
 ### Employees
 **Manage Employee**
 Insert Employee
+        INSERT INTO employees (first_name, last_name, email, phone_number, address, birth_date, hire_date)
+        VALUES ('Họ', 'Tên', 'Email', 'Số điện thoại', 'Địa chỉ', 'Ngày sinh', 'Ngày tuyển dụng');
+
 View Employee
+        SELECT 
+            e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.address, e.birth_date, e.hire_date,  
+            COALESCE(p.name, 'Not Join') AS project_name, 
+            COALESCE(t.team_name, 'Not Join') AS team_name, 
+            COALESCE(s.skill_name, 'Not Join') AS skill_name 
+        FROM Employee e 
+        LEFT JOIN project_assignment pa ON e.employee_id = pa.employee_id 
+        LEFT JOIN Project p ON pa.project_id = p.project_id 
+        LEFT JOIN team_member tm ON e.employee_id = tm.member_id 
+        LEFT JOIN Team t ON tm.team_id = t.team_id 
+        LEFT JOIN employee_skills es ON e.employee_id = es.employee_id 
+        LEFT JOIN Skills s ON es.skill_id = s.skill_id;
+
 Edit Employee
+        UPDATE Employee
+        SET first_name = 'Họ mới', last_name = 'Tên mới', email = 'Email mới', phone_number = 'Số điện thoại mới', address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới', hire_date = 'Ngày tuyển dụng mới'
+        WHERE employee_id = [ID của nhân viên];
+
 Delete Employee
+        (chưa có)
 
 ### Team
 **Manage Team**
 Insert Team
+    INSERT INTO Team (team_name, team_skill_id, team_lead_id, team_status)
+    VALUES ('Tên nhóm mới', id_kỹ_năng, id_nhân_viên_trưởng_nhóm, 'Trạng thái nhóm');
+
 View Team
+        SELECT 
+            t.team_id, 
+            t.team_name, 
+            s.skill_name AS team_skill, 
+            CONCAT(e.first_name, ' ', e.last_name) AS team_lead,
+            COUNT(tm.member_id) AS number_of_members
+        FROM 
+            Team t 
+        LEFT JOIN 
+            Skills s ON t.team_skill_id = s.skill_id 
+        LEFT JOIN 
+            Employee e ON t.team_lead_id = e.employee_id 
+        LEFT JOIN 
+            team_member tm ON t.team_id = tm.team_id 
+        GROUP BY 
+            t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
+
 Edit Team
+        UPDATE Team
+        SET 
+            team_name = 'Tên nhóm mới',
+            team_skill_id = 'ID kỹ năng mới',
+            team_lead_id = 'ID trưởng nhóm mới'
+        WHERE 
+            team_id = [ID_nhóm];
+
 Delete Team
+        (chưa có)
 
 ### Project
 **Manage Project**
 Insert Project
+        INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id) 
+        VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+
 View Project
+        SELECT 
+            p.project_id, 
+            p.name AS project_name,
+            p.goal AS project_goal,
+            p.number_of_employees AS number_of_employees,
+            p.project_priority AS project_priority,
+            p.project_status AS project_status,
+            p.start_date AS start_date,
+            p.end_date AS end_date,
+            CONCAT(e.first_name, ' ', e.last_name) AS project_manager,
+            COUNT(DISTINCT tp.team_id) AS number_of_teams
+        FROM 
+            Project p
+        LEFT JOIN 
+            Employee e ON p.project_manager_id = e.employee_id
+        LEFT JOIN 
+            team_project tp ON p.project_id = tp.project_id
+        GROUP BY 
+            p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+
 Edit Project
+        UPDATE Project
+        SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới], prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới', start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
+        WHERE project_id = [ID của dự án cần cập nhật];
+
 Delete Project
+        (chưa có)
 
 - ? Set Project to project_status 
 ```sql
