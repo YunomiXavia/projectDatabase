@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task & Team List</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="min-h-screen bg-zinc-100 dark:bg-zinc-800 p-4 flex flex-col md:flex-row gap-4">
+        <div class="w-1/3 mx-auto bg-white dark:bg-gray-700 shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Create New Task</h2>
+            <form>
+                <div class="mb-4">
+                    <label for="teamId" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Team ID</label>
+                    <input type="number" id="teamId" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Enter team ID">
+                </div>
+                <div class="mb-4">
+                    <label for="taskName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Task Name</label>
+                    <input type="text" id="taskName" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Enter task name">
+                </div>
+                <div class="mb-4">
+                    <label for="taskDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Task Description</label>
+                    <textarea id="taskDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Describe the task"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="taskPriority" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Priority</label>
+                    <select id="taskPriority" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white">
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="taskStatus" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Status</label>
+                    <select id="taskStatus" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white">
+                        <option>Pending</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="dueDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Due Date</label>
+                    <input type="date" id="dueDate" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white">
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Task</button>
+            </form>
+        </div>
+        <div class="flex-1 max-w-2xl mx-auto bg-white dark:bg-zinc-700 shadow-md rounded-lg p-6">
+            <div class="mb-4">
+                <label for="searchTeam" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Search Teams</label>
+                <input type="text" id="searchTeam" oninput="filterTeams()" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-zinc-600 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Search by team name">
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400">
+                    <thead class="text-xs text-zinc-700 dark:text-zinc-300 uppercase bg-zinc-50 dark:bg-zinc-600">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">ID</th>
+                            <th scope="col" class="px-6 py-3">Name</th>
+                            <th scope="col" class="px-6 py-3">Skill</th>
+                            <th scope="col" class="px-6 py-3">Participants</th>
+                            <th scope="col" class="px-6 py-3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teamTable" class="bg-white dark:bg-zinc-700">
+                        <!-- Sample data -->
+                        <tr>
+                            <td class="px-6 py-4">1</td>
+                            <td class="px-6 py-4">Team Alpha</td>
+                            <td class="px-6 py-4">Web Development</td>
+                            <td class="px-6 py-4">5</td>
+                            <td class="px-6 py-4">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Details</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4">2</td>
+                            <td class="px-6 py-4">Team Beta</td>
+                            <td class="px-6 py-4">Data Science</td>
+                            <td class="px-6 py-4">4</td>
+                            <td class="px-6 py-4">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Details</button>
+                            </td>
+                        </tr>
+                        <!-- More rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterTeams() {
+            const input = document.getElementById('searchTeam');
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById('teamTable');
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 0; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName('td')[1]; // Index 1 for 'Name' column
+                if (td) {
+                    const txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- 
+    Tạo mới một task và thêm luôn vào team chỉ định:
+
+    DECLARE @task_id INT;
+
+    INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
+    VALUES ('Develop new feature', 'Implement new feature X according to specifications', 'High', 'Pending', '2024-05-15');
+
+    SET @task_id = SCOPE_IDENTITY();
+
+    INSERT INTO team_task (team_id, task_id)
+    VALUES (3, @task_id);
+ -->

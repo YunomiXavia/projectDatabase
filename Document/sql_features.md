@@ -3,7 +3,7 @@
 ## SQL Basic Features (CRUD - Create, Read, Update, Delete)
 ### Tag, Role
 **Manage Tag, Role**
-- Insert Skill and Role Tag
+- Insert Skill and Role Tag and Task:
 + add Skills Tag:
 ```sql
     INSERT INTO Skills (skill_name, skill_description) 
@@ -14,9 +14,13 @@
     INSERT INTO Role (role_name, role_description)
     VALUES ('Tên_role_mới', 'Mô_tả_role_mới');
 ```
++ add Task:
+```sql
+    INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
+    VALUES ('Develop new feature', 'Implement new feature X according to specifications', 'High', 'Pending', '2024-05-15');
+```
 
-
-- View Skills and Role Tag
+- View Skills and Role Tag and Task:
 + View Skills Tag:
 ```sql
     SELECT skill_id, skill_name, skill_description FROM Skills;
@@ -25,9 +29,12 @@
 ```sql
     SELECT role_id, role_name, role_description FROM Role;
 ```
++ add Task:
+```sql
+    SELECT task_id, task_name, task_description, task_priority, status, due_date FROM Task;
+```
 
-
-- Edit Skills and Role Tag
+- Edit Skills and Role Tag and Task:
 + Edit Skills Tag:
 ```sql
     UPDATE Skills
@@ -39,6 +46,18 @@
     UPDATE Role
     SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
     WHERE role_id = id_cần_sửa;
+```
++ add Task:
+```sql
+    UPDATE Task
+    SET 
+        task_name = 'Phát triển tính năng mới',
+        task_description = 'Triển khai tính năng X theo yêu cầu',
+        task_priority = 'High',
+        status = 'In Progress',
+        due_date = '2024-05-20'
+    WHERE 
+        task_id = [task id cần sửa];
 ```
 
 
