@@ -36,7 +36,6 @@ db.tasks.insertOne({
   status: "Pending",
   start_date: new Date(),
   due_date: new Date("2024-06-30"),
-  employee_task: [],
   team_task: [],
 });
 ```
@@ -95,7 +94,6 @@ db.tasks.insertOne({
   status: "Pending",
   start_date: new Date(),
   due_date: new Date("2024-07-15"),
-  employee_task: [],
   team_task: [],
 });
 ```
@@ -207,8 +205,6 @@ db.projects.updateMany(
 // Xóa phụ thuộc của Nhân viên trong kỹ năng (employee_skills)
 db.skills.updateMany({}, { $pull: { employee_skills: employeeIdToDelete } });
 
-// Xóa phụ thuộc của Nhân viên trong nhiệm vụ của nhóm (team_task)
-db.tasks.updateMany({}, { $pull: { employee_task: employeeIdToDelete } });
 
 // Xóa phụ thuộc của Nhân viên trong các nhóm (team_member)
 db.teams.updateMany({}, { $pull: { team_member: employeeIdToDelete } });
