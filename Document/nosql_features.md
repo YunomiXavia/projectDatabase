@@ -276,7 +276,6 @@ db.tasks.insertOne({
   status: "Pending",
   start_date: new Date(),
   due_date: new Date("2024-06-30"),
-  employee_task: [], // Các nhân viên được giao task (nếu có)
   team_task: [], // Các nhóm được giao task (nếu có)
 });
 ```
