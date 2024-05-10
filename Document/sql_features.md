@@ -266,10 +266,6 @@ EXEC create_task_for_team
     @task_due_date = '2023-12-25';  
 ```
 
-- Read 
-+ Add 
-
-- Update
 
 - Delete: Delete a Task and its dependency like task_id from team_task 
 ```sql
@@ -335,7 +331,6 @@ EXEC create_task_for_team
 - ? Update start_data and Update end_date
 ```sql
     UPDATE Project
-    SET start_data = '2022-10-01', end_date = '2022-12-01'
     WHERE project_id = 1;
     select * from Project;
 ```

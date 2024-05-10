@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Role</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Create New Role</h1>
+
+        <!-- Form để tạo role mới -->
+        <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+            <form>
+                <div class="mb-4">
+                    <label for="roleName" class="block text-sm font-medium text-gray-700">Role Name</label>
+                    <input type="text" id="roleName" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter role name">
+                </div>
+                <div class="mb-4">
+                    <label for="roleDescription" class="block text-sm font-medium text-gray-700">Role Description</label>
+                    <textarea id="roleDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the role"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Role</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
