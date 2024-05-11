@@ -29,21 +29,30 @@ Project Management
 Page 1: Create Project
 // Create a new project
 db.projects.insertOne({
-  name: "Enter project name here",
-  goal: "Enter project goal here",
+  name: "Project name",
+  goal: "Project goal",
   number_of_employees: 0,
   priority: "High", // or "Medium", "Low"
   status: "Pending", // or "In Progress", "Completed"
   start_date: new Date(),
   end_date: new Date(),
   project_manager: ObjectId("employeeID"),
-  project_team: [] // Add team members later
+  project_team: []
+  tags: []
 })
 
 
 Page 2: Display Projects
 // Fetch all projects
-db.projects.find()
+db.projects.find().project({
+  _id: 1,
+  name: 1,
+  number_of_employees: 1,
+  priority: 1,
+  start_date: 1,
+  end_date: 1,
+  project_manager: 1
+})
 
 // Delete a tag by ID
 db.tags.deleteOne({ _id: ObjectId("tagID") })
@@ -61,7 +70,7 @@ db.projects.updateOne({ _id: ObjectId("projectID") }, {
     start_date: new Date(),
     end_date: new Date(),
     project_manager: ObjectId("employeeID"),
-    project_team: [] // Update team members later
+    project_team: []
   }
 })
 

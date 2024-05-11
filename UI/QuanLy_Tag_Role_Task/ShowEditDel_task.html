@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Task Management</h1>
+
+        <!-- Bảng hiển thị các task -->
+        <div class="overflow-x-auto">
+            <table class="ml-56 w-2/3 bg-white shadow-md rounded">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="py-3 px-6 text-left">ID</th>
+                        <th class="py-3 px-6 text-left">Task Name</th>
+                        <th class="py-3 px-6 text-left">Description</th>
+                        <th class="py-3 px-6 text-left">Priority</th>
+                        <th class="py-3 px-6 text-left">Status</th>
+                        <th class="py-3 px-6 text-left">Due Date</th>
+                        <th class="py-3 px-6 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="taskTable" class="text-gray-700">
+                    <!-- Dữ liệu task sẽ được thêm vào đây -->
+                    <tr>
+                        <td>1</td>
+                        <td>Task 1</td>
+                        <td>Description 1</td>
+                        <td>Low</td>
+                        <td>Pending</td>
+                        <td>2022-10-01</td>
+                        <td>
+                            <button class="rounded bg-blue-500 text-white ml-2 p-2">Edit</button>
+                            <button class="rounded bg-red-500 text-white ml-2 p-2">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Task 2</td>
+                        <td>Description 2</td>
+                        <td>Medium</td>
+                        <td>In Progress</td>
+                        <td>2022-10-02</td>
+                        <td>
+                            <button class="rounded bg-blue-500 text-white ml-2 p-2">Edit</button>
+                            <button class="rounded bg-red-500 text-white ml-2 p-2">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Task 3</td>
+                        <td>Description 3</td>
+                        <td>High</td>
+                        <td>Completed</td>
+                        <td>2022-10-03</td>
+                        <td>
+                            <button class="rounded bg-blue-500 text-white ml-2 p-2">Edit</button>
+                            <button class="rounded bg-red-500 text-white ml-2 p-2">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Task 4</td>
+                        <td>Description 4</td>
+                        <td>Medium</td>
+                        <td>Pending</td>
+                        <td>2022-10-04</td>
+                        <td>
+                            <button class="rounded bg-blue-500 text-white ml-2 p-2">Edit</button>
+                            <button class="rounded bg-red-500 text-white ml-2 p-2">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Task 5</td>
+                        <td>Description 5</td>
+                        <td>Low</td>
+                        <td>In Progress</td>
+                        <td>2022-10-05</td>
+                        <td>
+                            <button class="rounded bg-blue-500 text-white ml-2 p-2">Edit</button>
+                            <button class="rounded bg-red-500 text-white ml-2 p-2">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Script để xử lý tạo mới task -->
+    <script>
+        document.getElementById('createTaskForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Lấy thông tin từ form
+            const taskName = document.getElementById('taskName').value;
+            const taskDescription = document.getElementById('taskDescription').value;
+            const taskPriority = document.getElementById('taskPriority').value;
+            const taskStatus = document.getElementById('taskStatus').value;
+            const dueDate = document.getElementById('dueDate').value;
+
+            // Hiển thị thông tin đã nhập vào console (tạm thời)
+            console.log(`Task Name: ${taskName}`);
+            console.log(`Task Description: ${taskDescription}`);
+            console.log(`Task Priority: ${taskPriority}`);
+            console.log(`Task Status: ${taskStatus}`);
+            console.log(`Due Date: ${dueDate}`);
+
+        });
+    </script>
+</body>
+
+</html>
