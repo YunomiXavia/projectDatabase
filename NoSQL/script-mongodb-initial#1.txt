@@ -2,7 +2,7 @@ db.createCollection("Employee", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["first_name", "last_name", "phone"],
+      required: ["first_name", "last_name", "phone_number"],
       properties: {
         _id: {
           bsonType: "objectId"
@@ -69,13 +69,12 @@ db.createCollection("Employee", {
 
 
 
+
 db.createCollection("Project", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: [
-        "name"
-      ],
+      required: ["name"],
       properties: {
         _id: {
           bsonType: "objectId"
@@ -106,20 +105,21 @@ db.createCollection("Project", {
           bsonType: "date"
         },
         project_manager: {
-          bsonType: "int",
+          bsonType: "objectId",
           ref: "Employee"
         },
-	project_team:{
-	  bsonType: "array",
+        project_team: {
+          bsonType: "array",
           items: {
             bsonType: "objectId",
             ref: "Team"
           }
-	},
+        }
       }
     }
   }
 })
+
 
 
 
@@ -133,7 +133,7 @@ db.createCollection("Task", {
         _id: {
           bsonType: "objectId"
         },
-        name: {
+        task_name: {
           bsonType: "string",
           required: true,
           maxLength: 30
@@ -153,31 +153,32 @@ db.createCollection("Task", {
           enum: ["Pending", "In Progress", "Completed"]
         },
         start_date: {
-          bsonType: "date"
-	  required: true
+          bsonType: "date",
+          required: true
         },
         due_date: {
           bsonType: "date",
           required: true
         },
         employee_task: {
-	  bsonType: "array",
+          bsonType: "array",
           items: {
             bsonType: "objectId",
             ref: "Employee"
           }
         },
         team_task: {
-          bsonType: "objectId",
+          bsonType: "array",
           items: {
             bsonType: "objectId",
             ref: "Team"
           }
-	}
+        }
       }
     }
   }
 })
+
 
 
 
@@ -190,18 +191,18 @@ db.createCollection("Team", {
         _id: {
           bsonType: "objectId"
         },
-        name: {
+        team_name: {
           bsonType: "string",
           required: true,
           maxLength: 30
         },
         team_lead_id: {
-          bsonType: "int",
+          bsonType: "objectId",
           ref: "Employee"
         },
-        project: {
-          bsonType: "int",
-	  ref: "Project"
+        project_id: {
+          bsonType: "objectId",
+          ref: "Project"
         },
         skill_team_id: {
           bsonType: "array",
@@ -214,6 +215,7 @@ db.createCollection("Team", {
     }
   }
 })
+
 
 
 db.createCollection("Role", {
@@ -245,4 +247,3 @@ db.createCollection("Role", {
     }
   }
 })
-
