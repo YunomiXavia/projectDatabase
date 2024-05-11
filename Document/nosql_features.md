@@ -100,15 +100,18 @@ const editRoleTag = (roleId, newRoleName, newRoleDescription) => {
 - Add Task:
 
 ```javascript
-db.tasks.insertOne({
-  task_name: "Implement user authentication",
-  description: "Develop a user authentication system for the website.",
-  priority: 1, // High priority
-  status: "Pending",
-  start_date: new Date(),
-  due_date: new Date("2024-07-15"),
-  team_task: [],
-});
+// Add Task
+const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
+    const taskId = getNextSequenceValue("task_id");
+    db.task.insertOne({
+        task_id: taskId,
+        task_name: taskName,
+        task_description: taskDescription,
+        task_priority: taskPriority,
+        status: status,
+        due_date: dueDate
+    });
+};
 ```
 
 - Delete Skills and Role Tag
@@ -164,75 +167,89 @@ printjson(updatedRoles);
 - Insert Employee
 
 ```javascript
-db.employees.insertOne({
-  first_name: "John",
-  last_name: "Doe",
-  email: "john.doe@example.com",
-  phone_number: "1234567890",
-  address: "123 Main St, City",
-  birth_date: new Date("1990-01-01"),
-  hire_date: new Date(),
-  project_assignment: [],
-  employee_skills: [],
-  team_task: [],
-  team_member: [],
-});
+// Insert Employee
+const insertEmployee = (firstName, lastName, email, phoneNumber, address, birthDate, hireDate) => {
+    const employeeId = getNextSequenceValue("employee_id");
+    db.employee.insertOne({
+        employee_id: employeeId,
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone_number: phoneNumber,
+        address: address,
+        birth_date: birthDate,
+        hire_date: hireDate
+    });
+};
+
+// Example usage
+const newEmployee = {
+    first_name: "John",
+    last_name: "Doe",
+    email: "john.doe@example.com",
+    phone_number: "555-123-4567",
+    address: "123 Main St, City, Country",
+    birth_date: new Date("1990-05-20"),
+    hire_date: new Date("2023-07-15")
+};
+
+addEmployee(newEmployee);
 ```
 
 - View Employee
 
 ```javascript
-db.employees.find();
+// View Employee
+const viewEmployee = () => {
+    return db.employee.find().toArray();
+};
+
+// Example usage
+const employeeIdToView = ObjectId("employee_id_here");
+
+const employeeDetails = viewEmployee(employeeIdToView);
+console.log(employeeDetails);
 ```
 
 - Edit Employee
 
 ```javascript
-// Lấy ID của Nhân viên muốn chỉnh sửa
-var employeeIdToEdit = ObjectId("employeeID");
+// Function to edit an employee
+const editEmployee = (employeeId, updatedFields) => {
+    db.employee.updateOne(
+        { _id: employeeId },
+        { $set: updatedFields }
+    );
+};
 
-// Chỉnh sửa thông tin của Nhân viên
-db.employees.updateOne(
-  { _id: employeeIdToEdit },
-  {
-    $set: {
-      first_name: "Jane",
-      last_name: "Doe",
-      email: "jane.doe@example.com",
-      phone_number: "9876543210",
-      address: "456 Oak St, City",
-      birth_date: new Date("1992-05-15"),
-      hire_date: new Date(),
-      project_assignment: [ObjectId("projectID")], // Cập nhật dự án được giao (nếu cần)
-      employee_skills: [ObjectId("skillID")], // Cập nhật kỹ năng (nếu cần)
-      team_task: [ObjectId("taskID")], // Cập nhật nhiệm vụ của nhóm (nếu cần)
-      team_member: [ObjectId("teamID")], // Cập nhật các nhóm (nếu cần)
-    },
-  }
-);
+// Example usage
+const employeeIdToEdit = ObjectId("employee_id_here");
+
+const updatedFields = {
+    email: "john.doe.updated@example.com",
+    phone_number: "555-999-8888"
+};
+
+editEmployee(employeeIdToEdit, updatedFields);
 ```
 
 - Delete Employee
 
 ```javascript
-// Lấy ID của Nhân viên muốn xóa
-var employeeIdToDelete = ObjectId("employeeID");
+// Function to delete an employee
+const deleteEmployee = (employeeId) => {
+    // Remove employee from team_member
+    db.team_member.deleteMany({ employee_id: employeeId });
+    // Remove employee from employee_skills
+    db.employee_skills.deleteMany({ employee_id: employeeId });
+    // Delete the employee
+    db.employee.deleteOne({ _id: employeeId });
+};
 
-// Xóa Nhân viên
-db.employees.deleteOne({ _id: employeeIdToDelete });
+// Example usage
+const employeeIdToDelete = ObjectId("employee_id_here");
 
-// Xóa phụ thuộc của Nhân viên trong dự án (project_assignment)
-db.projects.updateMany(
-  {},
-  { $pull: { project_assignment: employeeIdToDelete } }
-);
-
-// Xóa phụ thuộc của Nhân viên trong kỹ năng (employee_skills)
-db.skills.updateMany({}, { $pull: { employee_skills: employeeIdToDelete } });
-
-
-// Xóa phụ thuộc của Nhân viên trong các nhóm (team_member)
-db.teams.updateMany({}, { $pull: { team_member: employeeIdToDelete } });
+deleteEmployee(employeeIdToDelete);
 ```
 
 ### Team
