@@ -537,11 +537,56 @@ db.projects.aggregate([
 - ? Team Procedure: Employees on a Team with Specific Skill
 
 ```javascript
-// Team in a Project
-const getTeamsInProject = (projectId) => {
-    return db.team_project.aggregate([
+const getEmployeesOnTeamWithSpecificSkill = (teamId, skillId) => {
+    return db.team_member.aggregate([
         {
-            $match: { project_id: projectId }
+            $match: { team_id: teamId }
+        },
+        {
+            $lookup: {
+                from: "employee_skills",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee_skills"
+            }
+        },
+        {
+            $unwind: "$employee_skills"
+        },
+        {
+            $match: { "employee_skills.skill_id": skillId }
+        },
+        {
+            $lookup: {
+                from: "Employee",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee"
+            }
+        },
+        {
+            $unwind: "$employee"
+        },
+        {
+            $project: {
+                _id: 0,
+                employee_id: "$employee.employee_id",
+                first_name: "$employee.first_name",
+                last_name: "$employee.last_name",
+                email: "$employee.email"
+            }
+        }
+    ]).toArray();
+};
+```
+
+- ? Team Procedure: Display Teams by Skill ID
+
+```javascript
+const getTeamsBySkillId = (skillId) => {
+    return db.team_skill_tag.aggregate([
+        {
+            $match: { skill_id: skillId }
         },
         {
             $lookup: {
@@ -566,90 +611,174 @@ const getTeamsInProject = (projectId) => {
 };
 ```
 
-- ? Team Procedure: Display Teams by Skill ID
-
-```javascript
-db.teams.find({ skill_team_id: ObjectId("skillID") });
-```
-
 - ? Display Employees by Team Skill Tag
 
 ```javascript
-db.teams.aggregate([
-  { $match: { _id: ObjectId("teamID") } },
-  {
-    $lookup: {
-      from: "employees",
-      localField: "members",
-      foreignField: "_id",
-      as: "employees",
-    },
-  },
-  { $unwind: "$employees" },
-  {
-    $lookup: {
-      from: "skills",
-      localField: "employees.employee_skills",
-      foreignField: "_id",
-      as: "employee_skills",
-    },
-  },
-  { $unwind: "$employee_skills" },
-  {
-    $project: {
-      "employees.first_name": 1,
-      "employees.last_name": 1,
-      "employees.email": 1,
-      "employees.employee_skills": 1,
-    },
-  },
-]);
+const getEmployeesByTeamSkillTag = (teamId, skillId) => {
+    return db.team_member.aggregate([
+        {
+            $match: { team_id: teamId }
+        },
+        {
+            $lookup: {
+                from: "employee_skills",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee_skills"
+            }
+        },
+        {
+            $unwind: "$employee_skills"
+        },
+        {
+            $match: { "employee_skills.skill_id": skillId }
+        },
+        {
+            $lookup: {
+                from: "Employee",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee"
+            }
+        },
+        {
+            $unwind: "$employee"
+        },
+        {
+            $project: {
+                _id: 0,
+                employee_id: "$employee.employee_id",
+                first_name: "$employee.first_name",
+                last_name: "$employee.last_name",
+                email: "$employee.email"
+            }
+        }
+    ]).toArray();
+};
 ```
 
 - ? Display Employees by Skill Tag and Which Team they in
 
 ```javascript
-db.employees.aggregate([
-  {
-    $lookup: {
-      from: "teams",
-      localField: "team_member",
-      foreignField: "_id",
-      as: "teams",
-    },
-  },
-  { $unwind: "$teams" },
-  {
-    $lookup: {
-      from: "skills",
-      localField: "employee_skills",
-      foreignField: "_id",
-      as: "employee_skills",
-    },
-  },
-  { $unwind: "$employee_skills" },
-  { $match: { "employee_skills.name": "JavaScript" } },
-]);
+const getEmployeesBySkillTagAndTeam = (skillId) => {
+    return db.team_member.aggregate([
+        {
+            $lookup: {
+                from: "employee_skills",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee_skills"
+            }
+        },
+        {
+            $unwind: "$employee_skills"
+        },
+        {
+            $match: { "employee_skills.skill_id": skillId }
+        },
+        {
+            $lookup: {
+                from: "Employee",
+                localField: "employee_id",
+                foreignField: "employee_id",
+                as: "employee"
+            }
+        },
+        {
+            $unwind: "$employee"
+        },
+        {
+            $lookup: {
+                from: "Team",
+                localField: "team_id",
+                foreignField: "team_id",
+                as: "team"
+            }
+        },
+        {
+            $unwind: "$team"
+        },
+        {
+            $project: {
+                _id: 0,
+                employee_id: "$employee.employee_id",
+                first_name: "$employee.first_name",
+                last_name: "$employee.last_name",
+                email: "$employee.email",
+                team_id: "$team.team_id",
+                team_name: "$team.team_name"
+            }
+        }
+    ]).toArray();
+};
 ```
 
 #### Triggers
 
-- ? We Cannot perform an aggregate function on an expression containing an aggregate or a subquery.
-- ? Trigger: Update Project 'number_of_employees' - On Progress
-
+- ? Trigger: Update Project 'number_of_employees'
 ```javascript
-// Assume projectID is the ID of the project you want to update
-var projectID = ObjectId("projectID");
+exports = function(changeEvent) {
+  const db = context.services.get("mongodb-atlas").db("your_database_name");
+  const projectsCollection = db.collection("Project");
+  const teamProjectCollection = db.collection("team_project");
 
-// Assume employeeID is the ID of the employee you want to add to the project
-var employeeID = ObjectId("employeeID");
+  const projectId = changeEvent.fullDocument.project_id;
+  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
 
-// Update the project by incrementing 'number_of_employees' by 1
-db.projects.updateOne({ _id: projectID }, { $inc: { number_of_employees: 1 } });
+  projectsCollection.updateOne(
+    { project_id: projectId },
+    { $set: { number_of_employees: newNumberOfEmployees } }
+  );
+};
+```
 
-// Then, add the employee to the project
-db.projects.updateOne(
-  { _id: projectID },
-  { $push: { project_team: employeeID } }
-);
+- Trigger: Update Project 'number_of_employees' - When Employee Added to the Team Project
+```javascript
+exports = function(changeEvent) {
+  const db = context.services.get("mongodb-atlas").db("your_database_name");
+  const projectsCollection = db.collection("Project");
+  const teamProjectCollection = db.collection("team_project");
+
+  const projectId = changeEvent.fullDocument.project_id;
+  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
+
+  projectsCollection.updateOne(
+    { project_id: projectId },
+    { $set: { number_of_employees: newNumberOfEmployees } }
+  );
+};
+```
+
+- Trigger: Update Project 'number_of_employees' - When Project Updated (e.g., end_date changed)
+```javascript
+exports = function(changeEvent) {
+  const db = context.services.get("mongodb-atlas").db("your_database_name");
+  const projectsCollection = db.collection("Project");
+  const teamProjectCollection = db.collection("team_project");
+
+  const projectId = changeEvent.fullDocument.project_id;
+  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
+
+  projectsCollection.updateOne(
+    { project_id: projectId },
+    { $set: { number_of_employees: newNumberOfEmployees } }
+  );
+};
+```
+
+- Trigger: Update Project 'number_of_employees' - When Team Removed from Project
+```javascript
+exports = function(changeEvent) {
+  const db = context.services.get("mongodb-atlas").db("your_database_name");
+  const projectsCollection = db.collection("Project");
+  const teamProjectCollection = db.collection("team_project");
+
+  const projectId = changeEvent.fullDocument.project_id;
+  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
+
+  projectsCollection.updateOne(
+    { project_id: projectId },
+    { $set: { number_of_employees: newNumberOfEmployees } }
+  );
+};
 ```
