@@ -116,7 +116,7 @@ const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
 
 - Delete Skills and Role Tag
 
-* Delete Skills Tag: Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag
+* Delete Skills Tag: Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag
 
 ```javascript
 // Delete Skills Tag
