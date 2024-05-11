@@ -435,7 +435,7 @@ const setProjectPriority = (projectId, priority) => {
 };
 ```
 
-- ? Update start_data and Update end_date
+- ? Update start_date and Update end_date
 
 ```javascript
 // Update start_date and end_date of Project
