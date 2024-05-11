@@ -181,19 +181,6 @@ const insertEmployee = (firstName, lastName, email, phoneNumber, address, birthD
         hire_date: hireDate
     });
 };
-
-// Example usage
-const newEmployee = {
-    first_name: "John",
-    last_name: "Doe",
-    email: "john.doe@example.com",
-    phone_number: "555-123-4567",
-    address: "123 Main St, City, Country",
-    birth_date: new Date("1990-05-20"),
-    hire_date: new Date("2023-07-15")
-};
-
-addEmployee(newEmployee);
 ```
 
 - View Employee
@@ -203,12 +190,6 @@ addEmployee(newEmployee);
 const viewEmployee = () => {
     return db.employee.find().toArray();
 };
-
-// Example usage
-const employeeIdToView = ObjectId("employee_id_here");
-
-const employeeDetails = viewEmployee(employeeIdToView);
-console.log(employeeDetails);
 ```
 
 - Edit Employee
@@ -221,16 +202,6 @@ const editEmployee = (employeeId, updatedFields) => {
         { $set: updatedFields }
     );
 };
-
-// Example usage
-const employeeIdToEdit = ObjectId("employee_id_here");
-
-const updatedFields = {
-    email: "john.doe.updated@example.com",
-    phone_number: "555-999-8888"
-};
-
-editEmployee(employeeIdToEdit, updatedFields);
 ```
 
 - Delete Employee
@@ -245,11 +216,6 @@ const deleteEmployee = (employeeId) => {
     // Delete the employee
     db.employee.deleteOne({ _id: employeeId });
 };
-
-// Example usage
-const employeeIdToDelete = ObjectId("employee_id_here");
-
-deleteEmployee(employeeIdToDelete);
 ```
 
 ### Team
