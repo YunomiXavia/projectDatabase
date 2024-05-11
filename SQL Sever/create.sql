@@ -119,11 +119,3 @@ CREATE TABLE employee_skills (
 ); 
 
 
---? Archive 
--- CREATE TABLE project_assignment (
---     employee_id INT NOT NULL, 
---     project_id INT NOT NULL,
---     PRIMARY KEY (employee_id, project_id), 
---     FOREIGN KEY (employee_id) REFERENCES Employee(employee_id),
---     FOREIGN KEY (project_id) REFERENCES Project(project_id),
--- ); 
