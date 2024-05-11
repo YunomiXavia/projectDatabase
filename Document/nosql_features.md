@@ -199,7 +199,20 @@ const viewEmployee = () => {
 const editEmployee = (employeeId, updatedFields) => {
     db.employee.updateOne(
         { _id: employeeId },
-        { $set: updatedFields }
+        {
+            $set: {
+                first_name: updatedFields.first_name,
+                last_name: updatedFields.last_name,
+                email: updatedFields.email,
+                phone_number: updatedFields.phone_number,
+                address: updatedFields.address,
+                birth_date: updatedFields.birth_date,
+                hire_date: updatedFields.hire_date,
+                employee_skills: updatedFields.employee_skills,
+                team_task: updatedFields.team_task,
+                team_member: updatedFields.team_member
+            }
+        }
     );
 };
 ```
