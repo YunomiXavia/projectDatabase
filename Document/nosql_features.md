@@ -8,36 +8,49 @@
 
 - Insert Skill and Role Tag and Task:
 
-* add Skills Tag:
+* Add Skills Tag:
 
 ```javascript
-db.skills.insertOne({
-  name: "JavaScript",
-  description: "A programming language commonly used for web development.",
-});
+// Add Skills Tag
+const addSkillsTag = (skillName, skillDescription) => {
+    const skillId = getNextSequenceValue("skill_id");
+    db.skills.insertOne({
+        skill_id: skillId,
+        skill_name: skillName,
+        skill_description: skillDescription
+    });
+};
 ```
 
 - Add Role Tag:
 
 ```javascript
-db.roles.insertOne({
-  role_name: "Manager",
-  role_description: "Responsible for managing teams and projects.",
-});
+// Add Role Tag
+const addRoleTag = (roleName, roleDescription) => {
+    const roleId = getNextSequenceValue("role_id");
+    db.role.insertOne({
+        role_id: roleId,
+        role_name: roleName,
+        role_description: roleDescription
+    });
+};
 ```
 
 - Add Task:
 
 ```javascript
-db.tasks.insertOne({
-  task_name: "Update website layout",
-  description: "Redesign the layout of the company website.",
-  priority: 2, // Medium priority
-  status: "Pending",
-  start_date: new Date(),
-  due_date: new Date("2024-06-30"),
-  team_task: [],
-});
+// Add Task
+const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
+    const taskId = getNextSequenceValue("task_id");
+    db.task.insertOne({
+        task_id: taskId,
+        task_name: taskName,
+        task_description: taskDescription,
+        task_priority: taskPriority,
+        status: status,
+        due_date: dueDate
+    });
+};
 ```
 
 - View Skills and Role Tag and Task:
@@ -45,13 +58,17 @@ db.tasks.insertOne({
 * View Skills Tag:
 
 ```javascript
-db.skills.find();
+const viewSkillsTag = () => {
+    return db.skills.find().toArray();
+};
 ```
 
 - View Role Tag:
 
 ```javascript
-db.roles.find();
+const viewRoleTag = () => {
+    return db.role.find().toArray();
+};
 ```
 
 - Edit Skills and Role Tag and Task:
@@ -59,29 +76,25 @@ db.roles.find();
 * Edit Skills Tag:
 
 ```javascript
-db.skills.updateOne(
-  { _id: ObjectId("skillID") },
-  {
-    $set: {
-      name: "New skill name",
-      description: "Updated skill description",
-    },
-  }
-);
+// Edit Skills Tag
+const editSkillsTag = (skillId, newSkillName, newSkillDescription) => {
+    db.skills.updateOne(
+        { skill_id: skillId },
+        { $set: { skill_name: newSkillName, skill_description: newSkillDescription } }
+    );
+};
 ```
 
 - Edit Role Tag:
 
 ```javascript
-db.roles.updateOne(
-  { _id: ObjectId("roleID") },
-  {
-    $set: {
-      role_name: "New role name",
-      role_description: "Updated role description",
-    },
-  }
-);
+// Edit Role Tag
+const editRoleTag = (roleId, newRoleName, newRoleDescription) => {
+    db.role.updateOne(
+        { role_id: roleId },
+        { $set: { role_name: newRoleName, role_description: newRoleDescription } }
+    );
+};
 ```
 
 - Add Task:
@@ -103,33 +116,45 @@ db.tasks.insertOne({
 * Delete Skills Tag: Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag
 
 ```javascript
-// Lấy ID của Skills Tag muốn xóa
-var skillIdToDelete = ObjectId("skillID");
-
-// Xóa Skills Tag
-db.skills.deleteOne({ _id: skillIdToDelete });
-
-// Xóa phụ thuộc của Skills Tag trong Team
-db.teams.updateMany({}, { $pull: { skill_team_id: skillIdToDelete } });
-
-// Xóa phụ thuộc của Skills Tag trong employee_skills
-db.employees.updateMany({}, { $pull: { employee_skills: skillIdToDelete } });
-
-// Xóa phụ thuộc của Skills Tag trong team_skill_tag (nếu có)
-db.teams.updateMany({}, { $pull: { team_skill_tag: skillIdToDelete } });
+// Delete Skills Tag
+const deleteSkillsTag = (skillId) => {
+    db.skills.deleteOne({ skill_id: skillId });
+    db.team.updateMany({}, { $pull: { team_skill_id: skillId } });
+    db.employee_skills.deleteMany({ skill_id: skillId });
+    db.team_skill_tag.deleteMany({ skill_id: skillId });
+};
 ```
 
 - Delete Role Tag: Delete a Role and its dependency like role_id from team_member
 
 ```javascript
-// Lấy ID của Role Tag muốn xóa
-var roleIdToDelete = ObjectId("roleID");
+// Delete Role Tag
+const deleteRoleTag = (roleId) => {
+    db.role.deleteOne({ role_id: roleId });
+    db.team_member.updateMany({}, { $pull: { role_id: roleId } });
+};
+```
 
-// Xóa Role Tag
-db.roles.deleteOne({ _id: roleIdToDelete });
+**Testing**
+```javascript
+// Testing the functions
+addSkillsTag('Python', 'A high-level programming language known for its simplicity and readability.');
+addSkillsTag('JavaScript', 'A programming language that enables interactive web pages and dynamic content.');
+addRoleTag('Developer', 'Responsible for writing code and implementing software solutions.');
+addRoleTag('Tester', 'Responsible for testing software applications to ensure quality and functionality.');
+addTask('Design homepage', 'Design the main page of the website', 'High', 'Pending', '2023-01-10');
+editSkillsTag(1, 'Python Programming', 'A versatile programming language used in various domains.');
+editRoleTag(1, 'Software Developer', 'Responsible for designing, developing, and maintaining software applications.');
+deleteSkillsTag(2);
+deleteRoleTag(1);
 
-// Xóa phụ thuộc của Role Tag trong team_member
-db.teams.updateMany({}, { $pull: { team_member: roleIdToDelete } });
+// Viewing skills and role tags after modifications
+const updatedSkills = viewSkillsTag();
+const updatedRoles = viewRoleTag();
+
+// Printing updated skills and role tags
+printjson(updatedSkills);
+printjson(updatedRoles);
 ```
 
 ### Employees
