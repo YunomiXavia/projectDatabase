@@ -1,5 +1,4 @@
-# SQL Features Docuemnt
-
+# SQL Features Document
 ## SQL Basic Features (CRUD - Create, Read, Update, Delete)
 ### Tag, Role
 **Manage Tag, Role**
@@ -20,6 +19,7 @@
     VALUES ('Develop new feature', 'Implement new feature X according to specifications', 'High', 'Pending', '2024-05-15');
 ```
 
+
 - View Skills and Role Tag and Task:
 + View Skills Tag:
 ```sql
@@ -33,6 +33,7 @@
 ```sql
     SELECT task_id, task_name, task_description, task_priority, status, due_date FROM Task;
 ```
+
 
 - Edit Skills and Role Tag and Task:
 + Edit Skills Tag:
@@ -59,7 +60,6 @@
     WHERE 
         task_id = [task id cần sửa];
 ```
-
 
 - Delete Skills and Role Tag
 + Delete Skills Tag: Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag 
@@ -123,7 +123,12 @@
     VALUES ('Họ', 'Tên', 'Email', 'Số điện thoại', 'Địa chỉ', 'Ngày sinh', 'Ngày tuyển dụng');
 ```
 
-- View Employee
+- View Employee Basic info
+```sql
+    SELECT employee_id, first_name, last_name, email, phone_number, address, birth_date, hire_date
+    FROM Employee;
+```
+- View Employee Detail info
 ```sql
     SELECT 
         e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.address, e.birth_date, e.hire_date,  

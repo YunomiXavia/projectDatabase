@@ -1,5 +1,6 @@
 -- Thứ tự tạo bảng: Các Bảng Chính -> các Bảng Liên Kết 
 use pm
+
 -- Bảng Chính
 CREATE TABLE Employee (
     employee_id INT PRIMARY KEY IDENTITY(1,1), -- Auto-incrementing ID

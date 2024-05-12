@@ -145,6 +145,7 @@ select * from Role
 INSERT INTO Team (team_name, team_skill_id, team_lead_id)
 VALUES 
     ('Web Development Team', (SELECT skill_id FROM Skills WHERE skill_name = ''), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson')),
+    ('Web Development Team 2', (SELECT skill_id FROM Skills WHERE skill_name = ''), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson')),
     ('Testing Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Tester'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis')),
     ('Marketing Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Marketing'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson')),
     ('Backend Development Team', (SELECT skill_id FROM Skills WHERE skill_name = 'Backend Development'), (SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown')),
