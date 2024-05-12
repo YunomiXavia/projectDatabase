@@ -22,7 +22,7 @@ Update Role Tag
 ```sql
     UPDATE Role
     SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
-    WHERE role_id = id_cần_sửa;
+    WHERE role_id = 111;
 ```
 Delete Role Tag
 ```sql
