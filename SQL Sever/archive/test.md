@@ -69,7 +69,7 @@ Create Employee
 ```
 Read Employee
 ```sql
-    SELECT employee_id, first_name, last_name, email, phone_number, address, birth_date, hire_date FROM Employee;
+    SELECT * FROM Employee;
 ```
 Update Employee
 ```sql
