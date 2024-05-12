@@ -180,7 +180,8 @@ Read Project Basic Attribute
 	LEFT JOIN
         team_project tp ON p.project_id = tp.project_id
 	GROUP BY
-        p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+        p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority,
+	p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
 ```
 Read all Skill Required for the Project
 ```sql
@@ -201,7 +202,9 @@ Update Project
 Update Project Basic Attributes
 ```sql
 UPDATE Project
-	SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới], prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới', start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
+	SET name = 'Tên dự án mới', goal = 'Mục tiêu dự án mới', number_of_employees = [Số lượng nhân viên mới],
+		prefer_team = 'Đội ưu tiên mới', project_priority = 'Mức độ ưu tiên mới', project_status = 'Trạng thái dự án mới',
+		start_date = 'Ngày bắt đầu mới', end_date = 'Ngày kết thúc mới', project_manager_id = [ID của quản lý dự án mới]
 	WHERE project_id = 111;
 ```
 Update Project Status (not Delete Project)
