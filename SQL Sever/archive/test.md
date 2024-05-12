@@ -1,3 +1,22 @@
+Create Skill Tag 
+```sql
+   INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
+    VALUES
+    ('Develop new feature', 'Implement new feature X according to specifications',
+     'High', 'Pending', '2024-05-15'); 
+```
+
+Read Skill Tag
+```sql
+   SELECT * FROM Skills
+```
+
+Update Skill Tag
+```sql
+    UPDATE Role
+    SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
+    WHERE role_id = 111;
+```
 
 Delete Skill Tag
 ```sql
