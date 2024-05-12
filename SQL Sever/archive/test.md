@@ -156,10 +156,11 @@ Delete Team
 QUẢN LÝ PROJECT
 Create Project:
 ```sql
-	INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id)
+	INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority,
+		project_status, start_date, end_date, project_manager_id)
 	VALUES 
-    ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên',
-     'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý án]);
+	    ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên',
+	     'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý án]);
 ```
 Read Project
 ```sql
