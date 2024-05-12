@@ -4,6 +4,13 @@ Delete Skill Tag
     DELETE FROM Skills WHERE skill_id = 111;
 ```
 
+Update Role Tag
+```sql
+    UPDATE Role
+    SET role_name = 'Tên_role_mới', role_description = 'Mô_tả_role_mới'
+    WHERE role_id = 111;
+```
+
 QUẢN LÝ ROLE 
 Create Role Tag
 ```sql
@@ -74,7 +81,10 @@ Read Employee
 Update Employee
 ```sql
     UPDATE Employee
-	SET first_name = 'Họ mới', last_name = 'Tên mới', email = 'Email mới', phone_number = 'Số điện thoại mới', address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới', hire_date = 'Ngày tuyển dụng mới'
+	SET first_name = 'Họ mới', last_name = 'Tên mới',
+        email = 'Email mới', phone_number = 'Số điện thoại mới',
+        address = 'Địa chỉ mới', birth_date = 'Ngày sinh mới',
+        hire_date = 'Ngày tuyển dụng mới'
 	WHERE employee_id = 111;
 ```
 Delete Employee
@@ -84,10 +94,11 @@ Delete Employee
 ```
 
 QUẢN LÝ TEAM
-```sql
 Create Team:
+```sql
 	INSERT INTO Team (team_name, team_skill_id, team_lead_id, team_status)
-	VALUES ('Tên nhóm mới', id_kỹ_năng, id_nhân_viên_trưởng_nhóm, 'Trạng thái nhóm');
+	VALUES 
+    ('Tên nhóm mới', id_kỹ_năng, id_nhân_viên_trưởng_nhóm, 'Trạng thái nhóm');
 ```
 Read Team
 ```sql
@@ -124,13 +135,18 @@ Delete Team
 ```
 
 QUẢN LÝ PROJECT
-```sql
 Create Project:
+```sql
 	INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id)
 	VALUES 
-('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+    ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên',
+     'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý án]);
 ```
 Read Project
+```sql
+select * from Project
+```
+
 Read Project Basic Attribute
 ```sql
 	SELECT
@@ -138,13 +154,13 @@ Read Project Basic Attribute
     	CONCAT(e.first_name, ' ', e.last_name) AS project_manager,
     	COUNT(DISTINCT tp.team_id) AS number_of_teams
 	FROM
-    		Project p
+        Project p
 	LEFT JOIN
-    		Employee e ON p.project_manager_id = e.employee_id
+        Employee e ON p.project_manager_id = e.employee_id
 	LEFT JOIN
-    		team_project tp ON p.project_id = tp.project_id
+        team_project tp ON p.project_id = tp.project_id
 	GROUP BY
-    	     p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
+        p.project_id, p.name, p.goal, p.number_of_employees, p.project_priority, p.project_status, p.start_date, p.end_date, e.first_name, e.last_name;
 ```
 Read all Skill Required for the Project
 ```sql
@@ -189,7 +205,6 @@ Trigger và Procedures cho từng Tính năng
 FEATURES 1: View Employee by Skill Tag
 Description: This stored procedure retrieves a list of employees who have a specific skill ID.
 ```sql
-
 	CREATE OR ALTER PROCEDURE ListEmployeesBySkillID
     		@SkillID INT
 	AS
@@ -205,7 +220,6 @@ Description: This stored procedure retrieves a list of employees who have a spec
 ```
 FEATURES 2: View Employee by Team Skill Tag
 ```sql
-
     	CREATE OR ALTER PROCEDURE display_employees_by_team_skill
     	    @team_id INT -- Parameter to specify the desired team's ID
     	AS
@@ -227,7 +241,6 @@ SELECT * FROM team_skill_tag
 FEATURES 3: View Team by skill_Id
 Description: 	Used to display teams based on a specific skill ID. 
 ```sql
-
     	CREATE PROCEDURE display_teams_by_skill_id
         	@skill_id_param INT
     	AS
@@ -246,10 +259,21 @@ SELECT DISTINCT t.team_id, t.team_name, s.skill_name, s.skill_description
 FEATURES 4: View Employees on a Team with Specific Skill
 Description: This query selects the first name, last name, and email of employees who have the skill with skill_id 1 and are part of the 'Web Development Team'.
 ```sql
-    	SELECT e.first_name, e.last_name, e.email
-    	FROM Employee e
-    	JOIN employee_skills es ON e.employee_id = es.employee_id
-    	JOIN team_skill_tag tst ON es.skill_id = tst.skill_id
-    	JOIN Team t ON tst.team_id = t.team_id
-    	WHERE t.team_name = 'Web Development Team' AND tst.skill_id = 1; -- Assuming skill_id 7 is 'Mobile Development'
+    CREATE OR ALTER PROCEDURE GetTeamMembersBySkill
+        @team_name NVARCHAR(100),
+        @skill_id INT
+        AS
+    BEGIN
+        SELECT e.employee_id, e.first_name, e.last_name, e.email
+        FROM Employee e
+        JOIN employee_skills es ON e.employee_id = es.employee_id
+        JOIN team_skill_tag tst ON es.skill_id = tst.skill_id
+        JOIN Team t ON tst.team_id = t.team_id
+        WHERE t.team_name = @team_name AND tst.skill_id = @skill_id;
+    END;
+    Go
+    EXEC GetTeamMembersBySkill @team_name = 'Web Development Team', @skill_id = 1;
+
+    select * from team_member
+    select * from team WHERE team_name = 'Web Development Team'
 ```
