@@ -3,6 +3,7 @@ Delete Skill Tag
 ```sql
     DELETE FROM Skills WHERE skill_id = 111;
 ```
+
 QUẢN LÝ ROLE 
 Create Role Tag
 ```sql
@@ -11,6 +12,12 @@ Create Role Tag
     Read Role Tag
     SELECT * FROM ROLE
 ```
+
+Read Role Tag
+```sql
+    SELECT * FROM ROLE
+```
+
 Update Role Tag
 ```sql
     UPDATE Role
