@@ -188,12 +188,12 @@ VALUES
 --     ((SELECT role_id FROM Role WHERE role_name = 'Data Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
 --     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team'));
 
-INSERT INTO team_task (team_id, task_id, assigned_employee_id)
+INSERT INTO team_task (team_id, task_id)
 VALUES 
-    (1,1,1),
-    (1,3,2),
-    (1,12,4),
-    (1,2,5);
+    (1,1),
+    (1,3),
+    (1,12),
+    (1,2);
 
 
 
