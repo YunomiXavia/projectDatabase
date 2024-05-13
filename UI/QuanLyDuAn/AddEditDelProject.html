@@ -65,23 +65,49 @@
         <div class="bg-white dark:bg-zinc-700 shadow rounded-lg p-4">
             <h2 class="text-lg font-semibold text-zinc-900 dark:text-white">Edit/Delete Project</h2>
             <form class="mt-4 space-y-3">
-                <input type="text" placeholder="Project Name" class="w-full p-2 border rounded" value="Website Redesign">
-                <input type="text" placeholder="Project Goal" class="w-full p-2 border rounded" value="Increase UX quality">
-                <input type="number" placeholder="Number of Employees" class="w-full p-2 border rounded" value="6">
-                <input type="text" placeholder="Preferred Team" class="w-full p-2 border rounded" value="Team 4">
-                <input type="text" placeholder="Project Priority" class="w-full p-2 border rounded"value="High">
-                <input type="text" placeholder="Project Status" class="w-full p-2 border rounded" value="Active">
-                <input type="date" placeholder="Start Date" class="w-full p-2 border rounded">
-                <input type="date" placeholder="End Date" class="w-full p-2 border rounded">
-                <input type="number" placeholder="Project Manager ID" class="w-full p-2 border rounded" value="003">
-
+                <div>
+                    <label for="projectName" class="block text-sm font-medium text-gray-700">Project Name</label>
+                    <input type="text" id="projectName" placeholder="Project Name" class="w-full p-2 border rounded" value="Website Redesign">
+                </div>
+                <div>
+                    <label for="projectGoal" class="block text-sm font-medium text-gray-700">Project Goal</label>
+                    <input type="text" id="projectGoal" placeholder="Project Goal" class="w-full p-2 border rounded" value="Increase UX quality">
+                </div>
+                <div>
+                    <label for="numEmployees" class="block text-sm font-medium text-gray-700">Number of Employees</label>
+                    <input type="number" id="numEmployees" placeholder="Number of Employees" class="w-full p-2 border rounded" value="6">
+                </div>
+                <div>
+                    <label for="preferredTeam" class="block text-sm font-medium text-gray-700">Preferred Team</label>
+                    <input type="text" id="preferredTeam" placeholder="Preferred Team" class="w-full p-2 border rounded" value="Team 4">
+                </div>
+                <div>
+                    <label for="projectPriority" class="block text-sm font-medium text-gray-700">Project Priority</label>
+                    <input type="text" id="projectPriority" placeholder="Project Priority" class="w-full p-2 border rounded" value="High">
+                </div>
+                <div>
+                    <label for="projectStatus" class="block text-sm font-medium text-gray-700">Project Status</label>
+                    <input type="text" id="projectStatus" placeholder="Project Status" class="w-full p-2 border rounded" value="Active">
+                </div>
+                <div>
+                    <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date</label>
+                    <input type="date" id="startDate" placeholder="Start Date" class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label for="endDate" class="block text-sm font-medium text-gray-700">End Date</label>
+                    <input type="date" id="endDate" placeholder="End Date" class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label for="projectManagerID" class="block text-sm font-medium text-gray-700">Project Manager ID</label>
+                    <input type="number" id="projectManagerID" placeholder="Project Manager ID" class="w-full p-2 border rounded" value="003">
+                </div>
+            
                 <div class="flex space-x-2">
-                    <button type="button"
-                        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update Project</button>
-                    <button type="button"
-                        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete Project</button>
+                    <button type="button" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Update Project</button>
+                    <button type="button" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Delete Project</button>
                 </div>
             </form>
+            
         </div>
     </div>
 
