@@ -681,13 +681,19 @@ db.team_member.deleteMany({ member_id: employeeIdToDelete });
 ? Trigger Delete from Skills
 
 ```javascript
-var roleIdToDelete = 1; // Thay đổi roleIdToDelete tùy theo vai trò muốn xóa
+var skillIdToDelete = 1; // Thay đổi skillIdToDelete tùy theo kỹ năng muốn xóa
 
-// Xóa bản ghi của vai trò từ bảng Role
-db.Role.deleteOne({ role_id: roleIdToDelete });
+// Xóa bản ghi của kỹ năng từ bảng Skills
+db.Skills.deleteOne({ skill_id: skillIdToDelete });
 
-// Xóa bản ghi của vai trò từ bảng team_member
-db.team_member.deleteMany({ role_id: roleIdToDelete });
+// Xóa bản ghi của kỹ năng từ bảng employee_skills
+db.employee_skills.deleteMany({ skill_id: skillIdToDelete });
+
+// Xóa bản ghi của kỹ năng từ bảng team_skill_tag
+db.team_skill_tag.deleteMany({ skill_id: skillIdToDelete });
+
+// Xóa bản ghi của kỹ năng từ bảng project_prefer_skills
+db.project_prefer_skills.deleteMany({ skill_id: skillIdToDelete });
 ```
 
 Delete: Delete a Task and its dependency like task_id from team_task
