@@ -6651,3 +6651,671 @@ WARNING: Using: t3/utils/Icons8/dark/16x16/Color-pink@2x.png
 WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-grey@1.3x.png
 2024-05-13T18:10:23+0700 [main] t3.utils.gui.NQ23.K()
 WARNING: Using: t3/utils/Icons8/dark/16x16/Color-grey@2x.png
+2024-05-13T22:49:01+0700 [main] t3.dataman.mongodb.app.EJb0.ahw()
+INFO: Studio 3T version 2024.2.0
+2024-05-13T22:49:04+0700 [ForkJoinPool.commonPool-worker-1] t3.utils.am.f2qq.<clinit>()
+INFO: Registering state classes took 1810 ms
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/IntelliShell-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/IntelliShell-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/SQL-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/SQL-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Tasks-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Tasks-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Search-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Search-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-file-color@1.3x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-file-color@2x.png
+2024-05-13T22:49:06+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-task-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-task-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Save-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Save-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Save-as-file-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Save-as-file-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Save-as-task-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Save-as-task-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Query-profiler-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Query-profiler-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Collection-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Collection-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-in-aggregation-editor-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-in-aggregation-editor-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Map-reduce-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Map-reduce-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Data-masking-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Data-masking-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Schema-explorer-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Schema-explorer-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Reschema-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Reschema-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/compare-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/compare-color@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Connect-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Connect-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Collection-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Collection-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/IntelliShell-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/IntelliShell-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/SQL-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/SQL-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Aggregate-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Aggregate-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Query-Profiler-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Query-Profiler-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Compare-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Compare-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Schema-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Schema-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Reschema-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Reschema-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Tasks-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Tasks-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Export-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Export-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Import-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Import-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Data-Masking-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Data-Masking-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/SQL-Migration-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/SQL-Migration-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Users-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Users-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Roles-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Roles-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Feedback-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Feedback-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/32x32/Back-to-free-Tag-Empty@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/32x32/Back-to-free-Tag-Empty@2x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/light/16x16/Close-panel-color@1.3x.png
+2024-05-13T22:49:07+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/light/16x16/Close-panel-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Back-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Back-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Server-db-connection-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Server-db-connection-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Server-locked-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Server-locked-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Database-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Database-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Collection-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Collection-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Collection-timeseries-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Collection-timeseries-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Collection-clustered-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Collection-clustered-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Views-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Views-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Code-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Code-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/GridFS-Bucket-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/GridFS-Bucket-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Users-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Users-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Roles-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Roles-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Roles-green@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Roles-green@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Index-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Index-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Session-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Session-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Replica-set-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Replica-set-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Server-primary-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Server-primary-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Server-secondary-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Server-secondary-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Folder-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Folder-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Favourite-selected-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Favourite-selected-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Match-case-selected-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Match-case-selected-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Match-case-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Match-case-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Note-win-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Note-win-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Team-share-add-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Team-share-add-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Manage-access-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Manage-access-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Refresh-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Refresh-color@2x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Help-color@1.3x.png
+2024-05-13T22:49:08+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Help-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Cancel-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Cancel-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Show-status-log-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Show-status-log-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/File-picker-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/File-picker-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Broom-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Broom-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Broom-multiple-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Broom-multiple-color@2x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-in-tab-color@1.3x.png
+2024-05-13T22:49:09+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-in-tab-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.dataman.mongodb.app.GnBN.agJ()
+INFO: Erasing temp files took 10 ms
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/Dropdown-arrow@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/Dropdown-arrow@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Invite-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Invite-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Team-share-invite-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Team-share-invite-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Local-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Local-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Folder-connections-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Folder-connections-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Folder-SQL-connections-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Folder-SQL-connections-color@2x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Folder-bookmark-color@1.3x.png
+2024-05-13T22:49:10+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Folder-bookmark-color@2x.png
+2024-05-13T22:49:11+0700 [3T::Connection Manager Thread] t3.utils.connman.qKEh.d()
+WARNING: consider using isEffectiveVersionOrLater for comparing version against 3.4 or above
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/User-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/User-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/Breadcrumb-separator@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/Breadcrumb-separator@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Database-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Database-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Bookmark-empty-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Bookmark-empty-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Lock-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Lock-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Run-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Run-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Run-from-current-cursor-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Run-from-current-cursor-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Run-from-current-selection-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Run-from-current-selection-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Add-collection-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Add-collection-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Query-history-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Query-history-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Wand-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Wand-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Split-horizontally-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Split-horizontally-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Ai-helper-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Ai-helper-color@2x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Visual-query-builder-color@1.3x.png
+2024-05-13T22:49:13+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Visual-query-builder-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Autosuggest-alt-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Autosuggest-alt-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Text-prose-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Text-prose-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Text-indent-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Text-indent-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Text-indent-remove-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Text-indent-remove-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/Help-alt-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/Help-alt-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/View-options-dropdown@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/View-options-dropdown@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/notification-panel-icon-sets/dark/Close@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/notification-panel-icon-sets/dark/Close@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Info-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Info-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Expand-right-arrow-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Expand-right-arrow-color@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Change-source-alt-blue@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Change-source-alt-blue@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/24x24/Ai-helper@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/24x24/Ai-helper@2x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Add-color@1.3x.png
+2024-05-13T22:49:14+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Add-color@2x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Mongoshell-restart-color@1.3x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Mongoshell-restart-color@2x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Switch-shell-color@1.3x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Switch-shell-color@2x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Pin-color@1.3x.png
+2024-05-13T22:49:15+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Pin-color@2x.png
+2024-05-13T22:49:21+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/8x8/Wand-color@1.3x.png
+2024-05-13T22:49:21+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/8x8/Wand-color@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Choose-colors-round@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Choose-colors-round@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-none@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-none@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-red@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-red@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-brown@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-brown@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-green@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-green@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-turquoise@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-turquoise@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-blue@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-blue@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-violet@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-violet@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-purple@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-purple.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-pink@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-pink@2x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Color-grey@1.3x.png
+2024-05-13T22:53:44+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Color-grey@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Cut-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Cut-color@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Copy-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Copy-color@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Paste-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Paste-color@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Undo@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Undo@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Redo@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Redo@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/In-table-search-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/In-table-search-color@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Replace-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Replace-color@2x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Save-as-color@1.3x.png
+2024-05-13T22:53:49+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Save-as-color@2x.png
+2024-05-13T22:53:50+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Back-to-start-color@1.3x.png
+2024-05-13T22:53:50+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Back-to-start-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Next-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Next-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Advance-to-end-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Advance-to-end-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Type-other-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Type-other-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/blank-16x16@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/blank-16x16.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Duplicate-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Duplicate-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Execution-time-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Execution-time-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-object-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-object-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-boolean-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-boolean-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-null-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-null-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-number-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/tableTypeIcons/Type-number-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-boolean-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-boolean-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-null-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-null-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-number-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/type-icon-sets/dark/treeTypeIcons/Type-number-color@2x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/15x15/Pin-color@1.3x.png
+2024-05-13T22:53:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/15x15/Pin-color@2x.png
+2024-05-13T22:54:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/14x14/IntelliShell-color@1.3x.png
+2024-05-13T22:54:51+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/14x14/IntelliShell-color@2x.png
+2024-05-13T22:55:33+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Warning-color@1.3x.png
+2024-05-13T22:55:33+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Warning-color@2x.png
+2024-05-13T22:55:33+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Success-color@1.3x.png
+2024-05-13T22:55:33+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Success-color@2x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Favourite-color@1.3x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Favourite-color@2x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Delete-color@1.3x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Delete-color@2x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Collapse-arrow-color@1.3x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Collapse-arrow-color@2x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Expand-arrow-color@1.3x.png
+2024-05-13T22:56:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Expand-arrow-color@2x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Edit-color@1.3x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Edit-color@2x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Set-default-query-color@1.3x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Set-default-query-color@2x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Open-query-manager-color@1.3x.png
+2024-05-13T22:56:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Open-query-manager-color@2x.png
+2024-05-13T22:56:29+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Tasks-rename-color@1.3x.png
+2024-05-13T22:56:29+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Tasks-rename-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Query-code-alt-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Query-code-alt-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Explain-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Explain-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Lock-unlocked-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Lock-unlocked-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/View-document-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/View-document-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Edit-document-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Edit-document-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Show-update-dialog-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Show-update-dialog-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Show-remove-dialog-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Show-remove-dialog-color@2x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Count-color@1.3x.png
+2024-05-13T23:00:16+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Count-color@2x.png
+2024-05-13T23:00:17+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/15x15/Pin-hover-color@1.3x.png
+2024-05-13T23:00:17+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/15x15/Pin-hover-color@2x.png
+2024-05-13T23:00:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/utils/Icons8/dark/16x16/Full-explain-color@1.3x.png
+2024-05-13T23:00:22+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/utils/Icons8/dark/16x16/Full-explain-color@2x.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/explain/icons/table_valid@1.3x.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/explain/icons/table_valid.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/explain/icons/cog_arrow_left@1.3x.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/explain/icons/cog_arrow_left.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Image doesn't exist: t3/explain/icons/eof@1.3x.png
+2024-05-13T23:00:23+0700 [main] t3.utils.gui.NQ23.K()
+WARNING: Using: t3/explain/icons/eof.png
