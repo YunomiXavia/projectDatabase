@@ -615,10 +615,10 @@ db.team_project.aggregate([
 ]);
 ```
 
-? Update total employee count in a project by
-? Use this procedure with the project_id to update the number_of_employees in the Project table
-? To update when a employee join or leave a team, get the count of distinct employees in the project's teams and update the number_of_employees in the Project table
 
+- ? Cập nhật tổng số nhân viên trong một dự án theo project_id
+- ? Sử dụng Procedure với project_id để cập nhật number_of_employees trong bảng Project
+- ? Miêu tả: Đếm tổng số nhân viên bằng cách đếm employee_id độc nhất trong các team tham gia dự án đó
 ```javascript
 var projectId = 1; // Thay đổi projectId tùy theo dự án cần cập nhật
 

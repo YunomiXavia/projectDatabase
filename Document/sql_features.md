@@ -637,6 +637,9 @@ EXEC create_task_for_team
         -- Delete dependencies from team_task
         DELETE FROM team_task
         WHERE task_id = @deleted_task_id;
+
+        DELETE FROM Task
+        WHERE task_id = @deleted_task_id;
     END;
 ```
 
