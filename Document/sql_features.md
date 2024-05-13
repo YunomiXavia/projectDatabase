@@ -62,58 +62,17 @@
         task_id = [task id cần sửa];
 ```
 
+
 - Delete Skills and Role Tag
 + Delete Skills Tag: Trigger to Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag 
 ```sql
-    CREATE OR ALTER TRIGGER cascade_delete_skill 
-    ON Skills
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_skill_id INT;
-
-        SELECT @deleted_skill_id = skill_id FROM deleted;
-
-        -- Delete from team_skill_tag
-        DELETE FROM team_skill_tag
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from employee_skills
-        DELETE FROM employee_skills
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from employee_skills
-        DELETE FROM project_prefer_skills
-        WHERE skill_id = @deleted_skill_id;
-
-        -- Delete from Team (assuming cascading delete is not set up)
-        UPDATE Team SET team_skill_id = NULL WHERE team_skill_id = @deleted_skill_id;
-        DELETE FROM Skills WHERE skill_id = @deleted_skill_id;
-
-
-    END;
-    GO
+    DELETE FROM Skills WHERE skill_id = 1
 ```
     
 + Delete Role Tag: Delete a Role and its dependency like role_id from team_member
 ```sql
-    CREATE OR ALTER TRIGGER delete_role_actions
-    ON Role
-    INSTEAD OF DELETE 
-    AS
-    BEGIN
-        DECLARE @deleted_role_id INT;
-
-        SELECT @deleted_role_id = role_id FROM deleted;
-
-        -- 1. Remove associated role assignments (team_member or similar)
-        DELETE FROM team_member 
-        WHERE role_id = @deleted_role_id;  
-
-        DELETE FROM Role 
-        WHERE role_id = @deleted_role_id;  
-    END;
-    GO
+    DELETE FROM Role 
+    WHERE role_id = 1;  
 ```
 
 ### Employees
@@ -153,41 +112,7 @@
 ```
 - Delete Employee
 ```sql
-    CREATE OR ALTER TRIGGER cascade_delete_employee
-    ON Employee
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_employee_id INT;
-
-        SELECT @deleted_employee_id = employee_id FROM deleted;
-
-        -- 1. Delete assignments from team_member 
-        DELETE FROM team_member 
-        WHERE member_id = @deleted_employee_id; 
-
-        -- 2. Delete assigned tasks from team_task
-        DELETE FROM team_task
-        WHERE assigned_employee_id = @deleted_employee_id; 
-
-        -- 3. Update team_lead_id to NULL in Team table
-        UPDATE Team 
-        SET team_lead_id = NULL
-        WHERE team_lead_id = @deleted_employee_id;
-
-        -- 4. Update project_manager_id to NULL in Project table
-        UPDATE Project 
-        SET project_manager_id = NULL 
-        WHERE project_manager_id = @deleted_employee_id;
-
-        -- 5. Delete records from employee_skills 
-        DELETE FROM employee_skills 
-        WHERE employee_id = @deleted_employee_id;
-
-        -- 6. Finally, delete the employee
-        DELETE FROM Employee
-        WHERE employee_id = @deleted_employee_id;
-    END;
+    DELETE FROM Employee
 ```
 
 ### Team
@@ -476,7 +401,7 @@ EXEC create_task_for_team
 
 - ? Count total employee in a project by project_id
 ```sql
-    CREATE OR ALTER PROCEDURE GetDistinctEmployeesInProjectTeams
+    CREATE OR ALTER PROCEDURE CountDistinctEmployeesInProjectTeams
         @ProjectID INT
     AS
     BEGIN
@@ -498,7 +423,7 @@ EXEC create_task_for_team
     END;
 
     Go
-    EXEC GetDistinctEmployeesInProjectTeams 1;
+    EXEC CountDistinctEmployeesInProjectTeams 1;
 
     select * from team_member WHERE team_id = 1
     select * from team_member WHERE team_id = 2
@@ -508,15 +433,99 @@ EXEC create_task_for_team
     select * from team_project WHERE project_id = 1
 ```
 #### Triggers
-- ? We Cannot perform an aggregate function on an expression containing an aggregate or a subquery. 
-- ? Trigger: Update Project 'number_of_employees' - On Progress
+- ? Trigger Delete from Employee
+```sql
+   CREATE OR ALTER TRIGGER cascade_delete_employee
+    ON Employee
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_employee_id INT;
+
+        SELECT @deleted_employee_id = employee_id FROM deleted;
+
+        -- 1. Delete assignments from team_member 
+        DELETE FROM team_member 
+        WHERE member_id = @deleted_employee_id; 
+
+        -- 2. Delete assigned tasks from team_task
+        DELETE FROM team_task
+        WHERE assigned_employee_id = @deleted_employee_id; 
+
+        -- 3. Update team_lead_id to NULL in Team table
+        UPDATE Team 
+        SET team_lead_id = NULL
+        WHERE team_lead_id = @deleted_employee_id;
+
+        -- 4. Update project_manager_id to NULL in Project table
+        UPDATE Project 
+        SET project_manager_id = NULL 
+        WHERE project_manager_id = @deleted_employee_id;
+
+        -- 5. Delete records from employee_skills 
+        DELETE FROM employee_skills 
+        WHERE employee_id = @deleted_employee_id;
+
+        -- 6. Finally, delete the employee
+        DELETE FROM Employee
+        WHERE employee_id = @deleted_employee_id;
+    END;
+```
+
+- ? Trigger Delete from Role
+```sql
+    CREATE OR ALTER TRIGGER delete_role_actions
+    ON Role
+    INSTEAD OF DELETE 
+    AS
+    BEGIN
+        DECLARE @deleted_role_id INT;
+
+        SELECT @deleted_role_id = role_id FROM deleted;
+
+        -- 1. Remove associated role assignments (team_member or similar)
+        DELETE FROM team_member 
+        WHERE role_id = @deleted_role_id;  
+
+        DELETE FROM Role 
+        WHERE role_id = @deleted_role_id;  
+    END;
+    GO
+```
+
+- ? Trigger Delete from Skills
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_skill 
+    ON Skills
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_skill_id INT;
+
+        SELECT @deleted_skill_id = skill_id FROM deleted;
+
+        -- Delete from team_skill_tag
+        DELETE FROM team_skill_tag
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM employee_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from employee_skills
+        DELETE FROM project_prefer_skills
+        WHERE skill_id = @deleted_skill_id;
+
+        -- Delete from Team (assuming cascading delete is not set up)
+        UPDATE Team SET team_skill_id = NULL WHERE team_skill_id = @deleted_skill_id;
+        DELETE FROM Skills WHERE skill_id = @deleted_skill_id;
+
+
+    END;
+    GO
+```
+
+- ? Trigger Delete from Skills
 ```sql
 
 ```
-
-
-
-
-
-
-    

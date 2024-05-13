@@ -721,7 +721,7 @@ exports = function(changeEvent) {
   const db = context.services.get("mongodb-atlas").db("your_database_name");
   const projectsCollection = db.collection("Project");
   const teamProjectCollection = db.collection("team_project");
-
+  
   const projectId = changeEvent.fullDocument.project_id;
   const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
 
