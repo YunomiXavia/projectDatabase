@@ -1,4 +1,4 @@
-# NO-SQL Features Docuemnt
+# NO-SQL Features Document
 
 ## NO-SQL Basic Features (CRUD - Create, Read, Update, Delete)
 
@@ -11,46 +11,47 @@
 * Add Skills Tag:
 
 ```javascript
-// Add Skills Tag
-const addSkillsTag = (skillName, skillDescription) => {
-    const skillId = getNextSequenceValue("skill_id");
-    db.skills.insertOne({
-        skill_id: skillId,
-        skill_name: skillName,
-        skill_description: skillDescription
-    });
-};
+// Lấy id mới cho skills
+var newSkillsId =
+  db.Skills.find().sort({ skill_id: -1 }).limit(1).toArray()[0].skill_id + 1;
+
+// Thêm một skills mới với id mới
+db.Skills.insertOne({
+  skill_id: newSkillsId,
+  skill_name: "Java",
+  skill_description: "Programming language",
+});
 ```
 
 - Add Role Tag:
 
 ```javascript
-// Add Role Tag
-const addRoleTag = (roleName, roleDescription) => {
-    const roleId = getNextSequenceValue("role_id");
-    db.role.insertOne({
-        role_id: roleId,
-        role_name: roleName,
-        role_description: roleDescription
-    });
-};
+// Lấy id mới cho role
+var newRoleId =
+  db.Role.find().sort({ role_id: -1 }).limit(1).toArray()[0].role_id + 1;
+
+// Thêm một role mới với id mới
+db.Role.insertOne({
+  role_id: newRoleId,
+  role_name: "Developer",
+  role_description: "Software developer",
+});
 ```
 
 - Add Task:
 
 ```javascript
-// Add Task
-const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
-    const taskId = getNextSequenceValue("task_id");
-    db.task.insertOne({
-        task_id: taskId,
-        task_name: taskName,
-        task_description: taskDescription,
-        task_priority: taskPriority,
-        status: status,
-        due_date: dueDate
-    });
-};
+// Lấy id mới cho task
+var newTaskId =
+  db.Task.find().sort({ task_id: -1 }).limit(1).toArray()[0].task_id + 1;
+
+// Thêm một task mới với id mới
+db.Task.insertOne({
+  task_id: newTaskId,
+  task_name: "Code review",
+  task_description: "Review the code changes",
+  team_id: 1,
+});
 ```
 
 - View Skills and Role Tag and Task:
@@ -58,17 +59,13 @@ const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
 * View Skills Tag:
 
 ```javascript
-const viewSkillsTag = () => {
-    return db.skills.find().toArray();
-};
+db.Skills.find();
 ```
 
 - View Role Tag:
 
 ```javascript
-const viewRoleTag = () => {
-    return db.role.find().toArray();
-};
+db.Role.find();
 ```
 
 - Edit Skills and Role Tag and Task:
@@ -76,42 +73,31 @@ const viewRoleTag = () => {
 * Edit Skills Tag:
 
 ```javascript
-// Edit Skills Tag
-const editSkillsTag = (skillId, newSkillName, newSkillDescription) => {
-    db.skills.updateOne(
-        { skill_id: skillId },
-        { $set: { skill_name: newSkillName, skill_description: newSkillDescription } }
-    );
-};
+// Sửa skills có id là 1
+db.Skills.updateOne(
+  { skill_id: 1 },
+  {
+    $set: {
+      skill_name: "Python",
+      skill_description: "High-level programming language",
+    },
+  }
+);
 ```
 
 - Edit Role Tag:
 
 ```javascript
-// Edit Role Tag
-const editRoleTag = (roleId, newRoleName, newRoleDescription) => {
-    db.role.updateOne(
-        { role_id: roleId },
-        { $set: { role_name: newRoleName, role_description: newRoleDescription } }
-    );
-};
-```
-
-- Add Task:
-
-```javascript
-// Add Task
-const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
-    const taskId = getNextSequenceValue("task_id");
-    db.task.insertOne({
-        task_id: taskId,
-        task_name: taskName,
-        task_description: taskDescription,
-        task_priority: taskPriority,
-        status: status,
-        due_date: dueDate
-    });
-};
+// Sửa role có id là 1
+db.Role.updateOne(
+  { role_id: 1 },
+  {
+    $set: {
+      role_name: "Senior Developer",
+      role_description: "Senior software developer",
+    },
+  }
+);
 ```
 
 - Delete Skills and Role Tag
@@ -119,45 +105,21 @@ const addTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
 * Delete Skills Tag: Delete Skills and it dependency: skill_id from Team , employee_skills, team_skill_tag
 
 ```javascript
-// Delete Skills Tag
-const deleteSkillsTag = (skillId) => {
-    db.skills.deleteOne({ skill_id: skillId });
-    db.team.updateMany({}, { $pull: { team_skill_id: skillId } });
-    db.employee_skills.deleteMany({ skill_id: skillId });
-    db.team_skill_tag.deleteMany({ skill_id: skillId });
-};
+// Xóa skills có id là 1
+db.Skills.deleteOne({ skill_id: 1 });
+
+// Xóa role có id là 1
+db.Role.deleteOne({ role_id: 1 });
 ```
 
 - Delete Role Tag: Delete a Role and its dependency like role_id from team_member
 
 ```javascript
-// Delete Role Tag
-const deleteRoleTag = (roleId) => {
-    db.role.deleteOne({ role_id: roleId });
-    db.team_member.updateMany({}, { $pull: { role_id: roleId } });
-};
-```
+// Xóa role có id là 1
+db.Role.deleteOne({ role_id: 1 });
 
-**Testing**
-```javascript
-// Testing the functions
-addSkillsTag('Python', 'A high-level programming language known for its simplicity and readability.');
-addSkillsTag('JavaScript', 'A programming language that enables interactive web pages and dynamic content.');
-addRoleTag('Developer', 'Responsible for writing code and implementing software solutions.');
-addRoleTag('Tester', 'Responsible for testing software applications to ensure quality and functionality.');
-addTask('Design homepage', 'Design the main page of the website', 'High', 'Pending', '2023-01-10');
-editSkillsTag(1, 'Python Programming', 'A versatile programming language used in various domains.');
-editRoleTag(1, 'Software Developer', 'Responsible for designing, developing, and maintaining software applications.');
-deleteSkillsTag(2);
-deleteRoleTag(1);
-
-// Viewing skills and role tags after modifications
-const updatedSkills = viewSkillsTag();
-const updatedRoles = viewRoleTag();
-
-// Printing updated skills and role tags
-printjson(updatedSkills);
-printjson(updatedRoles);
+// Xóa các team_member có role_id là 1
+db.team_member.deleteMany({ role_id: 1 });
 ```
 
 ### Employees
@@ -167,68 +129,49 @@ printjson(updatedRoles);
 - Insert Employee
 
 ```javascript
-// Insert Employee
-const insertEmployee = (firstName, lastName, email, phoneNumber, address, birthDate, hireDate) => {
-    const employeeId = getNextSequenceValue("employee_id");
-    db.employee.insertOne({
-        employee_id: employeeId,
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        phone_number: phoneNumber,
-        address: address,
-        birth_date: birthDate,
-        hire_date: hireDate
-    });
-};
+// Lấy id mới cho employee
+var newEmployeeId =
+  db.Employee.find().sort({ employee_id: -1 }).limit(1).toArray()[0]
+    .employee_id + 1;
+
+// Thêm một employee mới với id mới
+db.Employee.insertOne({
+  employee_id: newEmployeeId,
+  first_name: "John",
+  last_name: "Doe",
+  email: "john.doe@example.com",
+  hire_date: new Date(),
+});
 ```
 
 - View Employee
 
 ```javascript
 // View Employee
-const viewEmployee = () => {
-    return db.employee.find().toArray();
-};
+db.Employee.find();
 ```
 
 - Edit Employee
 
 ```javascript
-// Function to edit an employee
-const editEmployee = (employeeId, updatedFields) => {
-    db.employee.updateOne(
-        { _id: employeeId },
-        {
-            $set: {
-                first_name: updatedFields.first_name,
-                last_name: updatedFields.last_name,
-                email: updatedFields.email,
-                phone_number: updatedFields.phone_number,
-                address: updatedFields.address,
-                birth_date: updatedFields.birth_date,
-                hire_date: updatedFields.hire_date,
-                employee_skills: updatedFields.employee_skills,
-                team_task: updatedFields.team_task,
-                team_member: updatedFields.team_member
-            }
-        }
-    );
-};
+// Sửa thông tin của employee có id là 1
+db.Employee.updateOne(
+  { employee_id: 1 },
+  {
+    $set: {
+      first_name: "Jane",
+      last_name: "Doe",
+      email: "jane.doe@example.com",
+    },
+  }
+);
 ```
 
 - Delete Employee
 
 ```javascript
-// Function to delete an employee
-const deleteEmployee = (employeeId) => {
-    // Remove employee from team_member
-    db.team_member.deleteMany({ employee_id: employeeId });
-    // Remove employee from employee_skills
-    db.employee_skills.deleteMany({ employee_id: employeeId });
-    // Delete the employee
-    db.employee.deleteOne({ _id: employeeId });
-};
+// Xóa employee có id là 1
+db.Employee.deleteOne({ employee_id: 1 });
 ```
 
 ### Team
@@ -238,237 +181,167 @@ const deleteEmployee = (employeeId) => {
 - Insert Team
 
 ```javascript
-// Insert Team
-const insertTeam = (teamName, teamSkillId, teamLeadId, teamStatus) => {
-    const teamId = getNextSequenceValue("team_id");
-    db.Team.insertOne({
-        team_id: teamId,
-        team_name: teamName,
-        team_skill_id: teamSkillId,
-        team_lead_id: teamLeadId,
-        team_status: teamStatus
-    });
-};
+// Lấy id mới cho team
+var newTeamId =
+  db.Team.find().sort({ team_id: -1 }).limit(1).toArray()[0].team_id + 1;
+
+// Thêm một team mới với id mới
+db.Team.insertOne({
+  team_id: newTeamId,
+  team_name: "Development Team",
+  team_status: "Active",
+});
 ```
 
 - View Team
 
 ```javascript
-// View Team
-const viewTeam = () => {
-    return db.Team.find().toArray();
-};
+db.Team.find();
 ```
 
 - Edit Team
 
 ```javascript
-// Edit Team
-const editTeam = (teamId, updatedFields) => {
-    db.Team.updateOne(
-        { team_id: teamId },
-        {
-            $set: {
-                team_name: updatedFields.team_name,
-                team_skill_id: updatedFields.team_skill_id,
-                team_lead_id: updatedFields.team_lead_id,
-                team_status: updatedFields.team_status
-            }
-        }
-    );
-};
+// Sửa thông tin của team có id là 1
+db.Team.updateOne({ team_id: 1 }, { $set: { team_name: "Design Team" } });
 ```
 
 - Delete Team
 - ? Change Team status to Deactive instead of Delete (since Team hold many contraint and valuable infomation)
+
 ```javascript
-// Change Team status to Deactive (instead of Delete)
-const deactivateTeam = (teamId) => {
-    db.Team.updateOne(
-        { team_id: teamId },
-        { $set: { team_status: "Inactive" } }
-    );
-};
+// Sửa trạng thái của team có id là 1 từ "Active" thành "Inactive"
+db.Team.updateOne({ team_id: 1 }, { $set: { team_status: "Inactive" } });
 ```
 
 ### Task
 
-- Create
+- Create Task
 
 ```javascript
-// Create Task
-const createTask = (taskName, taskDescription, taskPriority, status, dueDate) => {
-    const taskId = getNextSequenceValue("task_id");
-    db.Task.insertOne({
-        task_id: taskId,
-        task_name: taskName,
-        task_description: taskDescription,
-        task_priority: taskPriority,
-        status: status,
-        due_date: dueDate
-    });
-};
+// Lấy id mới cho task
+var newTaskId =
+  db.Task.find().sort({ task_id: -1 }).limit(1).toArray()[0].task_id + 1;
+
+// Thêm một task mới với id mới
+db.Task.insertOne({
+  task_id: newTaskId,
+  task_name: "Implement Feature X",
+  task_description: "Implement feature X in the application",
+  status: "Pending",
+  due_date: new Date(),
+  project_id: 1,
+});
 ```
 
 - Add Task to Team (project_manager create overview task and assign to team)
 
 ```javascript
-// Add Task to Team
-const addTaskToTeam = (teamId, taskId) => {
-    db.team_task.insertOne({
-        team_id: teamId,
-        task_id: taskId
-    });
-};
+// Lấy id mới cho team_task
+var newTeamTaskId =
+  db.team_task.find().sort({ team_task_id: -1 }).limit(1).toArray()[0]
+    .team_task_id + 1;
+
+// Thêm một task vào team với id mới
+db.team_task.insertOne({ team_task_id: newTeamTaskId, team_id: 1, task_id: 1 });
 ```
 
 - Read
 
 * Add
 
-- Update
+- Update Task
 
 ```javascript
-// Update Task
-const updateTask = (taskId, updatedFields) => {
-    db.Task.updateOne(
-        { task_id: taskId },
-        {
-            $set: {
-                task_name: updatedFields.task_name,
-                task_description: updatedFields.task_description,
-                task_priority: updatedFields.task_priority,
-                status: updatedFields.status,
-                due_date: updatedFields.due_date
-            }
-        }
-    );
-};
+// Sửa thông tin của task có id là 1
+db.Task.updateOne(
+  { task_id: 1 },
+  {
+    $set: {
+      task_description: "Implement feature X in the application (update)",
+    },
+  }
+);
 ```
 
 - Delete: Delete a Task and its dependency like task_id from team_task
 
 ```javascript
-const deleteTask = (taskId) => {
-    db.Task.deleteOne({ task_id: taskId });
-    db.team_task.deleteMany({ task_id: taskId });
-};
+// Xóa task có id là 1
+db.Task.deleteOne({ task_id: 1 });
+
+// Xóa các team_task có task_id là 1
+db.team_task.deleteMany({ task_id: 1 });
 ```
 
 ### Project
-
-```javascript
-// Hàm getNextSequenceValue để tăng giá trị sequence cho các trường có kiểu ID
-const getNextSequenceValue = (sequenceName) => {
-    // Kiểm tra xem sequence có tồn tại không
-    const sequenceDocument = db.counters.findOne({ _id: sequenceName });
-
-    // Nếu không tìm thấy sequence, tạo mới một document sequence với giá trị ban đầu là 1
-    if (!sequenceDocument) {
-        db.counters.insertOne({ _id: sequenceName, sequence_value: 1 });
-        return 1;
-    }
-
-    // Tìm và cập nhật giá trị sequence
-    const updatedDocument = db.counters.findAndModify({
-        query: { _id: sequenceName },
-        update: { $inc: { sequence_value: 1 } },
-        new: true
-    });
-
-    // Trả về giá trị sequence mới
-    return updatedDocument.sequence_value;
-};
-```
 
 **Manage Project**
 
 - Insert Project
 
 ```javascript
-// Insert Project
-const insertProject = (projectName, goal, numberOfEmployees, projectPriority, projectStatus, startDate, endDate, projectManagerId) => {
-    const projectId = getNextSequenceValue("project_id");
-    db.Project.insertOne({
-        project_id: projectId,
-        name: projectName,
-        goal: goal,
-        number_of_employees: numberOfEmployees,
-        project_priority: projectPriority,
-        project_status: projectStatus,
-        start_date: startDate,
-        end_date: endDate,
-        project_manager_id: projectManagerId
-    });
-};
+// Lấy id mới cho project
+var newProjectId =
+  db.Project.find().sort({ project_id: -1 }).limit(1).toArray()[0].project_id +
+  1;
+
+// Thêm một project mới với id mới
+db.Project.insertOne({
+  project_id: newProjectId,
+  name: "New Project",
+  goal: "Develop a new software application",
+  project_status: "Pending",
+  start_date: new Date(),
+});
 ```
 
 - View Project
 
 ```javascript
-// View Project
-const viewProject = () => {
-    return db.Project.find().toArray();
-};
+db.Project.find();
 ```
 
 - Edit Project
 
 ```javascript
-// Edit Project
-const editProject = (projectId, updatedFields) => {
-    db.Project.updateOne(
-        { project_id: projectId },
-        {
-            $set: {
-                name: updatedFields.name,
-                goal: updatedFields.goal,
-                number_of_employees: updatedFields.number_of_employees,
-                project_priority: updatedFields.project_priority,
-                project_status: updatedFields.project_status,
-                start_date: updatedFields.start_date,
-                end_date: updatedFields.end_date,
-                project_manager_id: updatedFields.project_manager_id
-            }
-        }
-    );
-};
+// Sửa thông tin của project có id là 1
+db.Project.updateOne(
+  { project_id: 1 },
+  { $set: { name: "Updated Project", goal: "Updated goal description" } }
+);
 ```
 
 - Deactivate Project: Change Project status to Deactive instead of Delete (since Project hold many contraint and valuable infomation)
 
 ```javascript
-// Deactivate Project (Change Project status to Deactive)
-const deactivateProject = (projectId) => {
-    db.Project.updateOne(
-        { project_id: projectId },
-        { $set: { project_status: "Inactive" } }
-    );
-};
+// Sửa trạng thái của project có id là 1 từ "Pending" thành "Inactive"
+db.Project.updateOne(
+  { project_id: 1 },
+  { $set: { project_status: "Inactive" } }
+);
 ```
 
 - ? Set Project to project_priority
 
 ```javascript
-// Set Project priority
-const setProjectPriority = (projectId, priority) => {
-    db.Project.updateOne(
-        { project_id: projectId },
-        { $set: { project_priority: priority } }
-    );
-};
+// Sửa trạng thái của project có id là 1 thành "High" priority
+db.Project.updateOne({ project_id: 1 }, { $set: { project_priority: "High" } });
 ```
 
 - ? Update start_date and Update end_date
 
 ```javascript
-// Update start_date and end_date of Project
-const updateProjectDates = (projectId, startDate, endDate) => {
-    db.Project.updateOne(
-        { project_id: projectId },
-        { $set: { start_date: startDate, end_date: endDate } }
-    );
-};
+// Cập nhật ngày bắt đầu và ngày kết thúc của project có id là 1
+db.Project.updateOne(
+  { project_id: 1 },
+  {
+    $set: {
+      start_date: new Date("2024-05-01"),
+      end_date: new Date("2024-12-31"),
+    },
+  }
+);
 ```
 
 ### NO-SQL to SQL Specical Features (Procedure, Trigger)
@@ -477,280 +350,333 @@ const updateProjectDates = (projectId, startDate, endDate) => {
 
 - ? Team Features: View Employee through Skill Tag
 ```javascript
-// View Employee through Skill Tag
-const viewEmployeeBySkillTag = (skillId) => {
-    return db.employee_skills.aggregate([
-        {
-            $match: { skill_id: skillId }
-        },
-        {
-            $lookup: {
-                from: "Employee",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee"
-            }
-        },
-        {
-            $unwind: "$employee"
-        },
-        {
-            $project: {
-                _id: 0,
-                employee_id: "$employee.employee_id",
-                first_name: "$employee.first_name",
-                last_name: "$employee.last_name",
-                email: "$employee.email"
-            }
-        }
-    ]).toArray();
-};
+db.Employee.aggregate([
+  {
+    $lookup: {
+      from: "employee_skills",
+      localField: "employee_id",
+      foreignField: "employee_id",
+      as: "employee_skills",
+    },
+  },
+  {
+    $unwind: "$employee_skills",
+  },
+  {
+    $lookup: {
+      from: "Skills",
+      localField: "employee_skills.skill_id",
+      foreignField: "skill_id",
+      as: "skills",
+    },
+  },
+  {
+    $project: {
+      first_name: 1,
+      last_name: 1,
+      email: 1,
+      "skills.skill_name": 1,
+    },
+  },
+]);
 ```
 
 - ? Project Procedure: Skill needed for a Project
 
+Mô tả: Kỹ năng cần thiết cho một dự án cụ thể.
+
 ```javascript
-// Skill needed for a Project
-const getSkillsForProject = (projectId) => {
-    return db.project_prefer_skills.aggregate([
-        {
-            $match: { project_id: projectId }
-        },
-        {
-            $lookup: {
-                from: "Skills",
-                localField: "skill_id",
-                foreignField: "skill_id",
-                as: "skill"
-            }
-        },
-        {
-            $unwind: "$skill"
-        },
-        {
-            $project: {
-                _id: 0,
-                skill_id: "$skill.skill_id",
-                skill_name: "$skill.skill_name",
-                skill_description: "$skill.skill_description"
-            }
-        }
-    ]).toArray();
-};
+var projectId = 1; // Thay đổi projectId tùy theo dự án muốn xem
+db.project_prefer_skills.aggregate([
+  {
+    $match: { project_id: projectId },
+  },
+  {
+    $lookup: {
+      from: "Skills",
+      localField: "skill_id",
+      foreignField: "skill_id",
+      as: "skills",
+    },
+  },
+  {
+    $project: {
+      "skills.skill_name": 1,
+      "skills.skill_description": 1,
+    },
+  },
+]);
 ```
 
 - ? Project Procedure: Team in a Project
 
+Mô tả: Hiển thị các team trong một dự án.
+
 ```javascript
-db.projects.aggregate([
-  { $match: { _id: ObjectId("projectID") } },
+var projectId = 1; // Thay đổi projectId tùy theo dự án muốn xem
+db.team_project.aggregate([
+  {
+    $match: { project_id: projectId },
+  },
   {
     $lookup: {
-      from: "teams",
-      localField: "_id",
-      foreignField: "project",
+      from: "Team",
+      localField: "team_id",
+      foreignField: "team_id",
       as: "teams",
     },
   },
-  { $unwind: "$teams" },
-  { $project: { "teams.team_name": 1 } },
+  {
+    $project: {
+      "teams.team_name": 1,
+      "teams.team_status": 1,
+    },
+  },
 ]);
 ```
 
 - ? Team Procedure: Employees on a Team with Specific Skill
 
+Mô tả: Nhân viên trong một team có kỹ năng cụ thể.
+
 ```javascript
-const getEmployeesOnTeamWithSpecificSkill = (teamId, skillId) => {
-    return db.team_member.aggregate([
-        {
-            $match: { team_id: teamId }
-        },
-        {
-            $lookup: {
-                from: "employee_skills",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee_skills"
-            }
-        },
-        {
-            $unwind: "$employee_skills"
-        },
-        {
-            $match: { "employee_skills.skill_id": skillId }
-        },
-        {
-            $lookup: {
-                from: "Employee",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee"
-            }
-        },
-        {
-            $unwind: "$employee"
-        },
-        {
-            $project: {
-                _id: 0,
-                employee_id: "$employee.employee_id",
-                first_name: "$employee.first_name",
-                last_name: "$employee.last_name",
-                email: "$employee.email"
-            }
-        }
-    ]).toArray();
-};
+var teamId = 1; // Thay đổi teamId tùy theo team muốn xem
+var skillId = 1; // Thay đổi skillId tùy theo kỹ năng muốn xem
+db.team_member.aggregate([
+  {
+    $match: { team_id: teamId },
+  },
+  {
+    $lookup: {
+      from: "employee_skills",
+      localField: "member_id",
+      foreignField: "employee_id",
+      as: "employee_skills",
+    },
+  },
+  {
+    $unwind: "$employee_skills",
+  },
+  {
+    $match: { "employee_skills.skill_id": skillId },
+  },
+  {
+    $lookup: {
+      from: "Employee",
+      localField: "member_id",
+      foreignField: "employee_id",
+      as: "employees",
+    },
+  },
+  {
+    $project: {
+      "employees.first_name": 1,
+      "employees.last_name": 1,
+      "employees.email": 1,
+    },
+  },
+]);
 ```
 
 - ? Team Procedure: Display Teams by Skill ID
 
+Mô tả: Hiển thị các team dựa trên ID kỹ năng.
+
 ```javascript
-const getTeamsBySkillId = (skillId) => {
-    return db.team_skill_tag.aggregate([
-        {
-            $match: { skill_id: skillId }
-        },
-        {
-            $lookup: {
-                from: "Team",
-                localField: "team_id",
-                foreignField: "team_id",
-                as: "team"
-            }
-        },
-        {
-            $unwind: "$team"
-        },
-        {
-            $project: {
-                _id: 0,
-                team_id: "$team.team_id",
-                team_name: "$team.team_name",
-                team_status: "$team.team_status"
-            }
-        }
-    ]).toArray();
-};
+var skillId = 1; // Thay đổi skillId tùy theo kỹ năng muốn xem
+db.team_skill_tag.aggregate([
+  {
+    $match: { skill_id: skillId },
+  },
+  {
+    $lookup: {
+      from: "Team",
+      localField: "team_id",
+      foreignField: "team_id",
+      as: "teams",
+    },
+  },
+  {
+    $project: {
+      "teams.team_name": 1,
+      "teams.team_status": 1,
+    },
+  },
+]);
 ```
 
 - ? Display Employees by Team Skill Tag
 
+Mô tả: Hiển thị các nhân viên dựa trên nhãn kỹ năng của team.
+
 ```javascript
-const getEmployeesByTeamSkillTag = (teamId, skillId) => {
-    return db.team_member.aggregate([
-        {
-            $match: { team_id: teamId }
-        },
-        {
-            $lookup: {
-                from: "employee_skills",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee_skills"
-            }
-        },
-        {
-            $unwind: "$employee_skills"
-        },
-        {
-            $match: { "employee_skills.skill_id": skillId }
-        },
-        {
-            $lookup: {
-                from: "Employee",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee"
-            }
-        },
-        {
-            $unwind: "$employee"
-        },
-        {
-            $project: {
-                _id: 0,
-                employee_id: "$employee.employee_id",
-                first_name: "$employee.first_name",
-                last_name: "$employee.last_name",
-                email: "$employee.email"
-            }
-        }
-    ]).toArray();
-};
+var teamId = 1; // Thay đổi teamId tùy theo team muốn xem
+db.team_skill_tag.aggregate([
+  {
+    $match: { team_id: teamId },
+  },
+  {
+    $lookup: {
+      from: "employee_skills",
+      localField: "skill_id",
+      foreignField: "skill_id",
+      as: "employee_skills",
+    },
+  },
+  {
+    $lookup: {
+      from: "Employee",
+      localField: "employee_skills.employee_id",
+      foreignField: "employee_id",
+      as: "employees",
+    },
+  },
+  {
+    $project: {
+      "employees.first_name": 1,
+      "employees.last_name": 1,
+      "employees.email": 1,
+    },
+  },
+]);
 ```
 
 - ? Display Employees by Skill Tag and Which Team they in
 
+Mô tả: Hiển thị các nhân viên dựa trên nhãn kỹ năng và team mà họ thuộc về.
+
 ```javascript
-const getEmployeesBySkillTagAndTeam = (skillId) => {
-    return db.team_member.aggregate([
-        {
-            $lookup: {
-                from: "employee_skills",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee_skills"
-            }
-        },
-        {
-            $unwind: "$employee_skills"
-        },
-        {
-            $match: { "employee_skills.skill_id": skillId }
-        },
-        {
-            $lookup: {
-                from: "Employee",
-                localField: "employee_id",
-                foreignField: "employee_id",
-                as: "employee"
-            }
-        },
-        {
-            $unwind: "$employee"
-        },
-        {
-            $lookup: {
-                from: "Team",
-                localField: "team_id",
-                foreignField: "team_id",
-                as: "team"
-            }
-        },
-        {
-            $unwind: "$team"
-        },
-        {
-            $project: {
-                _id: 0,
-                employee_id: "$employee.employee_id",
-                first_name: "$employee.first_name",
-                last_name: "$employee.last_name",
-                email: "$employee.email",
-                team_id: "$team.team_id",
-                team_name: "$team.team_name"
-            }
-        }
-    ]).toArray();
-};
+var skillId = 1; // Thay đổi skillId tùy theo kỹ năng muốn xem
+db.employee_skills.aggregate([
+  {
+    $match: { skill_id: skillId },
+  },
+  {
+    $lookup: {
+      from: "team_member",
+      localField: "employee_id",
+      foreignField: "member_id",
+      as: "team_members",
+    },
+  },
+  {
+    $lookup: {
+      from: "Team",
+      localField: "team_members.team_id",
+      foreignField: "team_id",
+      as: "teams",
+    },
+  },
+  {
+    $lookup: {
+      from: "Employee",
+      localField: "employee_id",
+      foreignField: "employee_id",
+      as: "employees",
+    },
+  },
+  {
+    $project: {
+      "employees.first_name": 1,
+      "employees.last_name": 1,
+      "employees.email": 1,
+      "teams.team_name": 1,
+    },
+  },
+]);
+```
+
+? View Total employee count in a project by project_id
+
+? Description: This procedure retrieves the total count of distinct employees involved in the teams of a specific project.
+
+```javascript
+var projectId = 1; // Thay đổi projectId tùy theo dự án muốn xem
+
+db.team_project.aggregate([
+  {
+    $match: { project_id: projectId },
+  },
+  {
+    $lookup: {
+      from: "team_member",
+      localField: "team_id",
+      foreignField: "team_id",
+      as: "team_members",
+    },
+  },
+  {
+    $group: {
+      _id: null,
+      totalEmployees: { $sum: { $size: "$team_members" } },
+    },
+  },
+]);
+```
+
+? Update total employee count in a project by
+? Use this procedure with the project_id to update the number_of_employees in the Project table
+? To update when a employee join or leave a team, get the count of distinct employees in the project's teams and update the number_of_employees in the Project table
+
+```javascript
+var projectId = 1; // Thay đổi projectId tùy theo dự án cần cập nhật
+
+// Tính lại số lượng nhân viên trong dự án
+var totalEmployees = db.team_project
+  .aggregate([
+    {
+      $match: { project_id: projectId },
+    },
+    {
+      $lookup: {
+        from: "team_member",
+        localField: "team_id",
+        foreignField: "team_id",
+        as: "team_members",
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        totalEmployees: { $sum: { $size: "$team_members" } },
+      },
+    },
+  ])
+  .toArray()[0].totalEmployees;
+
+// Cập nhật số lượng nhân viên trong dự án
+db.Project.updateOne(
+  { project_id: projectId },
+  { $set: { number_of_employees: totalEmployees } }
+);
 ```
 
 #### Triggers
 
-- ? Trigger: Update Project 'number_of_employees'
-```javascript
-exports = function(changeEvent) {
-  const db = context.services.get("mongodb-atlas").db("your_database_name");
-  const projectsCollection = db.collection("Project");
-  const teamProjectCollection = db.collection("team_project");
-  
-  const projectId = changeEvent.fullDocument.project_id;
-  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
+? Trigger Delete from Employee
+? Description: This trigger is used to delete an employee and cascade the deletion to related tables.
 
-  projectsCollection.updateOne(
-    { project_id: projectId },
-    { $set: { number_of_employees: newNumberOfEmployees } }
-  );
-};
+```javascript
+var employeeIdToDelete = 1; // Thay đổi employeeIdToDelete tùy theo nhân viên muốn xóa
+
+// Xóa bản ghi của nhân viên từ bảng Employee
+db.Employee.deleteOne({ employee_id: employeeIdToDelete });
+
+// Xóa bản ghi của nhân viên từ bảng employee_skills
+db.employee_skills.deleteMany({ employee_id: employeeIdToDelete });
+
+// Xóa bản ghi của nhân viên từ bảng team_member
+db.team_member.deleteMany({ member_id: employeeIdToDelete });
+```
+
+? Trigger Delete from Skills
+
+```javascript
+var roleIdToDelete = 1; // Thay đổi roleIdToDelete tùy theo vai trò muốn xóa
+
+// Xóa bản ghi của vai trò từ bảng Role
+db.Role.deleteOne({ role_id: roleIdToDelete });
+
+// Xóa bản ghi của vai trò từ bảng team_member
+db.team_member.deleteMany({ role_id: roleIdToDelete });
 ```
