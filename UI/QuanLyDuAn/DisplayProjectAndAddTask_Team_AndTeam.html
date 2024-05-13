@@ -231,5 +231,31 @@
     Câu truy vấn GẮN task cho team trong nhóm:
     INSERT INTO team_task (team_id, task_id)
     VALUES (id_team_muốn_gán, id_task_mới);
-
    -->
+
+   <!-- 
+    Câu truy vấn hiển thị xem tổng số nhân viên trong dự án cụ thể:
+    CREATE OR ALTER PROCEDURE ViewCountDistinctEmployeesInProjectTeams
+        @ProjectID INT
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        
+        -- Check if the project exists
+        IF NOT EXISTS (SELECT 1 FROM Project WHERE project_id = @ProjectID)
+        BEGIN
+            RAISERROR ('Project not found', 16, 1);
+            RETURN;
+        END
+
+        -- Get distinct employees and store the count in @Count
+        SELECT COUNT(DISTINCT e.employee_id) AS 'Total Employee'
+        FROM Employee e
+        INNER JOIN team_member tm ON e.employee_id = tm.member_id
+        INNER JOIN team_project tp ON tm.team_id = tp.team_id
+        WHERE tp.project_id = @ProjectID;
+    END;
+    Go 
+
+    EXEC ViewCountDistinctEmployeesInProjectTeams 1;
+    -->
