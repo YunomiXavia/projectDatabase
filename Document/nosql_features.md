@@ -615,14 +615,14 @@ db.team_project.aggregate([
 ]);
 ```
 
-
 - ? Cập nhật tổng số nhân viên trong một dự án theo project_id
 - ? Sử dụng Procedure với project_id để cập nhật number_of_employees trong bảng Project
 - ? Miêu tả: Đếm tổng số nhân viên bằng cách đếm employee_id độc nhất trong các team tham gia dự án đó
+
 ```javascript
 var projectId = 1; // Thay đổi projectId tùy theo dự án cần cập nhật
 
-// Tính lại số lượng nhân viên trong dự án
+// Tính tổng số nhân viên trong dự án
 var totalEmployees = db.team_project
   .aggregate([
     {
@@ -637,13 +637,21 @@ var totalEmployees = db.team_project
       },
     },
     {
+      $unwind: "$team_members",
+    },
+    {
       $group: {
         _id: null,
-        totalEmployees: { $sum: { $size: "$team_members" } },
+        totalEmployees: { $addToSet: "$team_members.member_id" },
+      },
+    },
+    {
+      $project: {
+        totalEmployeesCount: { $size: "$totalEmployees" },
       },
     },
   ])
-  .toArray()[0].totalEmployees;
+  .toArray()[0].totalEmployeesCount;
 
 // Cập nhật số lượng nhân viên trong dự án
 db.Project.updateOne(
@@ -680,4 +688,16 @@ db.Role.deleteOne({ role_id: roleIdToDelete });
 
 // Xóa bản ghi của vai trò từ bảng team_member
 db.team_member.deleteMany({ role_id: roleIdToDelete });
+```
+
+? Trigger Delete from Skills
+
+```javascript
+var taskIdToDelete = 1; // Thay đổi taskIdToDelete tùy theo task muốn xóa
+
+// Xóa bản ghi của task từ bảng Task
+db.Task.deleteOne({ task_id: taskIdToDelete });
+
+// Xóa bản ghi của task từ bảng team_task
+db.team_task.deleteMany({ task_id: taskIdToDelete });
 ```
