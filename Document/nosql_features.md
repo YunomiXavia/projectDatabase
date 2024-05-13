@@ -357,6 +357,30 @@ const deleteTask = (taskId) => {
 
 ### Project
 
+```javascript
+// Hàm getNextSequenceValue để tăng giá trị sequence cho các trường có kiểu ID
+const getNextSequenceValue = (sequenceName) => {
+    // Kiểm tra xem sequence có tồn tại không
+    const sequenceDocument = db.counters.findOne({ _id: sequenceName });
+
+    // Nếu không tìm thấy sequence, tạo mới một document sequence với giá trị ban đầu là 1
+    if (!sequenceDocument) {
+        db.counters.insertOne({ _id: sequenceName, sequence_value: 1 });
+        return 1;
+    }
+
+    // Tìm và cập nhật giá trị sequence
+    const updatedDocument = db.counters.findAndModify({
+        query: { _id: sequenceName },
+        update: { $inc: { sequence_value: 1 } },
+        new: true
+    });
+
+    // Trả về giá trị sequence mới
+    return updatedDocument.sequence_value;
+};
+```
+
 **Manage Project**
 
 - Insert Project
@@ -722,57 +746,6 @@ exports = function(changeEvent) {
   const projectsCollection = db.collection("Project");
   const teamProjectCollection = db.collection("team_project");
   
-  const projectId = changeEvent.fullDocument.project_id;
-  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
-
-  projectsCollection.updateOne(
-    { project_id: projectId },
-    { $set: { number_of_employees: newNumberOfEmployees } }
-  );
-};
-```
-
-- Trigger: Update Project 'number_of_employees' - When Employee Added to the Team Project
-```javascript
-exports = function(changeEvent) {
-  const db = context.services.get("mongodb-atlas").db("your_database_name");
-  const projectsCollection = db.collection("Project");
-  const teamProjectCollection = db.collection("team_project");
-
-  const projectId = changeEvent.fullDocument.project_id;
-  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
-
-  projectsCollection.updateOne(
-    { project_id: projectId },
-    { $set: { number_of_employees: newNumberOfEmployees } }
-  );
-};
-```
-
-- Trigger: Update Project 'number_of_employees' - When Project Updated (e.g., end_date changed)
-```javascript
-exports = function(changeEvent) {
-  const db = context.services.get("mongodb-atlas").db("your_database_name");
-  const projectsCollection = db.collection("Project");
-  const teamProjectCollection = db.collection("team_project");
-
-  const projectId = changeEvent.fullDocument.project_id;
-  const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
-
-  projectsCollection.updateOne(
-    { project_id: projectId },
-    { $set: { number_of_employees: newNumberOfEmployees } }
-  );
-};
-```
-
-- Trigger: Update Project 'number_of_employees' - When Team Removed from Project
-```javascript
-exports = function(changeEvent) {
-  const db = context.services.get("mongodb-atlas").db("your_database_name");
-  const projectsCollection = db.collection("Project");
-  const teamProjectCollection = db.collection("team_project");
-
   const projectId = changeEvent.fullDocument.project_id;
   const newNumberOfEmployees = teamProjectCollection.countDocuments({ project_id: projectId });
 
