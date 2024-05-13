@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Roles</title>
+    <!-- Thêm các tệp CSS cần thiết -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Manage Roles</h1>
+
+        <!-- Bảng hiển thị danh sách các role -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow-md rounded">
+                <thead class="bg-gray-800 text-white">
+                    <tr>
+                        <th class="py-3 px-6 text-left">Role Name</th>
+                        <th class="py-3 px-6 text-left">Role Description</th>
+                        <th class="py-3 px-6 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <!-- Sample data -->
+                    <tr>
+                        <td class="py-3 px-6">Admin</td>
+                        <td class="py-3 px-6">Administrator Role</td>
+                        <td class="py-3 px-6">
+                            <button class="text-indigo-600 hover:text-indigo-900" onclick="editRole()">Edit</button>
+                            <button class="text-red-600 hover:text-red-900" onclick="deleteRole()">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-6">User</td>
+                        <td class="py-3 px-6">Regular User Role</td>
+                        <td class="py-3 px-6">
+                            <button class="text-indigo-600 hover:text-indigo-900" onclick="editRole()">Edit</button>
+                            <button class="text-red-600 hover:text-red-900" onclick="deleteRole()">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- More rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Create New Role</h1>
+
+        <!-- Form để tạo role mới -->
+        <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+            <form>
+                <div class="mb-4">
+                    <label for="roleName" class="block text-sm font-medium text-gray-700">Role Name</label>
+                    <input type="text" id="roleName" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter role name">
+                </div>
+                <div class="mb-4">
+                    <label for="roleDescription" class="block text-sm font-medium text-gray-700">Role Description</label>
+                    <textarea id="roleDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the role"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Role</button>
+            </form>
+        </div>
+    </div>
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-4">Edit Role</h1>
+
+        <!-- Form chỉnh sửa thông tin role -->
+        <div class="max-w-md mx-auto bg-white dark:bg-gray-700 shadow-md rounded-lg p-6">
+            <form>
+                <div class="mb-4">
+                    <label for="roleName" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Role Name</label>
+                    <input type="text" id="roleName" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Enter role name">
+                </div>
+                <div class="mb-4">
+                    <label for="roleDescription" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Role Description</label>
+                    <textarea id="roleDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:text-white" placeholder="Enter role description"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update Role</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function editRole() {
+            // Thêm logic xử lý cho việc chỉnh sửa role ở đây
+            console.log("Edit role clicked");
+        }
+
+        function deleteRole() {
+            // Thêm logic xử lý cho việc xóa role ở đây
+            console.log("Delete role clicked");
+        }
+    </script>
+</body>
+
+</html>
