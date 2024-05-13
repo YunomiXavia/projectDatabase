@@ -357,6 +357,30 @@ const deleteTask = (taskId) => {
 
 ### Project
 
+```javascript
+// Hàm getNextSequenceValue để tăng giá trị sequence cho các trường có kiểu ID
+const getNextSequenceValue = (sequenceName) => {
+    // Kiểm tra xem sequence có tồn tại không
+    const sequenceDocument = db.counters.findOne({ _id: sequenceName });
+
+    // Nếu không tìm thấy sequence, tạo mới một document sequence với giá trị ban đầu là 1
+    if (!sequenceDocument) {
+        db.counters.insertOne({ _id: sequenceName, sequence_value: 1 });
+        return 1;
+    }
+
+    // Tìm và cập nhật giá trị sequence
+    const updatedDocument = db.counters.findAndModify({
+        query: { _id: sequenceName },
+        update: { $inc: { sequence_value: 1 } },
+        new: true
+    });
+
+    // Trả về giá trị sequence mới
+    return updatedDocument.sequence_value;
+};
+```
+
 **Manage Project**
 
 - Insert Project
