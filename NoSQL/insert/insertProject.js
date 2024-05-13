@@ -1,6 +1,5 @@
 db.Project.insertMany([
   {
-    _id: ObjectId(),
     project_id: 1,
     name: "Project A",
     goal: "Caffee Shop Website",
@@ -12,7 +11,6 @@ db.Project.insertMany([
     project_manager_id: 1,
   },
   {
-    _id: ObjectId(),
     project_id: 2,
     name: "Project F",
     goal: "Integration of AI into Existing Systems",
@@ -24,7 +22,6 @@ db.Project.insertMany([
     project_manager_id: 5,
   },
   {
-    _id: ObjectId(),
     project_id: 3,
     name: "Project C",
     goal: "Mobile Application Development",
@@ -36,7 +33,6 @@ db.Project.insertMany([
     project_manager_id: 3,
   },
   {
-    _id: ObjectId(),
     project_id: 4,
     name: "Project B",
     goal: "E-commerce Platform Development",
@@ -48,7 +44,6 @@ db.Project.insertMany([
     project_manager_id: 2,
   },
   {
-    _id: ObjectId(),
     project_id: 5,
     name: "Project D",
     goal: "Data Analysis Platform Development",
@@ -60,7 +55,6 @@ db.Project.insertMany([
     project_manager_id: 4,
   },
   {
-    _id: ObjectId(),
     project_id: 6,
     name: "Project E",
     goal: "Internet of Things (IoT) Solution Development",

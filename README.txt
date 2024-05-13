@@ -15,4 +15,5 @@ Script của bài báo cáo:
 - 2 file Cơ sở dữ liệu của SQL và Mongodb
 - 1 folder chứa script của UI
 [Tài_liệu_báo_cáo.zip]
+- Link repo của nhóm chúng em: https://github.com/YunomiXavia/projectDatabase
 Em xin thay mặt nhóm cảm ơn thầy vì đã tận tình hướng dẫn nhóm chúng em hoàn thành bài tập dự án.
