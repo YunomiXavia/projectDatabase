@@ -353,12 +353,12 @@ EXEC create_task_for_team
 
 - ? Display Employees by Team Skill Tag
 ```sql
-    /*
-        Procedure: display_employees_by_team_skill
-        Description: This procedure displays the employees who have skills matching a specified team's ID.
-        Parameters:
-            - @team_id: The ID of the desired team.
-        Returns: None
+       /*
+            Procedure: display_employees_by_team_skill
+            Description: This procedure displays the employees who have skills matching a specified team's ID.
+            Parameters:
+                - @team_id: The ID of the desired team.
+            Returns: None
         */
 
         CREATE OR ALTER PROCEDURE display_employees_by_team_skill 
@@ -430,7 +430,9 @@ EXEC create_task_for_team
     EXEC ViewCountDistinctEmployeesInProjectTeams 1;
 ```
 
-- ? Update total employee count in a project by project_id
+- ? Update total employee count in a project by 
+- ? Use this procedure with the project_id to update the number_of_employees in the Project table
+- ? To update when a employee join or leave a team, get the count of distinct employees in the project's teams and update the number_of_employees in the Project table 
 ```sql
     CREATE OR ALTER PROCEDURE CountDistinctEmployeesInProjectTeams
         @ProjectID INT
@@ -468,7 +470,9 @@ EXEC create_task_for_team
 
 
     select * from team_project WHERE project_id = 1
+    -- To update any project number_of_employee if there are changes in any team of the project. Get the project_id of each team and update the number_of_employee in the Project table.
 ```
+
 
 #### Triggers
 - ? Trigger Delete from Employee
@@ -561,9 +565,4 @@ EXEC create_task_for_team
 
     END;
     GO
-```
-
-- ? Trigger Delete from Skills
-```sql
-
 ```
