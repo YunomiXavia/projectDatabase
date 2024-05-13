@@ -2,9 +2,9 @@
 
 ## SQL Basic Features (CRUD - Create, Read, Update, Delete)
 
-### Tag, Role
+### Tag, Role, Task
 
-**Manage Tag, Role**
+**Manage Tag, Role, Task**
 - Insert Skill and Role and Task:
 + add Skills Tag:
 ```sql
@@ -65,7 +65,7 @@
     WHERE role_id = id_cần_sửa;
 ```
 
-- add Task:
+- add Task Tag:
 
 ```sql
     UPDATE Task
