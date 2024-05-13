@@ -172,21 +172,21 @@ VALUES
 
 
 -- --? Web Developer Team
--- INSERT INTO team_member (role_id, member_id, team_id)
--- VALUES 
---     ((SELECT role_id FROM Role WHERE role_name = 'Front-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'Back-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'Database Administrator'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'DevOps Engineer'), (SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team'));
+INSERT INTO team_member (role_id, member_id, team_id)
+VALUES 
+    ((SELECT role_id FROM Role WHERE role_name = 'Front-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Michael' AND last_name = 'Johnson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'Back-end Developer'), (SELECT employee_id FROM Employee WHERE first_name = 'Emily' AND last_name = 'Davis'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'Database Administrator'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'DevOps Engineer'), (SELECT employee_id FROM Employee WHERE first_name = 'Christopher' AND last_name = 'Brown'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Web Development Team'));
 
 
 -- --? Business Analyst Team
--- INSERT INTO team_member (role_id, member_id, team_id)
--- VALUES
---     ((SELECT role_id FROM Role WHERE role_name = 'Business Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Smith'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'Data Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
---     ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team'));
+INSERT INTO team_member (role_id, member_id, team_id)
+VALUES
+    ((SELECT role_id FROM Role WHERE role_name = 'Business Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Smith'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'Data Analyst'), (SELECT employee_id FROM Employee WHERE first_name = 'David' AND last_name = 'Wilson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team')),
+    ((SELECT role_id FROM Role WHERE role_name = 'Project Manager'), (SELECT employee_id FROM Employee WHERE first_name = 'Sarah' AND last_name = 'Anderson'), (SELECT team_id FROM Team WHERE team_name = 'Database Administration Team'));
 
 INSERT INTO team_task (team_id, task_id)
 VALUES 
@@ -217,6 +217,7 @@ VALUES
     (4, 1), 
     (9, 6), 
     (7, 6), 
+    (1, 6),
     (10, 6); 
 
 INSERT INTO project_prefer_skills (project_id, skill_id)

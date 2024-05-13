@@ -103,7 +103,7 @@ CREATE TABLE team_member(
     role_id INT NOT NULL, 
     member_id INT NOT NULL,
 	team_id INT NOT NULL,
-
+w
     PRIMARY KEY (role_id, member_id, team_id), 
     FOREIGN KEY (role_id) REFERENCES Role(role_id),
     FOREIGN KEY (member_id) REFERENCES Employee(employee_id),

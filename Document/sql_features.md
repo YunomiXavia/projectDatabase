@@ -2,7 +2,7 @@
 ## SQL Basic Features (CRUD - Create, Read, Update, Delete)
 ### Tag, Role
 **Manage Tag, Role**
-- Insert Skill and Role Tag and Task:
+- Insert Skill and Role and Task:
 + add Skills Tag:
 ```sql
     INSERT INTO Skills (skill_name, skill_description) 
@@ -143,6 +143,10 @@
     GROUP BY 
         t.team_id, t.team_name, s.skill_name, e.first_name, e.last_name;
 ```
+- View Team joined Project
+```sql
+    select * from team_project WHERE team_id = 1
+``` 
 
 - Edit Team
 ```sql
@@ -399,14 +403,41 @@ EXEC create_task_for_team
     EXEC display_employees_by_skill @skill_id = 17; -- Assuming skill_id 7 represents 'Mobile Development'
 ```
 
-- ? Count total employee in a project by project_id
+- ? View Total employee count in a project by project_id 
+```sql
+    CREATE OR ALTER PROCEDURE ViewCountDistinctEmployeesInProjectTeams
+        @ProjectID INT
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+        
+        -- Check if the project exists
+        IF NOT EXISTS (SELECT 1 FROM Project WHERE project_id = @ProjectID)
+        BEGIN
+            RAISERROR ('Project not found', 16, 1);
+            RETURN;
+        END
+
+        -- Get distinct employees and store the count in @Count
+        SELECT COUNT(DISTINCT e.employee_id) AS 'Total Employee'
+        FROM Employee e
+        INNER JOIN team_member tm ON e.employee_id = tm.member_id
+        INNER JOIN team_project tp ON tm.team_id = tp.team_id
+        WHERE tp.project_id = @ProjectID;
+    END;
+    Go 
+
+    EXEC ViewCountDistinctEmployeesInProjectTeams 1;
+```
+
+- ? Update total employee count in a project by project_id
 ```sql
     CREATE OR ALTER PROCEDURE CountDistinctEmployeesInProjectTeams
         @ProjectID INT
     AS
     BEGIN
         SET NOCOUNT ON;
-
+        DECLARE @Count INT;  -- Changed to INT to match number_of_employees data type
         -- Check if the project exists
         IF NOT EXISTS (SELECT 1 FROM Project WHERE project_id = @ProjectID)
         BEGIN
@@ -420,10 +451,16 @@ EXEC create_task_for_team
         INNER JOIN team_member tm ON e.employee_id = tm.member_id
         INNER JOIN team_project tp ON tm.team_id = tp.team_id
         WHERE tp.project_id = @ProjectID;
-    END;
 
+            -- Update the number_of_employees in the Project table
+            UPDATE Project
+            SET number_of_employees = @Count
+            WHERE project_id = @ProjectID;
+
+    END;
     Go
-    EXEC CountDistinctEmployeesInProjectTeams 1;
+
+    EXEC CountDistinctEmployeesInProjectTeams @ProjectID = 1;
 
     select * from team_member WHERE team_id = 1
     select * from team_member WHERE team_id = 2
@@ -432,6 +469,7 @@ EXEC create_task_for_team
 
     select * from team_project WHERE project_id = 1
 ```
+
 #### Triggers
 - ? Trigger Delete from Employee
 ```sql

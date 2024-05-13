@@ -1,45 +1,22 @@
 use pm;
-Go
+GO
 
 
 
-CREATE OR ALTER PROCEDURE CountDistinctEmployeesInProjectTeams
-    @ProjectID INT,
-    @Count INT
-AS
-BEGIN
-    SET NOCOUNT ON;
 
-    -- Check if the project exists
-    IF NOT EXISTS (SELECT 1 FROM Project WHERE project_id = @ProjectID)
-    BEGIN
-        RAISERROR ('Project not found', 16, 1);
-        RETURN;
-    END
 
-    -- Get distinct employees involved in the project's teams
-    SELECT DISTINCT COUNT(e.employee_id) AS 'Total Employee'
-    FROM Employee e
-    INNER JOIN team_member tm ON e.employee_id = tm.member_id
-    INNER JOIN team_project tp ON tm.team_id = tp.team_id
-    WHERE tp.project_id = @ProjectID;
+-- INSERT INTO team_member (role_id, member_id, team_id)
+--     VALUES (6, 8, 4);
 
-    SELECT @Count = COUNT(DISTINCT e.employee_id) AS 'Total Employee'
-    FROM Employee e
-    INNER JOIN team_member tm ON e.employee_id = tm.member_id
-    INNER JOIN team_project tp ON tm.team_id = tp.team_id
-    WHERE tp.project_id = @ProjectID;
+-- select * from Project
+-- select * from team_member
+select * from team_project
 
-END;
 
-Go
-EXEC CountDistinctEmployeesInProjectTeams 1;
-
+-- DELETE FROM team_member WHERE role_id = 4 AND member_id = 5 AND team_id = 2
 -- select * from team_member WHERE team_id = 1
 -- select * from team_member WHERE team_id = 2
 -- select * from team_member WHERE team_id = 4
-
-
 -- select * from team_project WHERE project_id = 1
 
-select * from team_member
+-- select * from team_member
