@@ -1,0 +1,9 @@
+{ "_id" : { "$oid" : "6641e5f3473adb6103840443" }, "team_id" : 1, "skill_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840444" }, "team_id" : 1, "skill_id" : 2 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840445" }, "team_id" : 1, "skill_id" : 9 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840446" }, "team_id" : 1, "skill_id" : 30 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840447" }, "team_id" : 1, "skill_id" : 58 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840448" }, "team_id" : 1, "skill_id" : 31 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840449" }, "team_id" : 8, "skill_id" : 53 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384044a" }, "team_id" : 8, "skill_id" : 52 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384044b" }, "team_id" : 8, "skill_id" : 58 }

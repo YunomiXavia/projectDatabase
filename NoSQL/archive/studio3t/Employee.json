@@ -1,0 +1,195 @@
+{
+    "_id" : ObjectId("6641e5f2473adb61038403a9"),
+    "employee_id" : NumberInt(2),
+    "first_name" : "Emily",
+    "last_name" : "Davis",
+    "email" : "emily.davis@example.com",
+    "phone_number" : "555-987-6543",
+    "address" : "321 Pine St, City, Country",
+    "birth_date" : ISODate("1992-03-25T00:00:00.000+0000"),
+    "hire_date" : ISODate("2021-02-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403aa"),
+    "employee_id" : NumberInt(3),
+    "first_name" : "David",
+    "last_name" : "Wilson",
+    "email" : "david.wilson@example.com",
+    "phone_number" : "555-456-7890",
+    "address" : "456 Maple St, City, Country",
+    "birth_date" : ISODate("1988-11-18T00:00:00.000+0000"),
+    "hire_date" : ISODate("2018-09-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403ab"),
+    "employee_id" : NumberInt(4),
+    "first_name" : "Sarah",
+    "last_name" : "Anderson",
+    "email" : "sarah.anderson@example.com",
+    "phone_number" : "555-789-1234",
+    "address" : "987 Cedar St, City, Country",
+    "birth_date" : ISODate("1991-09-03T00:00:00.000+0000"),
+    "hire_date" : ISODate("2020-12-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403ac"),
+    "employee_id" : NumberInt(5),
+    "first_name" : "Christopher",
+    "last_name" : "Brown",
+    "email" : "christopher.brown@example.com",
+    "phone_number" : "555-234-5678",
+    "address" : "654 Walnut St, City, Country",
+    "birth_date" : ISODate("1987-12-07T00:00:00.000+0000"),
+    "hire_date" : ISODate("2017-03-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403ad"),
+    "employee_id" : NumberInt(6),
+    "first_name" : "Sarah",
+    "last_name" : "Smith",
+    "email" : "sarah.smith@example.com",
+    "phone_number" : "555-987-6543",
+    "address" : "123 Maple Ave, City, Country",
+    "birth_date" : ISODate("1990-03-15T00:00:00.000+0000"),
+    "hire_date" : ISODate("2020-02-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403ae"),
+    "employee_id" : NumberInt(7),
+    "first_name" : "John",
+    "last_name" : "Doe",
+    "email" : "john.doe@example.com",
+    "phone_number" : "555-111-2222",
+    "address" : "123 Main St, City, Country",
+    "birth_date" : ISODate("1990-05-20T00:00:00.000+0000"),
+    "hire_date" : ISODate("2023-07-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403af"),
+    "employee_id" : NumberInt(8),
+    "first_name" : "Amanda",
+    "last_name" : "Smith",
+    "email" : "amanda.smith@example.com",
+    "phone_number" : "555-333-4444",
+    "address" : "456 Elm St, City, Country",
+    "birth_date" : ISODate("1988-10-12T00:00:00.000+0000"),
+    "hire_date" : ISODate("2022-09-30T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b0"),
+    "employee_id" : NumberInt(9),
+    "first_name" : "Daniel",
+    "last_name" : "Miller",
+    "email" : "daniel.miller@example.com",
+    "phone_number" : "555-555-6666",
+    "address" : "789 Pine St, City, Country",
+    "birth_date" : ISODate("1995-02-28T00:00:00.000+0000"),
+    "hire_date" : ISODate("2024-03-10T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b1"),
+    "employee_id" : NumberInt(10),
+    "first_name" : "Nate",
+    "last_name" : "Roger",
+    "email" : "nate.nigga@example.com",
+    "phone_number" : "222-111-1234",
+    "address" : "123 Walnut haha, City, Mathe",
+    "birth_date" : ISODate("1944-05-20T00:00:00.000+0000"),
+    "hire_date" : ISODate("2025-07-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b2"),
+    "employee_id" : NumberInt(11),
+    "first_name" : "Jessica",
+    "last_name" : "Wilson",
+    "email" : "jessica.wilson@example.com",
+    "phone_number" : "555-777-8888",
+    "address" : "987 Oak St, City, Country",
+    "birth_date" : ISODate("1993-07-15T00:00:00.000+0000"),
+    "hire_date" : ISODate("2023-12-05T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b3"),
+    "employee_id" : NumberInt(12),
+    "first_name" : "Ryan",
+    "last_name" : "Taylor",
+    "email" : "ryan.taylor@example.com",
+    "phone_number" : "555-999-0000",
+    "address" : "321 Cedar St, City, Country",
+    "birth_date" : ISODate("1997-09-22T00:00:00.000+0000"),
+    "hire_date" : ISODate("2024-01-20T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b4"),
+    "employee_id" : NumberInt(13),
+    "first_name" : "Olivia",
+    "last_name" : "Martinez",
+    "email" : "olivia.martinez@example.com",
+    "phone_number" : "555-123-4567",
+    "address" : "789 Pine St, City, Country",
+    "birth_date" : ISODate("1990-07-10T00:00:00.000+0000"),
+    "hire_date" : ISODate("2020-06-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b5"),
+    "employee_id" : NumberInt(14),
+    "first_name" : "William",
+    "last_name" : "Taylor",
+    "email" : "william.taylor@example.com",
+    "phone_number" : "555-987-6543",
+    "address" : "321 Oak St, City, Country",
+    "birth_date" : ISODate("1985-03-25T00:00:00.000+0000"),
+    "hire_date" : ISODate("2022-02-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b6"),
+    "employee_id" : NumberInt(15),
+    "first_name" : "Emma",
+    "last_name" : "Anderson",
+    "email" : "emma.anderson@example.com",
+    "phone_number" : "555-456-7890",
+    "address" : "456 Elm St, City, Country",
+    "birth_date" : ISODate("1988-11-18T00:00:00.000+0000"),
+    "hire_date" : ISODate("2019-09-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b7"),
+    "employee_id" : NumberInt(16),
+    "first_name" : "James",
+    "last_name" : "Garcia",
+    "email" : "james.garcia@example.com",
+    "phone_number" : "555-789-1234",
+    "address" : "987 Maple St, City, Country",
+    "birth_date" : ISODate("1991-09-03T00:00:00.000+0000"),
+    "hire_date" : ISODate("2021-12-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b8"),
+    "employee_id" : NumberInt(17),
+    "first_name" : "Sophia",
+    "last_name" : "Jones",
+    "email" : "sophia.jones@example.com",
+    "phone_number" : "555-234-5678",
+    "address" : "654 Cedar St, City, Country",
+    "birth_date" : ISODate("1987-12-07T00:00:00.000+0000"),
+    "hire_date" : ISODate("2018-03-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403b9"),
+    "employee_id" : NumberInt(18),
+    "first_name" : "Ethan",
+    "last_name" : "Rodriguez",
+    "email" : "ethan.rodriguez@example.com",
+    "phone_number" : "555-111-2222",
+    "address" : "123 Walnut St, City, Country",
+    "birth_date" : ISODate("1993-05-20T00:00:00.000+0000"),
+    "hire_date" : ISODate("2023-07-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e7d31d1ba0db581fe703"),
+    "employee_id" : NumberInt(19),
+    "first_name" : "John",
+    "last_name" : "Doe",
+    "email" : "john.doe@example.com",
+    "hire_date" : ISODate("2024-05-13T10:13:39.348+0000")
+}

@@ -1,0 +1,45 @@
+{
+    "_id" : ObjectId("6641e5f3473adb6103840443"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840444"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840445"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(9)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840446"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(30)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840447"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(58)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840448"),
+    "team_id" : NumberInt(1),
+    "skill_id" : NumberInt(31)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840449"),
+    "team_id" : NumberInt(8),
+    "skill_id" : NumberInt(53)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384044a"),
+    "team_id" : NumberInt(8),
+    "skill_id" : NumberInt(52)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384044b"),
+    "team_id" : NumberInt(8),
+    "skill_id" : NumberInt(58)
+}

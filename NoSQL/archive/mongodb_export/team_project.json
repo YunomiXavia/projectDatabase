@@ -1,0 +1,6 @@
+{ "_id" : { "$oid" : "6641e5f3473adb610384044c" }, "team_id" : 1, "project_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384044d" }, "team_id" : 2, "project_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384044e" }, "team_id" : 4, "project_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384044f" }, "team_id" : 9, "project_id" : 6 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840450" }, "team_id" : 7, "project_id" : 6 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840451" }, "team_id" : 10, "project_id" : 6 }

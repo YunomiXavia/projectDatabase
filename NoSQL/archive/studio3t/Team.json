@@ -1,0 +1,86 @@
+{
+    "_id" : ObjectId("6641e5f2473adb6103840421"),
+    "team_id" : NumberInt(1),
+    "team_name" : "Design Team",
+    "team_skill_id" : NumberInt(1),
+    "team_lead_id" : NumberInt(1),
+    "team_status" : "Inactive"
+}
+{
+    "_id" : ObjectId("6641e5f2473adb6103840422"),
+    "team_id" : NumberInt(2),
+    "team_name" : "Testing Team",
+    "team_skill_id" : NumberInt(2),
+    "team_lead_id" : NumberInt(2),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f2473adb6103840423"),
+    "team_id" : NumberInt(3),
+    "team_name" : "Marketing Team",
+    "team_skill_id" : NumberInt(3),
+    "team_lead_id" : NumberInt(3),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f2473adb6103840424"),
+    "team_id" : NumberInt(4),
+    "team_name" : "Backend Development Team",
+    "team_skill_id" : NumberInt(9),
+    "team_lead_id" : NumberInt(5),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840425"),
+    "team_id" : NumberInt(5),
+    "team_name" : "Data Science Team",
+    "team_skill_id" : NumberInt(12),
+    "team_lead_id" : NumberInt(4),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840426"),
+    "team_id" : NumberInt(6),
+    "team_name" : "Mobile Development Team",
+    "team_skill_id" : NumberInt(7),
+    "team_lead_id" : NumberInt(6),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840427"),
+    "team_id" : NumberInt(7),
+    "team_name" : "Database Administration Team",
+    "team_skill_id" : NumberInt(10),
+    "team_lead_id" : NumberInt(3),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840428"),
+    "team_id" : NumberInt(8),
+    "team_name" : "UI/UX Design Team",
+    "team_skill_id" : NumberInt(11),
+    "team_lead_id" : NumberInt(2),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840429"),
+    "team_id" : NumberInt(9),
+    "team_name" : "Embedded Systems Team",
+    "team_skill_id" : NumberInt(14),
+    "team_lead_id" : NumberInt(5),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384042a"),
+    "team_id" : NumberInt(10),
+    "team_name" : "Cloud Computing Team",
+    "team_skill_id" : NumberInt(15),
+    "team_lead_id" : NumberInt(1),
+    "team_status" : "Active"
+}
+{
+    "_id" : ObjectId("6641e8179dcb6a4cbf89e310"),
+    "team_id" : NumberInt(11),
+    "team_name" : "Development Team",
+    "team_status" : "Active"
+}

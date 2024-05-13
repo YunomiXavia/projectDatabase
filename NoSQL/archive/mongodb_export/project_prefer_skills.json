@@ -1,0 +1,9 @@
+{ "_id" : { "$oid" : "6641e5f3473adb6103840452" }, "project_id" : 2, "skill_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840453" }, "project_id" : 2, "skill_id" : 9 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840454" }, "project_id" : 2, "skill_id" : 20 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840455" }, "project_id" : 2, "skill_id" : 4 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840456" }, "project_id" : 3, "skill_id" : 5 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840457" }, "project_id" : 3, "skill_id" : 2 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840458" }, "project_id" : 3, "skill_id" : 8 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840459" }, "project_id" : 3, "skill_id" : 26 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384045a" }, "project_id" : 3, "skill_id" : 30 }
