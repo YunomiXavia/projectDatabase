@@ -238,21 +238,7 @@ EXEC create_task_for_team
     @task_due_date = '2023-12-25';
 ```
 
-- Delete: Delete a Task and its dependency like task_id from team_task
 
-```sql
-    CREATE OR ALTER TRIGGER cascade_delete_task
-    ON Task
-    INSTEAD OF DELETE
-    AS
-    BEGIN
-        DECLARE @deleted_task_id INT;
-        SELECT @deleted_task_id = task_id FROM deleted;
-
-        -- Delete dependencies from team_task
-        DELETE FROM team_task
-        WHERE task_id = @deleted_task_id;
-    END;
 ```
 
 ### Project
@@ -393,7 +379,7 @@ EXEC create_task_for_team
 - ? Team Procedure: Display Teams by Skill ID
 
 ```sql
-    -- This stored procedure is used to display teams based on a specific skill ID.
+        -- This stored procedure is used to display teams based on a specific skill ID.
         -- It takes a parameter called @skill_id_param, which represents the skill ID to filter the teams by.
         CREATE PROCEDURE display_teams_by_skill_id
             @skill_id_param INT
@@ -522,7 +508,6 @@ EXEC create_task_for_team
         UPDATE Project
         SET number_of_employees = @Count
         WHERE project_id = @ProjectID;
-
     END;
     Go
 
@@ -581,7 +566,7 @@ EXEC create_task_for_team
 ```
 
 - ? Trigger Delete from Role
-
+- ? Description: This trigger is used to delete a role and cascade the deletion to related tables.
 ```sql
     CREATE OR ALTER TRIGGER delete_role_actions
     ON Role
@@ -603,8 +588,10 @@ EXEC create_task_for_team
 ```
 
 - ? Trigger Delete from Skills
-
+- ? Description: This trigger is used to delete a skill and cascade the deletion to related tables.
 ```sql
+    -- Trigger to delete a skill and cascade the deletion to related tables
+    -- related tables: team_skill_tag, employee_skills, project_prefer_skills, team
     CREATE OR ALTER TRIGGER cascade_delete_skill
     ON Skills
     INSTEAD OF DELETE
@@ -634,3 +621,22 @@ EXEC create_task_for_team
     END;
     GO
 ```
+
+
+- Delete: Delete a Task and its dependency like task_id from team_task
+
+```sql
+    CREATE OR ALTER TRIGGER cascade_delete_task
+    ON Task
+    INSTEAD OF DELETE
+    AS
+    BEGIN
+        DECLARE @deleted_task_id INT;
+        SELECT @deleted_task_id = task_id FROM deleted;
+
+        -- Delete dependencies from team_task
+        DELETE FROM team_task
+        WHERE task_id = @deleted_task_id;
+    END;
+```
+
