@@ -615,7 +615,7 @@ db.team_project.aggregate([
 ]);
 ```
 
-? Update total employee count in a project by
+? Update total employee count in a project by project_id
 ? Use this procedure with the project_id to update the number_of_employees in the Project table
 ? To update when a employee join or leave a team, get the count of distinct employees in the project's teams and update the number_of_employees in the Project table
 
