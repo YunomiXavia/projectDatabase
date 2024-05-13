@@ -690,6 +690,7 @@ db.Role.deleteOne({ role_id: roleIdToDelete });
 db.team_member.deleteMany({ role_id: roleIdToDelete });
 ```
 
+Delete: Delete a Task and its dependency like task_id from team_task
 ```javascript
 var taskIdToDelete = 1; // Thay đổi taskIdToDelete tùy theo task muốn xóa
 
