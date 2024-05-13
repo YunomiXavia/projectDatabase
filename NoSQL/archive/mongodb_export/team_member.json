@@ -1,0 +1,10 @@
+{ "_id" : { "$oid" : "6641e5f3473adb6103840435" }, "role_id" : 21, "member_id" : 2, "team_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840436" }, "role_id" : 4, "member_id" : 3, "team_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840437" }, "role_id" : 22, "member_id" : 5, "team_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840438" }, "role_id" : 3, "member_id" : 4, "team_id" : 1 }
+{ "_id" : { "$oid" : "6641e5f3473adb6103840439" }, "role_id" : 11, "member_id" : 2, "team_id" : 4 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384043a" }, "role_id" : 12, "member_id" : 6, "team_id" : 2 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384043b" }, "role_id" : 13, "member_id" : 7, "team_id" : 4 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384043c" }, "role_id" : 11, "member_id" : 2, "team_id" : 7 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384043d" }, "role_id" : 12, "member_id" : 10, "team_id" : 9 }
+{ "_id" : { "$oid" : "6641e5f3473adb610384043e" }, "role_id" : 22, "member_id" : 5, "team_id" : 2 }

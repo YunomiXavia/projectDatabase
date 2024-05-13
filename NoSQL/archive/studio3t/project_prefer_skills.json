@@ -1,0 +1,45 @@
+{
+    "_id" : ObjectId("6641e5f3473adb6103840452"),
+    "project_id" : NumberInt(2),
+    "skill_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840453"),
+    "project_id" : NumberInt(2),
+    "skill_id" : NumberInt(9)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840454"),
+    "project_id" : NumberInt(2),
+    "skill_id" : NumberInt(20)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840455"),
+    "project_id" : NumberInt(2),
+    "skill_id" : NumberInt(4)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840456"),
+    "project_id" : NumberInt(3),
+    "skill_id" : NumberInt(5)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840457"),
+    "project_id" : NumberInt(3),
+    "skill_id" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840458"),
+    "project_id" : NumberInt(3),
+    "skill_id" : NumberInt(8)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840459"),
+    "project_id" : NumberInt(3),
+    "skill_id" : NumberInt(26)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384045a"),
+    "project_id" : NumberInt(3),
+    "skill_id" : NumberInt(30)
+}

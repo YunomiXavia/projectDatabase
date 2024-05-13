@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("6641e5f3473adb6103840440"),
+    "team_id" : NumberInt(1),
+    "task_id" : NumberInt(3)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840441"),
+    "team_id" : NumberInt(1),
+    "task_id" : NumberInt(12)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840442"),
+    "team_id" : NumberInt(1),
+    "task_id" : NumberInt(2)
+}

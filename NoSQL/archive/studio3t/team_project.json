@@ -1,0 +1,30 @@
+{
+    "_id" : ObjectId("6641e5f3473adb610384044c"),
+    "team_id" : NumberInt(1),
+    "project_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384044d"),
+    "team_id" : NumberInt(2),
+    "project_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384044e"),
+    "team_id" : NumberInt(4),
+    "project_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384044f"),
+    "team_id" : NumberInt(9),
+    "project_id" : NumberInt(6)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840450"),
+    "team_id" : NumberInt(7),
+    "project_id" : NumberInt(6)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840451"),
+    "team_id" : NumberInt(10),
+    "project_id" : NumberInt(6)
+}

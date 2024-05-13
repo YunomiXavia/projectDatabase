@@ -1,0 +1,30 @@
+{
+    "_id" : ObjectId("6641e5f3473adb610384042d"),
+    "employee_id" : NumberInt(2),
+    "skill_id" : NumberInt(19)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384042e"),
+    "employee_id" : NumberInt(3),
+    "skill_id" : NumberInt(20)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384042f"),
+    "employee_id" : NumberInt(4),
+    "skill_id" : NumberInt(17)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840430"),
+    "employee_id" : NumberInt(4),
+    "skill_id" : NumberInt(18)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840431"),
+    "employee_id" : NumberInt(5),
+    "skill_id" : NumberInt(17)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840433"),
+    "employee_id" : NumberInt(2),
+    "skill_id" : NumberInt(9)
+}

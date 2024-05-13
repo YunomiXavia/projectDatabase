@@ -1,0 +1,124 @@
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c1"),
+    "task_id" : NumberInt(2),
+    "task_name" : "Implement user authentication",
+    "task_description" : "Implement user authentication feature",
+    "task_priority" : "Medium",
+    "status" : "In Progress",
+    "due_date" : ISODate("2023-01-20T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c2"),
+    "task_id" : NumberInt(3),
+    "task_name" : "Test mobile app",
+    "task_description" : "Conduct thorough testing on different devices",
+    "task_priority" : "High",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-03-01T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c3"),
+    "task_id" : NumberInt(4),
+    "task_name" : "Optimize database queries",
+    "task_description" : "Improve the efficiency of database queries",
+    "task_priority" : "Medium",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-02-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c4"),
+    "task_id" : NumberInt(5),
+    "task_name" : "Analyze customer data",
+    "task_description" : "Extract insights from customer data",
+    "task_priority" : "Low",
+    "status" : "Completed",
+    "due_date" : ISODate("2023-01-25T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c5"),
+    "task_id" : NumberInt(6),
+    "task_name" : "Update product images",
+    "task_description" : "Replace outdated product images with new ones",
+    "task_priority" : "Medium",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-02-05T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c6"),
+    "task_id" : NumberInt(7),
+    "task_name" : "Write API documentation",
+    "task_description" : "Document the endpoints and usage of the API",
+    "task_priority" : "High",
+    "status" : "In Progress",
+    "due_date" : ISODate("2023-02-28T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c7"),
+    "task_id" : NumberInt(8),
+    "task_name" : "Deploy website to production",
+    "task_description" : "Deploy the latest version of the website to the production server",
+    "task_priority" : "High",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-03-10T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c8"),
+    "task_id" : NumberInt(9),
+    "task_name" : "Conduct user feedback session",
+    "task_description" : "Organize and conduct a session to gather feedback from users",
+    "task_priority" : "Medium",
+    "status" : "In Progress",
+    "due_date" : ISODate("2023-02-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403c9"),
+    "task_id" : NumberInt(10),
+    "task_name" : "Update website layout",
+    "task_description" : "Revise the layout of the website to improve user experience",
+    "task_priority" : "High",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-02-20T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403ca"),
+    "task_id" : NumberInt(11),
+    "task_name" : "Create weekly progress report",
+    "task_description" : "Compile and send out a report detailing project progress",
+    "task_priority" : "Low",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-02-10T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403cb"),
+    "task_id" : NumberInt(12),
+    "task_name" : "Fix bugs reported by QA team",
+    "task_description" : "Address and resolve bugs identified during QA testing",
+    "task_priority" : "High",
+    "status" : "In Progress",
+    "due_date" : ISODate("2023-02-28T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e5f2473adb61038403cc"),
+    "task_id" : NumberInt(13),
+    "task_name" : "Plan marketing campaign",
+    "task_description" : "Develop a strategy for marketing the product or service",
+    "task_priority" : "High",
+    "status" : "Pending",
+    "due_date" : ISODate("2023-03-15T00:00:00.000+0000")
+}
+{
+    "_id" : ObjectId("6641e720d396aa3b8f8aad50"),
+    "task_id" : NumberInt(14),
+    "task_name" : "Code review",
+    "task_description" : "Review the code changes",
+    "team_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e87878fc03b467f36914"),
+    "task_id" : NumberInt(15),
+    "task_name" : "Implement Feature X",
+    "task_description" : "Implement feature X in the application",
+    "status" : "Pending",
+    "due_date" : ISODate("2024-05-13T10:16:24.324+0000"),
+    "project_id" : NumberInt(1)
+}

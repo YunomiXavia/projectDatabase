@@ -1,0 +1,60 @@
+{
+    "_id" : ObjectId("6641e5f3473adb6103840435"),
+    "role_id" : NumberInt(21),
+    "member_id" : NumberInt(2),
+    "team_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840436"),
+    "role_id" : NumberInt(4),
+    "member_id" : NumberInt(3),
+    "team_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840437"),
+    "role_id" : NumberInt(22),
+    "member_id" : NumberInt(5),
+    "team_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840438"),
+    "role_id" : NumberInt(3),
+    "member_id" : NumberInt(4),
+    "team_id" : NumberInt(1)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb6103840439"),
+    "role_id" : NumberInt(11),
+    "member_id" : NumberInt(2),
+    "team_id" : NumberInt(4)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384043a"),
+    "role_id" : NumberInt(12),
+    "member_id" : NumberInt(6),
+    "team_id" : NumberInt(2)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384043b"),
+    "role_id" : NumberInt(13),
+    "member_id" : NumberInt(7),
+    "team_id" : NumberInt(4)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384043c"),
+    "role_id" : NumberInt(11),
+    "member_id" : NumberInt(2),
+    "team_id" : NumberInt(7)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384043d"),
+    "role_id" : NumberInt(12),
+    "member_id" : NumberInt(10),
+    "team_id" : NumberInt(9)
+}
+{
+    "_id" : ObjectId("6641e5f3473adb610384043e"),
+    "role_id" : NumberInt(22),
+    "member_id" : NumberInt(5),
+    "team_id" : NumberInt(2)
+}
