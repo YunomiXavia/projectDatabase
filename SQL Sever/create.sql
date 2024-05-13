@@ -41,7 +41,7 @@ CREATE TABLE Task (
 CREATE TABLE Skills(
     skill_id INT PRIMARY KEY IDENTITY(1,1), 
     skill_name NVARCHAR(50) UNIQUE NOT NULL,  -- Enforce unique skill names
-    skill_description NVARCHAR(255)  
+    skill_description NVARCHAR(255) 
 ); 
 
 
@@ -94,7 +94,7 @@ CREATE TABLE team_project(
     team_id INT NOT NULL, 
     project_id INT NOT NULL,
     PRIMARY KEY (team_id, project_id), 
-    FOREIGN KEY (team_id) REFERENCES Team   (team_id),
+    FOREIGN KEY (team_id) REFERENCES Team(team_id),
     FOREIGN KEY (project_id) REFERENCES Project(project_id) 
 ); 
 
@@ -103,7 +103,7 @@ CREATE TABLE team_member(
     role_id INT NOT NULL, 
     member_id INT NOT NULL,
 	team_id INT NOT NULL,
-w
+
     PRIMARY KEY (role_id, member_id, team_id), 
     FOREIGN KEY (role_id) REFERENCES Role(role_id),
     FOREIGN KEY (member_id) REFERENCES Employee(employee_id),
