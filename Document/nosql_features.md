@@ -476,7 +476,6 @@ const updateProjectDates = (projectId, startDate, endDate) => {
 #### Procedures ???
 
 - ? Team Features: View Employee through Skill Tag
-
 ```javascript
 // View Employee through Skill Tag
 const viewEmployeeBySkillTag = (skillId) => {

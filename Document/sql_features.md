@@ -223,7 +223,7 @@ EXEC create_task_for_team
 - Insert Project
 ```sql
     INSERT INTO Project (name, goal, number_of_employees, prefer_team, project_priority, project_status, start_date, end_date, project_manager_id) 
-    VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]);
+    VALUES ('Tên dự án', 'Mục tiêu dự án', [Số lượng nhân viên], 'Đội ưu tiên', 'Mức độ ưu tiên', 'Trạng thái dự án', 'Ngày bắt đầu', 'Ngày kết thúc', [ID của quản lý dự án]); 
 ```
 
 - View Project
@@ -256,6 +256,7 @@ EXEC create_task_for_team
     WHERE project_id = 1;
     select * from Project;
 ```
+
 - ? Set Project to project_priority
 ```sql
     UPDATE Project
@@ -263,11 +264,17 @@ EXEC create_task_for_team
     WHERE project_id = 1;
     select * from Project;
 ```
+
 - ? Update start_data and Update end_date
 ```sql
     UPDATE Project
     WHERE project_id = 1;
     select * from Project;
+```
+
+### Team and Project
+```sql
+    DELETE FROM team_project WHERE team_id = 1 and project_id = 1 
 ```
 
 
@@ -403,7 +410,9 @@ EXEC create_task_for_team
     EXEC display_employees_by_skill @skill_id = 17; -- Assuming skill_id 7 represents 'Mobile Development'
 ```
 
+
 - ? View Total employee count in a project by project_id 
+- ? Description: This procedure retrieves the total count of distinct employees involved in the teams of a specific project.
 ```sql
     CREATE OR ALTER PROCEDURE ViewCountDistinctEmployeesInProjectTeams
         @ProjectID INT
@@ -448,16 +457,16 @@ EXEC create_task_for_team
         END
 
         -- Get distinct employees involved in the project's teams
-        SELECT DISTINCT COUNT(e.employee_id) AS 'Total Employee'
+        SELECT DISTINCT @Count = COUNT(e.employee_id) 
         FROM Employee e
         INNER JOIN team_member tm ON e.employee_id = tm.member_id
         INNER JOIN team_project tp ON tm.team_id = tp.team_id
         WHERE tp.project_id = @ProjectID;
 
-            -- Update the number_of_employees in the Project table
-            UPDATE Project
-            SET number_of_employees = @Count
-            WHERE project_id = @ProjectID;
+        -- Update the number_of_employees in the Project table
+        UPDATE Project
+        SET number_of_employees = @Count
+        WHERE project_id = @ProjectID;
 
     END;
     Go
@@ -476,6 +485,7 @@ EXEC create_task_for_team
 
 #### Triggers
 - ? Trigger Delete from Employee
+- ? Description: This trigger is used to delete an employee and cascade the deletion to related tables.
 ```sql
    CREATE OR ALTER TRIGGER cascade_delete_employee
     ON Employee
