@@ -92,6 +92,45 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="container mx-auto py-8">
+            <h1 class="text-2xl font-semibold text-gray-800 mb-4">Create New Task</h1>
+    
+            <!-- Form để tạo nhiệm vụ mới -->
+            <div class="max-w-md mx-auto bg-white shadow-md rounded-lg p-6">
+                <form>
+                    <div class="mb-4">
+                        <label for="taskName" class="block text-sm font-medium text-gray-700">Task Name</label>
+                        <input type="text" id="taskName" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter task name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="taskDescription" class="block text-sm font-medium text-gray-700">Task Description</label>
+                        <textarea id="taskDescription" rows="3" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Describe the task"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="taskPriority" class="block text-sm font-medium text-gray-700">Priority</label>
+                        <select id="taskPriority" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="taskStatus" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="taskStatus" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                            <option>Pending</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label for="dueDate" class="block text-sm font-medium text-gray-700">Due Date</label>
+                        <input type="date" id="dueDate" class="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Create Task</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Script để xử lý tạo mới task -->
@@ -117,3 +156,10 @@
 </body>
 
 </html>
+
+<!-- 
+    Tạo một task mới:
+
+    INSERT INTO Task (task_name, task_description, task_priority, status, due_date)
+    VALUES ('Tên_task_mới', 'Mô_tả_task_mới', 'Medium', 'Pending', '2024-05-15');
+ -->
