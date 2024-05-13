@@ -690,8 +690,6 @@ db.Role.deleteOne({ role_id: roleIdToDelete });
 db.team_member.deleteMany({ role_id: roleIdToDelete });
 ```
 
-? Trigger Delete from Skills
-
 ```javascript
 var taskIdToDelete = 1; // Thay đổi taskIdToDelete tùy theo task muốn xóa
 
